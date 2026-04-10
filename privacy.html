@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Hassan Nobeeboccus</title>
+  <meta name="description" content="Privacy policy for hassannobeeboccus.com" />
+  <meta name="robots" content="noindex" />
+
+  <link rel="stylesheet" href="/shared.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@400;500;600;700&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <style>
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute; top: -50px; left: 0;
+      background: var(--gold); color: var(--green);
+      padding: 0.5rem 1rem; z-index: 200;
+      font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600;
+      text-decoration: none; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── NAV ── */
+    nav { background: rgba(27, 58, 45, 0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201, 168, 76, 0.08); padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 100; }
+    nav .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .nav-brand { display: flex; align-items: center; gap: 0.5rem; }
+    nav .wordmark { font-family: 'Merriweather', serif; font-size: 0.9rem; font-weight: 700; text-decoration: none; color: var(--cream); white-space: nowrap; }
+    nav .wordmark .wm-sep { color: var(--gold); margin: 0 0.3em; }
+    nav .wordmark .wm-title { color: #C4574A; font-style: italic; }
+    nav .nav-linkedin { color: rgba(250,247,242,0.5); text-decoration: none; display: flex; align-items: center; transition: color 0.2s, transform 0.2s cubic-bezier(0.22,1,0.36,1); }
+    nav .nav-linkedin:hover { color: var(--cream); transform: scale(1.15); }
+    nav .nav-linkedin:active, nav .nav-linkedin:visited { color: var(--cream); }
+    nav .nav-cta { background: var(--gold); color: var(--green); font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none; transition: opacity 0.2s; white-space: nowrap; }
+    nav .nav-cta:hover { opacity: 0.85; }
+
+    nav .nav-links { display: flex; align-items: center; gap: 1.25rem; }
+    nav .nav-link { color: rgba(250,247,242,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
+    nav .nav-link:hover { color: var(--cream); }
+
+    /* ── DARK NAV ── */
+    body.dark nav { background: rgba(13, 31, 22, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201, 168, 76, 0.12); }
+    body.dark nav .wordmark { color: #e0ddd8; }
+    body.dark nav .nav-linkedin { color: rgba(201,168,76,0.5); }
+    body.dark nav .nav-linkedin:hover, body.dark nav .nav-linkedin:active { color: var(--gold); }
+    body.dark nav .nav-cta { background: var(--gold); color: #141414; }
+    body.dark nav .nav-link { color: var(--gold); opacity: 0.7; }
+    body.dark nav .nav-link:hover { opacity: 1; }
+
+    @media (max-width: 640px) { nav .wordmark .wm-sep, nav .wordmark .wm-title { display: none; } }
+
+    /* ── PAGE CONTENT ── */
+    h1 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.15rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
+    ul { margin-bottom: 1rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--green); }
+
+    .content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .last-updated {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* ── COOKIE CONSENT ── */
+    .cookie-float {
+      position: fixed; bottom: 8rem; right: 2rem; z-index: 90;
+      display: flex; align-items: center; gap: 0.5rem;
+      flex-direction: row-reverse;
+    }
+    .cookie-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--green); color: var(--cream);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0.4; transition: opacity 0.3s, transform 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      font-size: 0.85rem;
+    }
+    .cookie-btn:hover { opacity: 0.7; }
+    .cookie-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    body.dark .cookie-btn { background: var(--gold); color: #141414; }
+    .cookie-options {
+      display: flex; gap: 0.4rem; opacity: 0; pointer-events: none;
+      transform: translateX(10px); transition: opacity 0.3s, transform 0.3s;
+    }
+    .cookie-float.open .cookie-options { opacity: 1; pointer-events: auto; transform: translateX(0); }
+    .cookie-opt {
+      height: 36px; border-radius: 50px; padding: 0 0.75rem;
+      background: var(--green); color: var(--cream);
+      border: none; cursor: pointer; font-family: 'Inter', sans-serif;
+      font-size: 0.7rem; font-weight: 500; white-space: nowrap;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: opacity 0.2s;
+    }
+    .cookie-opt:hover { opacity: 0.8; }
+    body.dark .cookie-opt { background: var(--gold); color: #141414; }
+    .cookie-float.hidden { display: none; }
+
+    @media (max-width: 640px) {
+      html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
+      body { font-size: 16px; }
+      .content { padding: 2rem 1.25rem 3rem; }
+      footer a { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { transition: none; opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+      body { transition: none; }
+    }
+  </style>
+  <noscript><style>.fade-in{opacity:1;transform:none;}</style></noscript>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <a class="wordmark" href="/">Hassan Nobeeboccus<span class="wm-sep">|</span><span class="wm-title">The Football Ghostwriter</span></a>
+        <a class="nav-linkedin" href="https://www.linkedin.com/in/thefootballghostwriter/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a class="nav-linkedin" href="/footballthoughts" aria-label="Football Thoughts" style="position:relative;top:0.5px;"><svg style="width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.91;stroke-miterlimit:10;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/><line x1="19.64" y1="12" x2="16.41" y2="12" stroke-linecap="square"/><line x1="7.59" y1="12" x2="4.36" y2="12" stroke-linecap="square"/><line x1="15.82" y1="5.39" x2="14.2" y2="8.18" stroke-linecap="square"/><line x1="9.8" y1="15.82" x2="8.18" y2="18.62" stroke-linecap="square"/><line x1="9.8" y1="8.18" x2="8.18" y2="5.39" stroke-linecap="square"/><line x1="15.82" y1="18.62" x2="14.2" y2="15.82" stroke-linecap="square"/></svg></a>
+      </div>
+      <div class="nav-links">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-cta" href="https://cal.eu/thefootballghostwriter/30min" target="_blank" rel="nofollow noopener">Book a Call</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <div class="content">
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last updated: 28 March 2026</p>
+
+      <p>This privacy policy explains how Hassan Nobeeboccus ("I", "me", "my") collects, uses and protects your personal data when you use this website (hassannobeeboccus.com) and subscribe to email communications.</p>
+
+      <h2>1. Data controller</h2>
+      <p>Hassan Nobeeboccus is the data controller for personal data collected through this website. You can contact me at: <a href="mailto:thefootballghostwriter@outlook.com">thefootballghostwriter@outlook.com</a></p>
+
+      <h2>2. What data I collect</h2>
+      <p>I collect the following personal data:</p>
+      <ul>
+        <li><strong>Email address and first name</strong> when you subscribe to the email course or newsletter via the opt-in form on this site</li>
+        <li><strong>Name, email and message content</strong> when you use the contact form</li>
+        <li><strong>Usage data</strong> anonymised analytics data including pages visited, approximate geographic location (country level), device type and referral source</li>
+      </ul>
+      <p>I do not collect payment information, sensitive personal data or data from children under 16.</p>
+
+      <h2>3. How I collect your data</h2>
+      <ul>
+        <li><strong>Email opt-in forms</strong> powered by Kit (formerly ConvertKit). When you submit the form, your data is processed by Kit on my behalf.</li>
+        <li><strong>Contact form</strong> powered by Formspree. When you submit the contact form, your data is processed by Formspree and forwarded to me via email.</li>
+        <li><strong>Analytics</strong> this site may use privacy-respecting analytics to understand how visitors use the site. No personally identifiable information is collected through analytics.</li>
+      </ul>
+
+      <h2>4. How I use your data</h2>
+      <p>I use your personal data for the following purposes:</p>
+      <ul>
+        <li>To deliver the email course you signed up for</li>
+        <li>To respond to messages sent via the contact form</li>
+        <li>To send occasional updates about content, services or resources relevant to football development professionals (you can unsubscribe at any time)</li>
+        <li>To understand how visitors use this website so I can improve it</li>
+      </ul>
+
+      <h2>5. Legal basis for processing (GDPR)</h2>
+      <ul>
+        <li><strong>Consent</strong> when you submit the opt-in form, you consent to receiving the email course and related communications. You can withdraw this consent at any time by clicking the unsubscribe link in any email.</li>
+        <li><strong>Legitimate interest</strong> for anonymised website analytics, to improve the website and understand how it is used.</li>
+      </ul>
+
+      <h2>6. Third-party processors</h2>
+      <p>Your data may be processed by the following third parties, all of which have their own privacy policies and data processing agreements:</p>
+      <ul>
+        <li><strong>Kit (ConvertKit)</strong> email service provider, used to store subscriber data and send emails. Kit is based in the United States and complies with applicable data protection standards.</li>
+        <li><strong>Formspree</strong> form processing service, used to handle contact form submissions.</li>
+        <li><strong>Vercel</strong> website hosting provider.</li>
+      </ul>
+
+      <h2>7. Data retention</h2>
+      <p>I retain your email address and first name for as long as you remain subscribed to my email list. If you unsubscribe, your data will be removed from active mailing lists. Kit may retain a record of your email address to honour your unsubscribe request.</p>
+
+      <h2>8. Your rights</h2>
+      <p>Under the UK GDPR and EU GDPR, you have the following rights:</p>
+      <ul>
+        <li>The right to access the personal data I hold about you</li>
+        <li>The right to rectification if your data is inaccurate</li>
+        <li>The right to erasure ("right to be forgotten")</li>
+        <li>The right to restrict processing</li>
+        <li>The right to data portability</li>
+        <li>The right to object to processing</li>
+        <li>The right to withdraw consent at any time</li>
+      </ul>
+      <p>To exercise any of these rights, email me at <a href="mailto:thefootballghostwriter@outlook.com">thefootballghostwriter@outlook.com</a>. I will respond within 30 days.</p>
+
+      <h2>9. Cookies</h2>
+      <p>This website uses only essential cookies required for the site to function. No tracking cookies or third-party advertising cookies are used. If analytics are added in the future, this policy will be updated accordingly.</p>
+
+      <h2>10. Changes to this policy</h2>
+      <p>I may update this privacy policy from time to time. Any changes will be posted on this page with an updated "last updated" date.</p>
+
+      <h2>11. Contact</h2>
+      <p>If you have any questions about this privacy policy or how your data is handled, contact me at: <a href="mailto:thefootballghostwriter@outlook.com">thefootballghostwriter@outlook.com</a></p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="max-width:640px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.5rem;">
+        <span style="font-family:'Merriweather',serif;font-size:0.88rem;font-weight:700;color:rgba(250,247,242,0.6);">Hassan Nobeeboccus</span>
+        <a href="https://www.linkedin.com/in/thefootballghostwriter/" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:rgba(250,247,242,0.5);display:inline-flex;align-items:center;"><svg style="width:15px;height:15px;fill:currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="/footballthoughts" aria-label="Football Thoughts" style="color:rgba(250,247,242,0.5);display:inline-flex;align-items:center;"><svg style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.91;stroke-miterlimit:10;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/><line x1="19.64" y1="12" x2="16.41" y2="12" stroke-linecap="square"/><line x1="7.59" y1="12" x2="4.36" y2="12" stroke-linecap="square"/><line x1="15.82" y1="5.39" x2="14.2" y2="8.18" stroke-linecap="square"/><line x1="9.8" y1="15.82" x2="8.18" y2="18.62" stroke-linecap="square"/><line x1="9.8" y1="8.18" x2="8.18" y2="5.39" stroke-linecap="square"/><line x1="15.82" y1="18.62" x2="14.2" y2="15.82" stroke-linecap="square"/></svg></a>
+      </div>
+      <div style="display:flex;gap:1.25rem;flex-wrap:wrap;align-items:center;">
+        <a href="/">Home</a>
+        <a href="mailto:thefootballghostwriter@outlook.com">Email</a>
+        <a href="/privacy">Privacy Policy</a>
+      </div>
+    </div>
+    <div style="width:100%;text-align:center;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(250,247,242,0.1);font-size:0.8rem;color:rgba(250,247,242,0.35);">&copy; 2026 Hassan Nobeeboccus. All rights reserved.</div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+  <button class="theme-float" id="themeFloat" aria-label="Toggle dark mode"><svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+
+  <div class="cookie-float" id="cookieConsent" aria-live="polite">
+    <button class="cookie-btn" id="cookieToggle" aria-label="Cookie preferences"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="10" r="1.5" fill="currentColor" stroke="none"/><circle cx="15" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="10" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="14" r="0.8" fill="currentColor" stroke="none"/></svg></button>
+    <div class="cookie-options">
+      <button class="cookie-opt" data-consent="all">Accept</button>
+      <button class="cookie-opt" data-consent="none">Decline</button>
+    </div>
+  </div>
+
+  <script>
+    var s = localStorage.getItem('theme');
+    if (s === 'dark') { document.body.classList.add('dark'); }
+    else if (!s && !(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)) { document.body.classList.add('dark'); }
+
+    var btt = document.getElementById('backToTop');
+    var tf = document.getElementById('themeFloat');
+    window.addEventListener('scroll', function() {
+      var show = window.scrollY > 300;
+      btt.classList.toggle('show', show);
+      tf.classList.toggle('show', show);
+    });
+    btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    tf.addEventListener('click', function() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Cookie consent
+    function loadAnalytics() {
+      if (window._analyticsLoaded) return;
+      window._analyticsLoaded = true;
+      var va = document.createElement('script');
+      va.defer = true;
+      va.src = '/_vercel/insights/script.js';
+      document.head.appendChild(va);
+    }
+    var cc = document.getElementById('cookieConsent');
+    var ct = document.getElementById('cookieToggle');
+    var consent = localStorage.getItem('cookieConsent');
+    if (consent) {
+      cc.classList.add('hidden');
+      if (consent === 'all') loadAnalytics();
+    } else {
+      cc.classList.add('open');
+    }
+    ct.addEventListener('click', function() {
+      cc.classList.toggle('open');
+    });
+    document.querySelectorAll('.cookie-opt').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var choice = this.dataset.consent;
+        localStorage.setItem('cookieConsent', choice);
+        cc.classList.add('hidden');
+        if (choice === 'all') loadAnalytics();
+      });
+    });
+  </script>
+
+</body>
+</html>

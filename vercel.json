@@ -1,0 +1,13 @@
+{
+  "rewrites": [
+    { "source": "/build-your-public-voice", "destination": "/buildyourpublicvoice.html" },
+    { "source": "/buildyourpublicvoice", "destination": "/buildyourpublicvoice.html" },
+    { "source": "/course", "destination": "/buildyourpublicvoice.html" },
+    { "source": "/footballthoughts", "destination": "/footballthoughts.html" },
+    { "source": "/writing", "destination": "/footballthoughts.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/5-development-models", "destination": "/5-development-models.html" },
+    { "source": "/courses", "destination": "/freecourses.html" },
+    { "source": "/free-courses", "destination": "/freecourses.html" }
+  ]
+}
