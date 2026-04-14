@@ -1,11 +1,28 @@
+// Course registry. Add new EECs here.
+const COURSES = {
+  models: {
+    group: '183924441027184080',
+    redirect: '/5-development-models'
+  },
+  voice: {
+    group: '184737667850700274',
+    redirect: '/build-your-public-voice'
+  }
+};
+
+const DEFAULT_COURSE = 'models';
+
 export default async function handler(req, res) {
+  const courseKey = (req.body && req.body.course) || DEFAULT_COURSE;
+  const course = COURSES[courseKey] || COURSES[DEFAULT_COURSE];
+
   if (req.method !== 'POST') {
-    return res.redirect(302, '/5-development-models');
+    return res.redirect(302, course.redirect);
   }
 
   const email = req.body.email;
   if (!email) {
-    return res.redirect(302, '/5-development-models?error=1');
+    return res.redirect(302, `${course.redirect}?error=1`);
   }
 
   try {
@@ -17,16 +34,16 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         email: email,
-        groups: ['183924441027184080']
+        groups: [course.group]
       })
     });
 
     if (response.ok || response.status === 200 || response.status === 201) {
-      return res.redirect(302, '/5-development-models?subscribed=1');
+      return res.redirect(302, `${course.redirect}?subscribed=1`);
     } else {
-      return res.redirect(302, '/5-development-models?error=1');
+      return res.redirect(302, `${course.redirect}?error=1`);
     }
   } catch (e) {
-    return res.redirect(302, '/5-development-models?error=1');
+    return res.redirect(302, `${course.redirect}?error=1`);
   }
 }
