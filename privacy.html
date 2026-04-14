@@ -189,6 +189,8 @@
         <li><strong>Kit (ConvertKit)</strong> email service provider, used to store subscriber data and send emails. Kit is based in the United States and complies with applicable data protection standards.</li>
         <li><strong>Formspree</strong> form processing service, used to handle contact form submissions.</li>
         <li><strong>Vercel</strong> website hosting provider.</li>
+        <li><strong>MailerLite</strong> email service provider, used for the 5 Development Models course.</li>
+        <li><strong>Google Analytics</strong> web analytics service (loaded only with your cookie consent). IP addresses are anonymised before storage.</li>
       </ul>
 
       <h2>7. Data retention</h2>
@@ -208,7 +210,7 @@
       <p>To exercise any of these rights, email me at <a href="mailto:thefootballghostwriter@outlook.com">thefootballghostwriter@outlook.com</a>. I will respond within 30 days.</p>
 
       <h2>9. Cookies</h2>
-      <p>This website uses only essential cookies required for the site to function. No tracking cookies or third-party advertising cookies are used. If analytics are added in the future, this policy will be updated accordingly.</p>
+      <p>This website uses essential cookies required for the site to function and, only with your explicit consent via the cookie banner, analytics cookies from Vercel Analytics and Google Analytics. Analytics cookies help me understand how visitors use the site so I can improve it. No tracking cookies or third-party advertising cookies are used. You can change or withdraw your consent at any time via the cookie preferences button at the bottom of any page.</p>
 
       <h2>10. Changes to this policy</h2>
       <p>I may update this privacy policy from time to time. Any changes will be posted on this page with an updated "last updated" date.</p>
@@ -272,6 +274,15 @@
       va.defer = true;
       va.src = '/_vercel/insights/script.js';
       document.head.appendChild(va);
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-8ER6D68M04';
+      document.head.appendChild(ga);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-8ER6D68M04', { anonymize_ip: true });
     }
     var cc = document.getElementById('cookieConsent');
     var ct = document.getElementById('cookieToggle');
