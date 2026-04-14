@@ -279,11 +279,6 @@
     .inline-form .form-micro a { color: var(--text-muted); text-decoration: underline; }
 
     /* ── THANK YOU (inline) ── */
-    .thank-you { display: none; padding: 3rem 0; text-align: center; }
-    .thank-you.show { display: block; }
-    .thank-you h2 { color: var(--green); margin-bottom: 0.75rem; }
-    .thank-you p { color: var(--text-muted); }
-    .thank-you .spam-note { font-size: 0.88rem; color: var(--terracotta); font-weight: 500; margin-top: 1rem; }
 
     /* ── CREDENTIALS ── */
     .credentials { padding: 3.5rem 0 1rem; }
@@ -502,14 +497,6 @@
     </div>
   </div>
 
-  <!-- THANK YOU (shown after submit) -->
-  <div class="thank-you" id="thankYou">
-    <div class="container">
-      <h2>You're in. Day 1 is on its way.</h2>
-      <p>Check your inbox in the next few minutes.</p>
-      <p class="spam-note">P.S. If it's not there, check your Promotions tab or spam folder and drag it to Primary so you don't miss the next four days.</p>
-    </div>
-  </div>
   </main>
 
   <!-- FOOTER -->
@@ -563,6 +550,22 @@
     }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
     setTimeout(function() { document.querySelectorAll('.fade-in').forEach(function(el) { el.classList.add('visible'); }); }, 3000);
+
+    // Handle subscription success/error
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('subscribed') === '1') {
+      document.querySelectorAll('form').forEach(function(f) {
+        f.innerHTML = '<p style="color:var(--gold);font-weight:600;font-size:1rem;margin:0;">Check your inbox. Day 1 is on its way.</p>';
+      });
+    }
+    if (params.get('error') === '1') {
+      document.querySelectorAll('form').forEach(function(f) {
+        var msg = document.createElement('p');
+        msg.style.cssText = 'color:var(--terracotta);font-size:0.85rem;margin-top:0.5rem;';
+        msg.textContent = 'Something went wrong. Please try again.';
+        f.appendChild(msg);
+      });
+    }
 
     // Cookie consent
     function loadAnalytics() {
