@@ -3,66 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Football Thoughts | Hassan Nobeeboccus</title>
-  <meta name="description" content="Writing on football development by Hassan Nobeeboccus. LinkedIn posts, articles and thinking on EPPP, coaching education and player development." />
-  <link rel="canonical" href="https://hassannobeeboccus.com/footballthoughts" />
+  <title>Post title | Football Thoughts | Hassan Nobeeboccus</title>
+  <meta name="description" content="Post description goes here." />
+  <link rel="canonical" href="https://hassannobeeboccus.com/footballthoughts/post-slug" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://hassannobeeboccus.com/footballthoughts/post-slug" />
+  <meta property="og:title" content="Post title | Hassan Nobeeboccus" />
+  <meta property="og:description" content="Post description goes here." />
+  <meta property="og:image" content="https://hassannobeeboccus.com/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Post title | Hassan Nobeeboccus" />
+  <meta name="twitter:description" content="Post description goes here." />
+  <meta name="twitter:image" content="https://hassannobeeboccus.com/og-image.png" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Football Thoughts",
-    "description": "Writing on EPPP, coaching education, player development and more by Hassan Nobeeboccus.",
-    "url": "https://hassannobeeboccus.com/footballthoughts",
+    "@type": "Article",
+    "headline": "Post title",
+    "description": "Post description goes here.",
+    "url": "https://hassannobeeboccus.com/footballthoughts/post-slug",
     "author": {
       "@type": "Person",
       "name": "Hassan Nobeeboccus",
       "url": "https://hassannobeeboccus.com"
     },
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": [
-        {
-          "@type": "Article",
-          "position": 1,
-          "name": "What is your academy actually selecting for?",
-          "url": "https://www.linkedin.com/pulse/what-your-academy-actually-selecting-hassan-nobeeboccus-aljge/",
-          "author": {"@type": "Person", "name": "Hassan Nobeeboccus"},
-          "datePublished": "2026-03"
-        },
-        {
-          "@type": "Article",
-          "position": 2,
-          "name": "Is your coaching licence actually developing you?",
-          "url": "https://www.linkedin.com/pulse/your-coaching-licence-actually-developing-you-hassan-nobeeboccus-pmmje/",
-          "author": {"@type": "Person", "name": "Hassan Nobeeboccus"},
-          "datePublished": "2026-03"
-        },
-        {
-          "@type": "Article",
-          "position": 3,
-          "name": "The best people in football development are invisible online",
-          "url": "https://www.linkedin.com/pulse/best-people-football-development-invisible-online-why-nobeeboccus-xulje/",
-          "author": {"@type": "Person", "name": "Hassan Nobeeboccus"},
-          "datePublished": "2026-03"
-        }
-      ]
-    }
+    "datePublished": "2026-04-16",
+    "image": "https://hassannobeeboccus.com/og-image.png"
   }
   </script>
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <meta name="robots" content="index, follow" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://hassannobeeboccus.com/footballthoughts" />
-  <meta property="og:title" content="Football Thoughts | Hassan Nobeeboccus" />
-  <meta property="og:description" content="Thoughts on EPPP, coaching education, player development and more. By Hassan Nobeeboccus." />
-  <meta property="og:image" content="https://hassannobeeboccus.com/og-image.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Football Thoughts | Hassan Nobeeboccus" />
-  <meta name="twitter:description" content="Writing on EPPP, coaching education, player development and more." />
-  <meta name="twitter:image" content="https://hassannobeeboccus.com/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -99,7 +72,6 @@
       --card-bg: #fff;
     }
 
-    /* ── DARK MODE ── */
     body.dark {
       --cream: #141414; --text: #e0ddd8; --text-muted: #9a9590;
       --border: #2a2725; --bg-alt: #1c1c1c; --card-bg: #1e1e1e;
@@ -107,21 +79,12 @@
     body.dark nav { background: rgba(13, 31, 22, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201, 168, 76, 0.12); }
     body.dark nav .wordmark { color: #e0ddd8; }
     body.dark .page-header { background: #0d1f16; }
-    body.dark .writing-tabs { background: #0d1f16; }
     body.dark h1, body.dark h2, body.dark h3 { color: #e0ddd8; }
     body.dark .page-header h1 { color: #e0ddd8; }
-    body.dark .writing-section h2, body.dark .writing-section h2 a { color: #e0ddd8 !important; }
-    body.dark .writing-card { background: var(--card-bg); border-color: var(--border); }
-    body.dark .writing-card h3 { color: #e0ddd8; }
-    body.dark .writing-card:hover { border-color: var(--gold); }
     body.dark footer { background: #090f0c; }
     body.dark a { color: var(--gold); }
-    body.dark .section-desc a { color: var(--gold); }
-    body.dark .writing-tabs a { color: var(--gold); opacity: 0.7; }
-    body.dark .writing-tabs a:hover { opacity: 1; }
-
-    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    body.dark .article-body p, body.dark .article-body li { color: var(--text); }
+    body.dark .article-back { color: var(--gold); }
 
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background-color: var(--cream); color: var(--text); line-height: 1.7; font-size: 17px; transition: background-color 0.3s, color 0.3s; }
@@ -136,7 +99,7 @@
     [id] { scroll-margin-top: 5rem; }
     .li-icon { display: inline-block; width: 16px; height: 16px; vertical-align: middle; fill: currentColor; }
 
-    /* ── NAV ── */
+    /* NAV */
     nav { background: rgba(27, 58, 45, 0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201, 168, 76, 0.08); padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 100; }
     nav .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
     .nav-brand { display: flex; align-items: center; gap: 0.5rem; }
@@ -148,22 +111,10 @@
     nav .nav-linkedin:active, nav .nav-linkedin:visited { color: var(--cream); }
     body.dark nav .nav-linkedin { color: rgba(201,168,76,0.5); }
     body.dark nav .nav-linkedin:hover, body.dark nav .nav-linkedin:active { color: var(--gold); }
-    nav .nav-back { color: rgba(250,247,242,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-    nav .nav-back:hover, nav .nav-back:active { color: var(--cream); }
-    body.dark nav .nav-back { color: rgba(201,168,76,0.5); }
-    body.dark nav .nav-back:hover, body.dark nav .nav-back:active { color: var(--gold); }
-    .nav-theme-btn { background: none; border: none; cursor: pointer; padding: 0; color: rgba(250,247,242,0.5); display: flex; align-items: center; transition: color 0.2s; }
-    .nav-theme-btn:hover { color: var(--cream); }
-    .nav-theme-btn svg { width: 16px; height: 16px; stroke-linecap: round; stroke-linejoin: round; }
-    .nav-theme-btn .theme-sun { display: none; }
-    .nav-theme-btn .theme-moon { display: block; }
-    body.dark .nav-theme-btn .theme-sun { display: block; }
-    body.dark .nav-theme-btn .theme-moon { display: none; }
-    body.dark .nav-theme-btn { color: var(--gold); }
-
     nav .nav-cta { background: var(--gold); color: var(--green); font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none; transition: opacity 0.2s; white-space: nowrap; }
     nav .nav-cta:hover { opacity: 0.85; }
     body.dark .nav-cta { background: var(--gold); color: #141414; }
+
     .back-to-top {
       position: fixed; bottom: 2rem; right: 2rem; z-index: 90;
       width: 40px; height: 40px; border-radius: 50%;
@@ -197,15 +148,34 @@
 
     @media (max-width: 640px) { nav .wordmark .wm-sep, nav .wordmark .wm-title { display: none; } }
 
-    /* ── HEADER ── */
-    .page-header {
-      background: var(--green); padding: 3.5rem 0 3rem; position: relative; overflow: hidden;
+    .nav-tabs { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-tabs a {
+      font-size: 0.88rem; font-weight: 500; color: rgba(250,247,242,0.75);
+      text-decoration: none; transition: color 0.2s; white-space: nowrap;
+      position: relative;
     }
-    .page-header::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none; z-index: 0;
-      background-image: url('/goal-bg.webp'); background-image: image-set(url('/goal-bg.webp') type('image/webp'), url('/goal-bg.jpg') type('image/jpeg')); background-size: cover; background-position: center;
-      opacity: 0.03; filter: grayscale(100%);
+    .nav-tabs a:hover { color: var(--cream); }
+    body.dark .nav-tabs a { color: var(--gold); opacity: 0.7; }
+    body.dark .nav-tabs a:hover { opacity: 1; }
+    .nav-tabs a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav-tabs a:hover::after { width: 100%; }
+    @media (max-width: 900px) {
+      .nav-tabs {
+        width: 100%; justify-content: center;
+        border-top: 1px solid rgba(201,168,76,0.4);
+        padding-top: 0.5rem; margin-top: 0.5rem;
+        order: 3;
+      }
+      .nav-tabs a { font-size: 0.88rem; }
+    }
+
+    /* HEADER */
+    .page-header {
+      background: var(--green); padding: 3rem 0 2.5rem; position: relative; overflow: hidden;
     }
     .page-header::before {
       content: '';
@@ -218,100 +188,45 @@
       z-index: 0;
     }
     .page-header > * { position: relative; z-index: 1; }
+    .page-header .eyebrow {
+      font-family: 'Merriweather', serif; font-style: italic; font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.75rem;
+    }
     .page-header h1 { color: var(--cream); margin-bottom: 0.5rem; }
-    .page-header p { color: rgba(250,247,242,0.6); font-size: 0.95rem; }
+    .page-header p { color: rgba(250,247,242,0.65); font-size: 0.95rem; }
 
-    /* ── NAV TABS (second row) ── */
-    .nav-tabs {
-      display: flex; gap: 1.5rem; align-items: center;
+    /* ARTICLE BODY */
+    .article-body { padding: 3rem 0 4rem; }
+    .article-body article { max-width: 680px; margin: 0 auto; }
+    .article-body h2 { margin: 2rem 0 0.75rem; font-size: 1.25rem; }
+    .article-body h3 { margin: 1.5rem 0 0.5rem; font-size: 1.1rem; }
+    .article-body p { margin-bottom: 1.25rem; line-height: 1.8; }
+    .article-body ul, .article-body ol { margin: 0 0 1.25rem 1.25rem; }
+    .article-body li { margin-bottom: 0.5rem; line-height: 1.8; }
+    .article-body blockquote {
+      border-left: 4px solid var(--gold);
+      padding-left: 1.25rem;
+      margin: 1.5rem 0;
+      color: var(--text-muted);
+      font-style: italic;
     }
-    .nav-tabs a {
-      font-size: 0.88rem; font-weight: 500; color: rgba(250,247,242,0.75);
-      text-decoration: none; transition: color 0.2s; white-space: nowrap;
+    .article-body .reading-time {
+      font-size: 0.82rem; color: var(--text-muted);
+      margin-bottom: 2rem; font-family: 'Inter', sans-serif;
     }
-    .nav-tabs a:hover { color: var(--cream); }
-    body.dark .nav-tabs a { color: var(--gold); opacity: 0.7; }
-    body.dark .nav-tabs a:hover { opacity: 1; }
-    .nav-tabs a { position: relative; }
-    .nav-tabs a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .nav-tabs a:hover::after { width: 100%; }
-    .nav-tabs { order: 0; }
-    nav .nav-cta { order: 1; }
-    @media (max-width: 900px) {
-      .nav-tabs {
-        width: 100%; justify-content: center;
-        border-top: 1px solid rgba(201,168,76,0.4);
-        padding-top: 0.5rem; margin-top: 0.5rem;
-        order: 3;
-      }
-      .nav-tabs a { font-size: 0.88rem; }
-    }
+    .article-body a { color: var(--green); text-decoration: underline; }
+    body.dark .article-body a { color: var(--gold); }
 
-    /* ── TEXTURE ── */
-    .has-texture { position: relative; }
-    .has-texture::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none; z-index: 0; opacity: 0.05;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Cg fill='none' stroke='%231B3A2D' stroke-linecap='round'%3E%3Cpath d='M20 30c18-7 35 3 55 8s32 11 52 6' stroke-width='1.2'/%3E%3Cpath d='M350 20c12-3 22 4 34 6s18 5 28 1' stroke-width='0.8'/%3E%3Cpath d='M80 120c25-6 45 4 65 9s32 8 50 3' stroke-width='1'/%3E%3Cpath d='M400 100c20-5 36 3 52 7s28 6 42 2' stroke-width='0.9'/%3E%3Cpath d='M50 230c30-8 55 4 78 11s42 9 62 3' stroke-width='1.1'/%3E%3Cpath d='M380 210c15-4 28 3 42 6s22 5 34 1' stroke-width='0.8'/%3E%3Cpath d='M100 330c22-6 40 4 58 8s32 7 48 2' stroke-width='1'/%3E%3Cpath d='M140 60l6 6m0-6l-6 6' stroke-width='1.5'/%3E%3Cpath d='M500 70l5 5m0-5l-5 5' stroke-width='1.3'/%3E%3Cpath d='M220 180l7 7m0-7l-7 7' stroke-width='1.6'/%3E%3Ccircle cx='200' cy='50' r='5' stroke-width='1.3'/%3E%3Ccircle cx='450' cy='140' r='4' stroke-width='1.2'/%3E%3Ccircle cx='280' cy='270' r='5' stroke-width='1.3'/%3E%3Cpath d='M205 50l20-10 15 8' stroke-width='1' stroke-dasharray='3 3'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: 600px 400px;
+    .article-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--green); font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; margin-top: 2.5rem;
     }
-    .has-texture > * { position: relative; z-index: 1; }
-    body.dark .has-texture::before { opacity: 0.025; filter: invert(1); }
+    .article-back:hover { color: var(--gold); }
+    body.dark .article-back { color: var(--gold); }
 
-    /* ── WRITING LIST ── */
-    .writing-section { padding: 3rem 0; }
-    .writing-section h2 { margin-bottom: 0.25rem; }
-    .section-desc { font-size: 0.88rem; font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; }
-    .section-desc a { color: var(--text-muted); text-decoration: underline; }
-
-    .writing-list { display: flex; flex-direction: column; gap: 1.25rem; }
-
-    .writing-card {
-      background: var(--card-bg); border: 1px solid var(--border); border-left: 4px solid var(--terracotta); border-radius: 12px;
-      padding: 1.5rem; transition: box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), transform 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.2s;
-      text-decoration: none; display: block;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.08), 0 0 0 1px rgba(201,168,76,0.04);
-    }
-    .writing-card:hover { border-color: var(--gold); box-shadow: 0 24px 60px rgba(0,0,0,0.2), 0 0 0 2px rgba(201,168,76,0.2); transform: translateY(-2px); }
-
-    .writing-card.blog-card { border-left-color: var(--gold); }
-    .writing-card.blog-card .card-tag { color: var(--gold); }
-
-    .writing-card .card-tag {
-      font-family: 'Merriweather', serif; font-style: italic; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--terracotta); margin-bottom: 0.5rem;
-    }
-    .writing-card h3 {
-      font-size: 1.05rem; color: var(--green); margin-bottom: 0.5rem; line-height: 1.4;
-    }
-    .writing-card .card-excerpt {
-      font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.75rem;
-    }
-    .writing-card .card-meta {
-      font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;
-    }
-    .writing-card .card-meta .li-badge {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      color: #0a66c2; font-weight: 500;
-    }
-    .writing-card .card-meta .li-badge svg { width: 13px; height: 13px; fill: #0a66c2; }
-
-    /* ── COMING SOON ── */
-    .coming-soon {
-      padding: 2rem 0 2rem;
-    }
-    .coming-soon p { color: var(--text-muted); font-size: 0.93rem; font-style: italic; }
-
-    /* ── CTA BRIDGE ── */
+    /* CTA */
     .ft-cta {
       text-align: center; padding: 3rem 1.5rem; background: var(--green); position: relative; overflow: hidden;
     }
@@ -327,7 +242,7 @@
     }
     body.dark .ft-cta { background: #0d1f16; }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer { background: var(--green-dark); padding: 2.5rem 1.5rem; }
     footer a { color: rgba(250,247,242,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
     footer a:hover { color: var(--gold); }
@@ -336,11 +251,11 @@
       html, body { overflow-x: hidden; width: 100%; }
       body { font-size: 16px; }
       .container { padding: 0 1.25rem; }
-      .page-header { padding: 2.5rem 0 2rem; }
+      .page-header { padding: 2.25rem 0 1.75rem; }
+      .article-body { padding: 2rem 0 3rem; }
       footer a { min-height: 44px; display: inline-flex; align-items: center; }
     }
 
-    /* ── COOKIE CONSENT ── */
     .cookie-float {
       position: fixed; bottom: 8rem; right: 2rem; z-index: 90;
       display: flex; align-items: center; gap: 0.5rem;
@@ -376,13 +291,10 @@
     .cookie-float.hidden { display: none; }
 
     @media (prefers-reduced-motion: reduce) {
-      .fade-in { transition: none; opacity: 1; transform: none; }
-      .stagger { transition: none; opacity: 1; transform: none; }
       html { scroll-behavior: auto; }
       body { transition: none; }
     }
   </style>
-  <noscript><style>.fade-in,.stagger{opacity:1;transform:none;}</style></noscript>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
@@ -396,10 +308,10 @@
       </div>
       <div class="nav-tabs">
         <a href="/">Home</a>
-        <a href="#newsletter">Newsletter</a>
-        <a href="#articles">Articles</a>
-        <a href="#linkedin-posts">LinkedIn Posts</a>
-        <a href="#blog">Blog</a>
+        <a href="/footballthoughts#newsletter">Newsletter</a>
+        <a href="/footballthoughts#articles">Articles</a>
+        <a href="/footballthoughts#linkedin-posts">LinkedIn Posts</a>
+        <a href="/footballthoughts#blog">Blog</a>
       </div>
       <a href="https://cal.eu/thefootballghostwriter/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a>
     </div>
@@ -409,127 +321,31 @@
   <!-- HEADER -->
   <div class="page-header">
     <div class="container">
-      <h1>Football <span style="font-family:'Merriweather',serif;font-style:italic;color:var(--terracotta);">thoughts</span></h1>
-      <p>Thoughts on EPPP, coaching education, player development and more.</p>
+      <div class="eyebrow">Football Thoughts</div>
+      <h1>Post title</h1>
+      <p>Short standfirst sentence that sits under the title.</p>
     </div>
   </div>
 
-  <!-- NEWSLETTER -->
-  <div class="writing-section has-texture fade-in" id="newsletter">
+  <!-- ARTICLE -->
+  <div class="article-body">
     <div class="container">
-      <div style="width:40px;height:3px;background:var(--gold);margin-bottom:1.5rem;"></div>
-      <h2><a href="https://www.linkedin.com/newsletters/football-academy-intelligence-7433166705067130880/" target="_blank" rel="noopener" style="color:var(--green);text-decoration:none;">Football Academy Intelligence</a></h2>
-      <p class="section-desc">My LinkedIn newsletter on coaching education, academy operations and player development.</p>
-      <div class="writing-list">
+      <article>
+        <p class="reading-time">8 min read &middot; April 2026</p>
 
-        <a class="writing-card" href="https://www.linkedin.com/pulse/what-your-academy-actually-selecting-hassan-nobeeboccus-aljge/" target="_blank" rel="noopener">
-          <div class="card-tag">Newsletter &middot; Edition 2</div>
-          <h3>What is your academy actually selecting for?</h3>
-          <p class="card-excerpt">Early-maturing boys made up as much as 74% of some academy cohorts. Late maturers were often completely absent. A look at the systemic biases in youth football selection and what bio-banding reveals about hidden potential.</p>
-          <div class="card-meta">
-            <span>8 min read</span>
-            <span>&middot;</span>
-            <span>March 2026</span>
-          </div>
-        </a>
+        <p>Opening paragraph.</p>
 
-        <a class="writing-card" href="https://www.linkedin.com/pulse/your-coaching-licence-actually-developing-you-hassan-nobeeboccus-pmmje/" target="_blank" rel="noopener">
-          <div class="card-tag">Newsletter &middot; Edition 1</div>
-          <h3>Is your coaching licence actually developing you?</h3>
-          <p class="card-excerpt">The pathway selects for availability not ability. Instruction without context doesn't transfer. A challenge to whether formal coaching qualifications are doing what they claim to do.</p>
-          <div class="card-meta">
-            <span>7 min read</span>
-            <span>&middot;</span>
-            <span>March 2026</span>
-          </div>
-        </a>
+        <h2>Section heading</h2>
+        <p>Body paragraph.</p>
 
-      </div>
-    </div>
-  </div>
+        <blockquote>
+          A pull quote or emphasised sentence.
+        </blockquote>
 
-  <!-- ARTICLES -->
-  <div class="writing-section has-texture fade-in" id="articles" style="background:var(--bg-alt);">
-    <div class="container">
-      <div style="width:40px;height:3px;background:var(--gold);margin-bottom:1.5rem;"></div>
-      <h2>Articles</h2>
-      <p class="section-desc">Longer pieces on the state of football development and why visibility matters.</p>
-      <div class="writing-list">
+        <p>Closing paragraph.</p>
 
-        <a class="writing-card" href="https://www.linkedin.com/pulse/best-people-football-development-invisible-online-why-nobeeboccus-xulje/" target="_blank" rel="noopener">
-          <div class="card-tag">Visibility in football development</div>
-          <h3>The best people in football development are invisible online. Here's why that's a problem.</h3>
-          <p class="card-excerpt">Over 200,000 people hold UEFA-endorsed coaching licences across Europe. The people who actually shape development are largely silent online. What happens when the public conversation defaults to generalists instead of qualified practitioners.</p>
-          <div class="card-meta">
-            <span>10 min read</span>
-            <span>&middot;</span>
-            <span>March 2026</span>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- LINKEDIN POSTS -->
-  <div class="writing-section has-texture fade-in" id="linkedin-posts">
-    <div class="container">
-      <div style="width:40px;height:3px;background:var(--gold);margin-bottom:1.5rem;"></div>
-      <h2><a href="https://www.linkedin.com/in/thefootballghostwriter/" target="_blank" rel="noopener" style="color:var(--green);text-decoration:none;">LinkedIn posts</a></h2>
-      <p class="section-desc">Short-form writing on football development.</p>
-      <div class="writing-list">
-
-        <a class="writing-card" href="https://www.linkedin.com/posts/thefootballghostwriter_brentford-football-club-academy-cost-2-million-activity-7430190178612375552-FuzE" target="_blank" rel="noopener">
-          <div class="card-tag">EPPP and academy economics</div>
-          <h3>Brentford Football Club's academy cost two million a year. So in May 2016, they shut it down.</h3>
-          <p class="card-excerpt">EPPP compensation returned roughly thirty thousand for two players developed from childhood. A fraction of one year's academy budget. What happened next changed the way people think about academy economics.</p>
-          <div class="card-meta">
-            <span>2 min read</span>
-            <span>&middot;</span>
-            <span>37,242 impressions</span>
-          </div>
-        </a>
-
-        <a class="writing-card" href="https://www.linkedin.com/posts/thefootballghostwriter_coachingequality-footballdiversity-classbarriers-share-7388887468873359360--oQh" target="_blank" rel="noopener">
-          <div class="card-tag">Coaching licence landscape</div>
-          <h3>The coaching licence system in English football has a class problem nobody wants to talk about.</h3>
-          <p class="card-excerpt">The cost of progressing through the licence pathway prices out exactly the kind of coaches the game claims to want more of. The numbers tell a story the system would rather not hear.</p>
-          <div class="card-meta">
-            <span>2 min read</span>
-            <span>&middot;</span>
-            <span>31,671 impressions</span>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- BLOG -->
-  <div class="writing-section has-texture fade-in" id="blog" style="background:var(--bg-alt);">
-    <div class="container">
-      <div style="width:40px;height:3px;background:var(--gold);margin-bottom:1.5rem;"></div>
-      <h2>Blog</h2>
-      <p class="section-desc">Newsletter pieces and articles, republished here in full.</p>
-      <div class="writing-list">
-
-        <div class="writing-card blog-card">
-          <div class="card-tag">Coming soon</div>
-          <h3>First blog post coming shortly</h3>
-          <p class="card-excerpt">Republished editions of Football Academy Intelligence and longer articles will live here, so the thinking stays findable outside of LinkedIn.</p>
-          <div class="card-meta">
-            <span>April 2026</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- MORE -->
-  <div class="coming-soon">
-    <div class="container">
-      <p>This is a select collection of my football-related thoughts,<br>with more to come. Follow me on <a href="https://www.linkedin.com/in/thefootballghostwriter/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">LinkedIn</a> to read it first.</p>
+        <a class="article-back" href="/footballthoughts">&larr; Back to Football Thoughts</a>
+      </article>
     </div>
   </div>
 
@@ -590,13 +406,6 @@
       localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
     });
 
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
-    setTimeout(function() { document.querySelectorAll('.fade-in').forEach(function(el) { el.classList.add('visible'); }); }, 3000);
-
-    // Cookie consent
     function loadAnalytics() {
       if (window._analyticsLoaded) return;
       window._analyticsLoaded = true;

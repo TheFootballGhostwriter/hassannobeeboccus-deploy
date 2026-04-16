@@ -3,6 +3,7 @@
     { "source": "/build-your-public-voice", "destination": "/buildyourpublicvoice.html" },
     { "source": "/buildyourpublicvoice", "destination": "/buildyourpublicvoice.html" },
     { "source": "/course", "destination": "/buildyourpublicvoice.html" },
+    { "source": "/footballthoughts/:slug", "destination": "/footballthoughts/:slug.html" },
     { "source": "/footballthoughts", "destination": "/footballthoughts.html" },
     { "source": "/writing", "destination": "/footballthoughts.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
