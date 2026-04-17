@@ -8,6 +8,7 @@
     { "source": "/writing", "destination": "/footballthoughts.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/5-development-models", "destination": "/5-development-models.html" },
+    { "source": "/alternative-models-framework", "destination": "/alternative-models-framework.html" },
     { "source": "/courses", "destination": "/freecourses.html" },
     { "source": "/free-courses", "destination": "/freecourses.html" }
   ]

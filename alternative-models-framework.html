@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Alternative Models Framework | Hassan Nobeeboccus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #faf8f5;
+  --off-white: #f4f1ec;
+  --light-border: #e8e3db;
+  --mid-border: #d4cec4;
+  --terracotta: #a84832;  /* deeper, richer than before — less orange, more burgundy-red */
+  --terracotta-light: #f5ede9;
+  --terracotta-mid: #e8d5cf;
+  --gold: #C9A84C;
+  --text-primary: #1a1614;
+  --text-body: #2e2a26;
+  --text-mid: #5a5450;
+  --text-muted: #8a8480;
+  --text-quiet: #b0aca8;
+  --section-bg: #f0ede8;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #e0dbd2;
+  color: var(--text-body);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── SITE NAV BAR ── */
+/* Matches hassannobeeboccus.com nav exactly: dark green, wordmark pattern, gold CTA */
+.site-nav {
+  width: 100%;
+  background: rgba(27, 58, 45, 0.97);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  padding: 0.9rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.site-nav-inner {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-nav-wordmark {
+  font-family: 'Merriweather', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #faf8f5;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  letter-spacing: 0.01em;
+}
+.site-nav-wordmark .wm-name {
+  color: #faf8f5;
+}
+.site-nav-wordmark .wm-sep {
+  color: var(--gold);
+  margin: 0 0.4em;
+  font-style: normal;
+  font-weight: 300;
+}
+.site-nav-wordmark .wm-role {
+  color: #C4574A;
+  font-style: italic;
+}
+.site-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.site-nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(250,247,242,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.site-nav-link:hover { color: #faf8f5; }
+.site-nav-cta {
+  background: var(--gold);
+  color: #1B3A2D;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.site-nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ── DOC LABEL BAR ── */
+/* Thin contextual bar below nav: doc name + contents link. Sticky beneath nav. */
+.doc-label-bar {
+  width: 100%;
+  background: #f0ede8;
+  border-bottom: 1px solid var(--light-border);
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 53px;   /* sits flush under nav: nav padding (0.9rem×2 = 28.8px) + Inter 0.82rem line (~20px) + border = ~53px */
+  z-index: 199;
+  flex-shrink: 0;
+}
+.doc-label-inner {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.doc-label-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+.doc-label-link {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.doc-label-link:hover { opacity: 0.7; }
+
+/* ── PAGE WRAPPER ── */
+.page {
+  width: 794px;
+  background: var(--cream);
+  position: relative;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.12), 0 1px 0 rgba(0,0,0,0.06);
+}
+
+/* ── SITE FOOTER ── */
+.site-footer {
+  width: 100%;
+  background: #0f1f16;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+}
+.site-footer-inner {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-footer-wordmark {
+  font-family: 'Merriweather', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #3a3430;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.site-footer-wordmark .wm-name { color: #5a5450; }
+.site-footer-wordmark .wm-sep { color: #3a3430; margin: 0 0.4em; font-weight: 300; }
+.site-footer-wordmark .wm-role { color: #4a3830; font-style: italic; }
+.site-footer-right {
+  font-size: 10px;
+  color: #3a3430;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── ACCENT ITALIC — matches .accent-italic on website ── */
+/* Use <em class="ai"> to render last word(s) of a heading in Merriweather italic terracotta */
+.ai {
+  font-family: 'Merriweather', serif;
+  font-style: italic;
+  color: var(--terracotta);
+  font-weight: inherit;
+}
+/* On dark cover the accent italic uses the bright dark-mode terracotta */
+.cover .ai {
+  color: #C4574A;
+}
+
+/* ── COVER PAGE ── */
+.cover {
+  width: 794px;
+  min-height: 1123px;
+  background: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  padding: 80px 80px 60px;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+/* Terracotta on dark backgrounds uses the brighter dark-mode value */
+.cover, .section-divider-page, .cta-page {
+  --terracotta: #e05a4c;
+}
+
+/* ── COVER RADIAL GLOW — matches website hero ── */
+/* Subtle gold + terracotta radial gradient behind cover content */
+.cover-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 35%, rgba(201,168,76,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 65%, rgba(196,87,74,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 15%, rgba(201,168,76,0.08) 0%, transparent 45%);
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--terracotta);
+}
+
+.cover-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 60px;
+}
+
+.cover-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cover-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 24px;
+}
+
+.cover-title {
+  font-family: 'Merriweather', serif;
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 28px;
+  max-width: 560px;
+}
+
+.cover-subtitle {
+  font-family: 'Merriweather', serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.65;
+  color: #a09890;
+  max-width: 500px;
+  margin-bottom: 56px;
+}
+
+.cover-divider {
+  width: 48px;
+  height: 2px;
+  background: var(--terracotta);
+  margin-bottom: 40px;
+}
+
+.cover-for {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6a6260;
+  margin-bottom: 10px;
+}
+
+.cover-audience {
+  font-size: 13px;
+  color: #8a8280;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.cover-footer {
+  border-top: 1px solid #2e2a28;
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cover-author {
+  font-family: 'Merriweather', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f0ede8;
+}
+
+.cover-author-sub {
+  font-size: 11px;
+  color: #5a5450;
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+.cover-year {
+  font-size: 11px;
+  color: #3a3430;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── INNER PAGES ── */
+.inner-page {
+  width: 794px;
+  min-height: 1123px;
+  padding: 48px 80px 72px;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+.inner-page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.25) 20%, rgba(201,168,76,0.25) 80%, transparent);
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.page-header-brand {
+  font-family: 'Merriweather', serif;
+  font-size: 10px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--text-quiet);
+}
+
+.page-header-doc {
+  font-size: 10px;
+  color: var(--text-quiet);
+  letter-spacing: 0.06em;
+}
+
+/* ── SECTION LABEL SYSTEM ── */
+/* No decorative line — label text carries the hierarchy on its own */
+.section-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  margin-bottom: 6px;
+}
+
+/* ── HOW TO USE PAGE ── */
+.how-to-title {
+  font-family: 'Merriweather', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 32px;
+}
+
+.how-to-body {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.audit-block {
+  background: var(--section-bg);
+  border-left: 3px solid var(--terracotta);
+  padding: 28px 32px;
+  margin: 32px 0;
+}
+
+.audit-block-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+
+.audit-question {
+  font-family: 'Merriweather', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+  padding-left: 16px;
+  border-left: 1px solid var(--mid-border);
+}
+
+.audit-question:last-child { margin-bottom: 0; }
+
+.navigation-note {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+/* ── CONTENTS PAGE ── */
+.contents-title {
+  font-family: 'Merriweather', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 48px;
+}
+
+.contents-group {
+  margin-bottom: 40px;
+}
+
+.contents-group-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(201,168,76,0.45);
+}
+
+.contents-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.contents-item-left {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.contents-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--terracotta);
+  min-width: 20px;
+}
+
+.contents-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.contents-league {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-left: 8px;
+}
+
+/* ── SECTION DIVIDER PAGE ── */
+.section-divider-page {
+  width: 794px;
+  min-height: 400px;
+  padding: 80px 80px 60px;
+  background: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  page-break-after: always;
+}
+
+.section-divider-page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--terracotta);
+}
+
+.divider-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 20px;
+}
+
+.divider-title {
+  font-family: 'Merriweather', serif;
+  font-size: 38px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.divider-subtitle {
+  font-size: 13px;
+  color: #8a8480;
+  letter-spacing: 0.04em;
+}
+
+/* ── MODEL ENTRY ── */
+.model-page {
+  width: 794px;
+  min-height: 1123px;
+  padding: 48px 80px 72px;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+.model-page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.25) 20%, rgba(201,168,76,0.25) 80%, transparent);
+}
+
+.model-header {
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(201,168,76,0.4);
+}
+
+.model-number {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  margin-bottom: 12px;
+}
+
+.model-name {
+  font-family: 'Merriweather', serif;
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.model-context {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Model sections */
+.model-section {
+  margin-bottom: 32px;
+}
+
+.model-section-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(201,168,76,0.45);
+}
+
+.model-body {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.85;
+}
+
+.model-body p {
+  margin-bottom: 14px;
+}
+
+.model-body p:last-child { margin-bottom: 0; }
+
+/* Principle block */
+.principle-block {
+  background: var(--text-primary);
+  padding: 28px 32px;
+  margin: 32px 0;
+  position: relative;
+}
+
+.principle-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--terracotta);
+}
+
+.principle-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 12px;
+}
+
+.principle-text {
+  font-family: 'Merriweather', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: #e8e4de;
+  line-height: 1.75;
+}
+
+/* At Your Level block */
+.at-your-level {
+  background: var(--terracotta-light);
+  border: 1px solid var(--terracotta-mid);
+  padding: 28px 32px;
+  margin-top: auto;
+}
+
+.at-your-level-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 14px;
+}
+
+.at-your-level-text {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+.at-your-level-text p {
+  margin-bottom: 12px;
+}
+
+.at-your-level-text p:last-child { margin-bottom: 0; }
+
+/* ── GLOSSARY PAGE ── */
+.glossary-title {
+  font-family: 'Merriweather', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-bottom: 40px;
+}
+
+.glossary-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.glossary-term {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.glossary-def {
+  font-size: 12px;
+  color: var(--text-body);
+  line-height: 1.75;
+}
+
+/* ── CLOSING CTA PAGE ── */
+.cta-page {
+  width: 794px;
+  min-height: 700px;
+  padding: 80px 80px 60px;
+  background: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.cta-page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--terracotta);
+}
+
+.cta-section-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta-section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--terracotta);
+}
+
+.cta-title {
+  font-family: 'Merriweather', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.3;
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+
+.cta-body {
+  font-size: 14px;
+  color: #8a8280;
+  line-height: 1.8;
+  max-width: 500px;
+  margin-bottom: 48px;
+}
+
+.cta-body p { margin-bottom: 16px; }
+.cta-body p:last-child { margin-bottom: 0; }
+
+.cta-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--terracotta);
+  margin-bottom: 32px;
+}
+
+.cta-contact-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #4a4440;
+  margin-bottom: 16px;
+}
+
+.cta-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 460px;
+  margin-bottom: 48px;
+}
+
+.cta-contact-item {
+  font-size: 13px;
+  color: #6a6260;
+}
+
+.cta-contact-item span {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3a3430;
+  margin-bottom: 4px;
+}
+
+.cta-footer {
+  border-top: 1px solid #2e2a28;
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cta-footer-brand {
+  font-family: 'Merriweather', serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #3a3430;
+}
+
+.cta-footer-url {
+  font-size: 11px;
+  color: #2a2624;
+  letter-spacing: 0.04em;
+}
+
+/* ── PAGE FOOTER ── */
+.page-footer {
+  margin-top: auto;
+  padding-top: 32px;
+  border-top: 1px solid var(--light-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-footer-brand {
+  font-family: 'Merriweather', serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-quiet);
+  letter-spacing: 0.06em;
+}
+
+.page-footer-url {
+  font-size: 10px;
+  color: var(--text-quiet);
+  letter-spacing: 0.04em;
+}
+
+/* ── GRAIN TEXTURE ── */
+/* Applied to all page types. Light cream pages use very fine paper grain at low opacity.
+   Dark pages get the same but slightly more visible — dark surfaces absorb grain better. */
+.cover::after,
+.inner-page::after,
+.model-page::after,
+.section-divider-page::after,
+.cta-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
+}
+.cover::after,
+.section-divider-page::after,
+.cta-page::after {
+  opacity: 0.08;
+}
+/* Ensure all page content sits above grain */
+.cover > *,
+.inner-page > *,
+.model-page > *,
+.section-divider-page > *,
+.cta-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── CONTENT COLUMN — line-length constraint ── */
+/* Optimal reading: 65–75 chars. 634px constrains long lines without affecting layout. */
+.how-to-body,
+.navigation-note,
+.model-body,
+.at-your-level-text,
+.cta-body,
+.glossary-def {
+  max-width: 634px;
+}
+
+/* ── AT YOUR LEVEL — elevated visual weight ── */
+/* This is the most actionable section on every model page. It should land as a destination. */
+.at-your-level {
+  background: var(--terracotta-light);
+  border: 1px solid var(--terracotta-mid);
+  border-top: 3px solid var(--terracotta);
+  padding: 28px 32px 28px 32px;
+  margin-top: auto;
+}
+
+.at-your-level-text {
+  font-size: 13.5px;
+  color: var(--text-primary);
+  line-height: 1.85;
+}
+
+/* ── SECTION DIVIDER — full page height ── */
+.section-divider-page {
+  min-height: 1123px;
+}
+
+/* ── PAGE NUMBER ── */
+.page-number {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-quiet);
+  letter-spacing: 0.08em;
+}
+
+/* ── GHOST MODEL NUMBER ── */
+/* Sits beside the club name heading, clear of the header separator line */
+.model-ghost-number {
+  position: absolute;
+  top: 130px;
+  right: 72px;
+  font-family: 'Merriweather', serif;
+  font-size: 96px;
+  font-weight: 900;
+  color: var(--light-border);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  opacity: 0.25;
+}
+
+/* Model header and content sit above ghost number */
+.model-header,
+.model-section,
+.principle-block,
+.at-your-level,
+.page-header,
+.page-footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── CONTENTS — clickable items ── */
+.contents-item a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.15s;
+}
+.contents-item a:hover .contents-name {
+  color: var(--terracotta);
+}
+.contents-item a:hover .contents-num {
+  color: var(--text-primary);
+}
+.contents-item a:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Page dot in contents */
+.contents-page {
+  font-size: 11px;
+  color: var(--text-quiet);
+  font-weight: 400;
+  min-width: 20px;
+  text-align: right;
+}
+
+/* ── CONTACT LINKS ── */
+.cta-contact-item a {
+  color: #a09080;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(160,144,128,0.3);
+  transition: border-color 0.15s, color 0.15s;
+}
+.cta-contact-item a:hover {
+  color: #e05a4c;
+  border-bottom-color: #e05a4c;
+}
+
+
+/* ── TYPOGRAPHIC REFINEMENT ── */
+/* Orphans / widows: prevent single words stranded at line ends in body copy */
+.model-body p,
+.how-to-body,
+.navigation-note,
+.at-your-level-text p,
+.cta-body,
+.glossary-def,
+.audit-question,
+.principle-text {
+  orphans: 3;
+  widows: 3;
+  /* No hyphens — words wrap whole to the next line */
+  hyphens: none;
+  -webkit-hyphens: none;
+  overflow-wrap: break-word;
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: white; }
+  .page, .cover, .inner-page, .model-page, .section-divider-page, .cta-page {
+    page-break-after: always;
+    box-shadow: none;
+  }
+  /* Suppress grain on print — adds ink, no quality benefit on paper */
+  .cover::after,
+  .inner-page::after,
+  .model-page::after,
+  .section-divider-page::after,
+  .cta-page::after {
+    display: none;
+  }
+}
+
+</style>
+<script>
+  /* Set doc-label-bar top offset to exact nav height at runtime — avoids px guesswork */
+  document.addEventListener('DOMContentLoaded', function() {
+    var nav = document.querySelector('.site-nav');
+    var bar = document.querySelector('.doc-label-bar');
+    if (nav && bar) {
+      bar.style.top = nav.getBoundingClientRect().height + 'px';
+    }
+  });
+</script>
+</head>
+<!-- ════════════════════════════════════════════════
+     SITE NAV — mirrors hassannobeeboccus.com
+════════════════════════════════════════════════ -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="site-nav-inner">
+    <a href="https://hassannobeeboccus.com" class="site-nav-wordmark" target="_blank" rel="noopener">
+      <span class="wm-name">Hassan Nobeeboccus</span>
+      <span class="wm-sep">|</span>
+      <span class="wm-role">The Football Ghostwriter</span>
+    </a>
+    <div class="site-nav-right">
+      <a href="#contents" class="site-nav-link">Contents</a>
+      <a href="#glossary" class="site-nav-link">Glossary</a>
+      <a href="https://www.cal.eu/thefootballghostwriter/30min?overlayCalendar=true" class="site-nav-cta" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     DOC LABEL BAR
+════════════════════════════════════════════════ -->
+<div class="doc-label-bar">
+  <div class="doc-label-inner">
+    <span class="doc-label-title">The Alternative Models Framework | 2026 Edition</span>
+    <a href="#contents" class="doc-label-link">Contents</a>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ════════════════════════════════════════════════
+     COVER
+════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-glow"></div>
+  <div class="cover-tag">Hassan Nobeeboccus</div>
+
+  <div class="cover-content">
+    <div class="cover-eyebrow">Strategic Guide, 2026</div>
+    <h1 class="cover-title">The Alternative <em class="ai">Models Framework</em></h1>
+    <p class="cover-subtitle">Eight development models English academies should be studying, each broken down with the structural decision, what it produced and the principle that transfers regardless of budget.</p>
+    <div class="cover-divider"></div>
+    <div class="cover-for">For</div>
+    <p class="cover-audience">Academy directors, technical directors, coaching education founders and independent consultants in professional football development.</p>
+  </div>
+
+  <div class="cover-footer">
+    <div>
+      <div class="cover-author">
+        <span class="wm-name" style="color:#f0ede8; font-family:'Merriweather',serif; font-weight:700;">Hassan Nobeeboccus</span>
+        <span class="wm-sep" style="color:var(--gold); margin:0 0.4em; font-weight:300;">|</span>
+        <span class="wm-role" style="color:#C4574A; font-style:italic; font-family:'Merriweather',serif;">The Football Ghostwriter</span>
+      </div>
+      <div class="cover-author-sub">hassannobeeboccus.com</div>
+    </div>
+    <div class="cover-year">2026 Edition</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     CONTENTS
+════════════════════════════════════════════════ -->
+<div class="inner-page" id="contents">
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Contents</div>
+  </div>
+
+  <div style="width:40px;height:3px;background:var(--gold);margin-bottom:1.25rem;"></div>
+  <h2 class="contents-title">Contents</h2>
+
+  <div class="contents-group">
+    <div class="contents-group-label">How to use this document</div>
+    <div class="contents-item">
+      <a href="#how-to-use">
+        <div class="contents-item-left">
+          <span class="contents-name">The Architecture Audit</span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+    <div class="contents-item">
+      <a href="#how-to-use">
+        <div class="contents-item-left">
+          <span class="contents-name">Navigation guide by challenge</span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="contents-group">
+    <div class="contents-group-label">Academy Directors: Models 1–6</div>
+    <div class="contents-item">
+      <a href="#model-1">
+        <div class="contents-item-left">
+          <span class="contents-num">1</span>
+          <span class="contents-name">AZ Alkmaar <span class="contents-league">Netherlands / Eredivisie</span></span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+    <div class="contents-item">
+      <a href="#model-2">
+        <div class="contents-item-left">
+          <span class="contents-num">2</span>
+          <span class="contents-name">FC Midtjylland <span class="contents-league">Denmark / Danish Superliga</span></span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+    <div class="contents-item">
+      <a href="#model-3">
+        <div class="contents-item-left">
+          <span class="contents-num">3</span>
+          <span class="contents-name">Brighton and Brentford <span class="contents-league">England / Premier League and Championship</span></span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+    <div class="contents-item">
+      <a href="#model-4">
+        <div class="contents-item-left">
+          <span class="contents-num">4</span>
+          <span class="contents-name">Right to Dream <span class="contents-league">Ghana / Denmark / Egypt / USA</span></span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+    <div class="contents-item">
+      <a href="#model-5">
+        <div class="contents-item-left">
+          <span class="contents-num">5</span>
+          <span class="contents-name">Benfica <span class="contents-league">Portugal / Primeira Liga</span></span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+    <div class="contents-item">
+      <a href="#model-6">
+        <div class="contents-item-left">
+          <span class="contents-num">6</span>
+          <span class="contents-name">Red Bull Network <span class="contents-league">Austria / Germany / USA / Brazil</span></span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="contents-group">
+    <div class="contents-group-label">Technical Directors and Independent Consultants: Models 7–8</div>
+    <div class="contents-item">
+      <a href="#model-7">
+        <div class="contents-item-left">
+          <span class="contents-num">7</span>
+          <span class="contents-name">Ajax / De Toekomst <span class="contents-league">Netherlands / Eredivisie</span></span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+    <div class="contents-item">
+      <a href="#model-8">
+        <div class="contents-item-left">
+          <span class="contents-num">8</span>
+          <span class="contents-name">Athletic Bilbao / Lezama <span class="contents-league">Spain / La Liga</span></span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="contents-group">
+    <div class="contents-group-label">Reference</div>
+    <div class="contents-item">
+      <a href="#glossary">
+        <div class="contents-item-left">
+          <span class="contents-name">Glossary</span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+    <div class="contents-item">
+      <a href="#closing">
+        <div class="contents-item-left">
+          <span class="contents-name">Get in touch</span>
+        </div>
+        <span class="contents-page">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     HOW TO USE
+════════════════════════════════════════════════ -->
+<div class="inner-page" id="how-to-use">
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">How to use this document</div>
+  </div>
+
+  <div class="section-label">How to use this document</div>
+  <div style="width:40px;height:3px;background:var(--gold);margin-bottom:1rem;margin-top:12px;"></div>
+  <h2 class="how-to-title">The <em class="ai">Architecture Audit</em></h2>
+
+  <p class="how-to-body">Eight models. Eight structural decisions made by clubs operating in very different contexts with very different resources. None of them is a blueprint.</p>
+  <p class="how-to-body">This document is a reference for practitioners who want to examine the structural choices in their own programme with more precision than the conventional frameworks provide. Each entry describes one thing a club did differently, what it produced and what the principle looks like when you strip away the budget and the context.</p>
+  <p class="how-to-body">The Architecture Audit from the email course applies here. Three questions run underneath every entry:</p>
+
+  <div class="audit-block">
+    <div class="audit-block-label">The Architecture Audit: Three Questions</div>
+    <div class="audit-question">Which structural choices in your programme are deliberate? You made them consciously, you know why and you can explain the reasoning.</div>
+    <div class="audit-question">Which are inherited? You run them because they were already running when you arrived or because every programme at your level runs them.</div>
+    <div class="audit-question">Which have you tested the assumption behind? You know what you are assuming the choice produces. You have checked whether it is producing that.</div>
+  </div>
+
+  <p class="how-to-body" style="margin-top: 8px; font-weight: 600; color: var(--text-primary); font-size: 13px;">Read the model closest to your current challenge first.</p>
+
+  <p class="navigation-note" style="margin-bottom: 10px;">If your immediate problem is:</p>
+  <p class="navigation-note" style="padding-left: 20px; border-left: 2px solid var(--mid-border);"><strong>measurement and assessment</strong>, start with AZ Alkmaar.</p>
+  <p class="navigation-note" style="padding-left: 20px; border-left: 2px solid var(--mid-border);"><strong>recruitment</strong>, start with Brighton, Brentford or Midtjylland.</p>
+  <p class="navigation-note" style="padding-left: 20px; border-left: 2px solid var(--mid-border);"><strong>infrastructure</strong>, start with Benfica.</p>
+  <p class="navigation-note" style="padding-left: 20px; border-left: 2px solid var(--mid-border);"><strong>philosophy and consistency</strong>, start with Red Bull or Ajax.</p>
+  <p class="navigation-note" style="padding-left: 20px; border-left: 2px solid var(--mid-border);"><strong>constraint and identity</strong>, start with Athletic Bilbao.</p>
+  <p class="navigation-note" style="padding-left: 20px; border-left: 2px solid var(--mid-border);"><strong>the relationship between education and development</strong>, start with Right to Dream.</p>
+
+  <p class="how-to-body" style="margin-top: 24px;">The two questions at the end of each entry are diagnostics, not rhetorical prompts. Sit with them.</p>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SECTION DIVIDER — ACADEMY DIRECTORS
+════════════════════════════════════════════════ -->
+<div class="section-divider-page">
+  <div class="divider-label">Models 1–6</div>
+  <h2 class="divider-title">Academy Directors</h2>
+  <p class="divider-subtitle">AZ Alkmaar · FC Midtjylland · Brighton and Brentford · Right to Dream · Benfica · Red Bull Network</p>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODEL 1 — AZ ALKMAAR
+════════════════════════════════════════════════ -->
+<div class="model-page" id="model-1">
+  <div class="model-ghost-number">1</div>
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Model 1 of 8</div>
+  </div>
+
+  <div class="model-header">
+    <div class="model-number">Model 1 · Academy Directors</div>
+    <h2 class="model-name">AZ Alkmaar</h2>
+    <div class="model-context">Netherlands · Eredivisie</div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">The Structural Decision</div>
+    <div class="model-body">
+      <p>Most academies assess players against the same criteria regardless of position. A technically strong performance earns credit whether the player is a goalkeeper, a central midfielder or a wide forward. AZ Alkmaar rejected that approach. From U9 upwards, every player in their system is assessed against benchmarks designed specifically for their position, built in collaboration with Dutch academic institutions and updated as the research base&nbsp;develops.</p>
+      <p>The practical difference is significant. A central midfielder at AZ is not asked to demonstrate generic technical quality. They are asked to demonstrate the specific cognitive and technical behaviours that research identifies as predictive for a central midfielder at elite level: decision-making speed under fatigue, positional awareness in transition, passing accuracy under pressure in tight&nbsp;spaces.</p>
+      <p>Psychological profiling is integrated into the process as a development tool, not a pastoral supplement. The curriculum was designed with Dutch academic institutions from the ground up. The session design reflects what the research says produces development, not what coaching tradition says looks like&nbsp;development.</p>
+    </div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">What It Produced</div>
+    <div class="model-body">
+      <p>AZ operate one of the smallest first-team budgets in the Eredivisie top six. Between 2019 and 2024, they generated more than £150 million in transfer revenue from academy graduates, with Teun Koopmeiners sold to Atalanta, Calvin Stengs to Nice and Myron Boadu to Monaco among the headline&nbsp;figures.</p>
+      <p>Around 50% of AZ first-team minutes in recent seasons have been played by academy graduates. In 2022–23, AZ under-19s won the UEFA Youth League, the first Dutch club to achieve it, including a 3–0 win over Barcelona and a 4–0 win over Real&nbsp;Madrid.</p>
+    </div>
+  </div>
+
+  <div class="principle-block">
+    <div class="principle-label">The Principle</div>
+    <p class="principle-text">When your measurement is position-specific, your coaching becomes position-specific. When your coaching is position-specific, the feedback your players receive is precise enough to change behaviour. Generic assessment produces generic&nbsp;development.</p>
+  </div>
+
+  <div class="at-your-level">
+    <div class="at-your-level-label">At Your Level</div>
+    <div class="at-your-level-text">
+      <p>Pick one position your programme develops most. Write down what technically excellent looks like for that position at U14, at U16 and at U18 in your system, not in general terms. Then check your current assessment criteria against what you have written. How much overlap is&nbsp;there?</p>
+      <p>If you asked your U12 lead coach and your U18 lead coach to describe what a technically excellent player in that position looks like, independently and without preparation, would their answers describe the same&nbsp;player?</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODEL 2 — FC MIDTJYLLAND
+════════════════════════════════════════════════ -->
+<div class="model-page" id="model-2">
+  <div class="model-ghost-number">2</div>
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Model 2 of 8</div>
+  </div>
+
+  <div class="model-header">
+    <div class="model-number">Model 2 · Academy Directors</div>
+    <h2 class="model-name">FC Midtjylland</h2>
+    <div class="model-context">Denmark · Danish Superliga</div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">The Structural Decision</div>
+    <div class="model-body">
+      <p>European academy recruitment runs on reputation. Scouts travel to known clubs in known leagues, identify players with established profiles and assess them against criteria that reflect what elite football has always&nbsp;valued. FC Midtjylland asked whether that assumption&nbsp;holds.</p>
+      <p>It does not. FC Midtjylland built their recruitment model under Matthew Benham's ownership, in partnership with Smartodds. The question at its centre is not where are the best-known players but where is talent underpriced. In practice, Midtjylland's recruitment extends globally, with sustained investment in West Africa, specifically Nigeria and Ghana, where the club identified athleticism and technical quality that European scouts were systematically&nbsp;undervaluing.</p>
+      <p>The Guldminen school, operated in partnership with ISI, sits at the centre of Midtjylland's player development approach: a state-accredited institution combining the Danish national curriculum with daily football and handball&nbsp;training.</p>
+    </div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">What It Produced</div>
+    <div class="model-body">
+      <p>FC Midtjylland won four Danish Superliga titles between 2015 and 2024. They compete regularly in European group stages on a budget a fraction of the size of the clubs they face. Pione Sisto, an Ivorian-Danish forward identified through data scouting, was sold to Celta Vigo. Evander, a Brazilian recruit, was sold to Portland Timbers for approximately $10 million.</p>
+    </div>
+  </div>
+
+  <div class="principle-block">
+    <div class="principle-label">The Principle</div>
+    <p class="principle-text">The question your recruitment process asks determines where it looks. If the question is which players have the strongest reputation, the answer will always cluster around the same markets. If the question is where is talent underpriced, the answer leads somewhere different and the return is structurally&nbsp;higher.</p>
+  </div>
+
+  <div class="at-your-level">
+    <div class="at-your-level-label">At Your Level</div>
+    <div class="at-your-level-text">
+      <p>Where does your academy currently recruit? List the postcodes, the feeder clubs, the schools. Now ask: is that geography the result of a deliberate decision about where the best talent is for your programme or is it where you have always&nbsp;looked?</p>
+      <p>If a rival academy with the same budget asked the same question and came up with a different map, which one of you would be&nbsp;right?</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODEL 3 — BRIGHTON AND BRENTFORD
+════════════════════════════════════════════════ -->
+<div class="model-page" id="model-3">
+  <div class="model-ghost-number">3</div>
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Model 3 of 8</div>
+  </div>
+
+  <div class="model-header">
+    <div class="model-number">Model 3 · Academy Directors</div>
+    <h2 class="model-name">Brighton and Brentford</h2>
+    <div class="model-context">England · Premier League and Championship</div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">The Structural Decision</div>
+    <div class="model-body">
+      <p>English football clubs spend heavily on recruitment, on the assumption that the more you pay for known players, the better your squad. Brighton and Brentford built their competitive advantage from identifying value where other clubs were not&nbsp;looking.</p>
+      <p>Brighton, under owner Tony Bloom and a data science infrastructure built around evidence-based recruitment, generated approximately £340 million in net transfer profit between 2020 and 2024, the highest of any Premier League club over that period. The model deploys analytical models to markets other clubs underweight: the lower French divisions, the Belgian Pro League, the Portuguese Primeira&nbsp;Liga.</p>
+      <p>Brentford's model during their B-team era (2016 to 2022) applied the same logic at a different level. Following Matthew Benham's decision to close the youth academy and replace it with a B team, Brentford produced significant first-team graduates and generated transfer revenue from players other clubs had&nbsp;overlooked.</p>
+    </div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">What It Produced</div>
+    <div class="model-body">
+      <p>Brighton: Moises Caicedo signed for approximately £5 million, sold for £115 million. Marc Cucurella sold for approximately £62 million. Alexis Mac Allister bought for approximately £7 million, sold to Liverpool for approximately £35 million (rising to £55 million with add-ons). Net profit 2020–24: approximately £340&nbsp;million.</p>
+      <p>Brentford B-team era: Ollie Watkins sold to Aston Villa for approximately £28 million. Said Benrahma to West Ham for approximately £22 million. Neal Maupay to Brighton for approximately £20 million. All developed through a structure that cost a fraction of a Category 1 academy&nbsp;budget.</p>
+    </div>
+  </div>
+
+  <div class="principle-block">
+    <div class="principle-label">The Principle</div>
+    <p class="principle-text">Recruitment framed as a search for mispriced value produces a structurally different outcome. The return is higher because the price paid reflects an information edge, and Brighton and Brentford built that edge systematically. They did not find better players. They found players other clubs had not valued&nbsp;correctly.</p>
+  </div>
+
+  <div class="at-your-level">
+    <div class="at-your-level-label">At Your Level</div>
+    <div class="at-your-level-text">
+      <p>Where does your programme currently recruit and what is the evidence base for that decision? Not the historical rationale. The current evidence: what data, what scouting process, what framework tells you the players you are identifying are undervalued relative to what they can&nbsp;become?</p>
+      <p>If you asked that question of your current squad, how many players were recruited because they were genuinely identified as mispriced and how many were recruited because they were recommended by someone your programme already&nbsp;trusted?</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODEL 4 — RIGHT TO DREAM
+════════════════════════════════════════════════ -->
+<div class="model-page" id="model-4">
+  <div class="model-ghost-number">4</div>
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Model 4 of 8</div>
+  </div>
+
+  <div class="model-header">
+    <div class="model-number">Model 4 · Academy Directors</div>
+    <h2 class="model-name">Right to Dream</h2>
+    <div class="model-context">Ghana · Denmark · Egypt · USA</div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">The Structural Decision</div>
+    <div class="model-body">
+      <p>English academy football operates on an implicit assumption about time. Players pulled from school to train. Education treated as something that happens around development, not alongside it. Right to Dream was founded on the rejection of that&nbsp;assumption.</p>
+      <p>Tom Vernon founded Right to Dream in Accra, Ghana in 1999. His argument was specific: educated players make better decisions on and off the pitch. Players in the Right to Dream system receive a full secondary school education as a condition of participation, not a welfare&nbsp;consideration.</p>
+      <p>Right to Dream acquired FC Nordsjaelland in Denmark in 2015, creating a direct professional pathway from the Ghana academy to top-flight European football. In December 2025, the Globe Soccer Award for Best Academy was presented to Right to Dream. The programme has been profiled by Harvard Business School as a case study in social enterprise and sustainable&nbsp;development.</p>
+    </div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">What It Produced</div>
+    <div class="model-body">
+      <p>Mohammed Kudus developed at Right to Dream before FC Nordsjaelland, then Ajax, then West Ham. Kamaldeen Sulemana and Ernest Nuamah followed the same pipeline into senior European football. Seven Right to Dream graduates represented their nations at the 2022 FIFA World Cup. The Mansour Group has invested more than $180 million in the programme since acquiring it in&nbsp;2021.</p>
+    </div>
+  </div>
+
+  <div class="principle-block">
+    <div class="principle-label">The Principle</div>
+    <p class="principle-text">Education is part of player development. Right to Dream's results come from a structural decision about what a player needs to develop&nbsp;well.</p>
+  </div>
+
+  <div class="at-your-level">
+    <div class="at-your-level-label">At Your Level</div>
+    <div class="at-your-level-text">
+      <p>The binary choice between football and education in your programme is a structural decision. What would it cost to run both simultaneously — not in resources, but in&nbsp;assumption?</p>
+      <p>Right to Dream's pipeline runs from Ghana to Denmark to Europe and MLS. Your programme's pipeline is different. But the question it asks is the same: what does a young player actually need to develop? And are those things genuinely in competition with each&nbsp;other?</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODEL 5 — BENFICA
+════════════════════════════════════════════════ -->
+<div class="model-page" id="model-5">
+  <div class="model-ghost-number">5</div>
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Model 5 of 8</div>
+  </div>
+
+  <div class="model-header">
+    <div class="model-number">Model 5 · Academy Directors</div>
+    <h2 class="model-name">Benfica</h2>
+    <div class="model-context">Portugal · Primeira Liga</div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">The Structural Decision</div>
+    <div class="model-body">
+      <p>Most English academies operate across multiple sites. Different age groups in different locations. Coaches who meet at monthly staff meetings rather than daily on the same training pitch. The coherence of the programme depends on how well the message&nbsp;travels.</p>
+      <p>The Caixa Futebol Campus in Seixal covers 19 hectares. Every age group from U6 to the B team trains on the same site. The campus includes 9 football pitches, a school, residential accommodation, sports science laboratories and the facilities for Benfica B, their reserve team that competes in the Portuguese second&nbsp;division.</p>
+      <p>That co-location produces something documents and away days cannot: daily visibility of the full pathway. When phase leads share a building, they watch each other's sessions. The transition from academy to B team to first team carries no structural break — every phase exists on the same site, observable by the phases on either side of it. Benfica do not introduce positional systems until U14 to U15. The earlier years build technical quality that the later years build&nbsp;on.</p>
+    </div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">What It Produced</div>
+    <div class="model-body">
+      <p>Benfica have generated over £500 million in transfer revenue from academy graduates since 2015, the highest of any club worldwide by CIES Football Observatory estimates. Notable graduates include Joao Felix (sold to Atletico Madrid for approximately £126 million), Ruben Dias (sold to Manchester City for approximately £62 million) and Darwin Nunez (sold to Liverpool for approximately £85&nbsp;million).</p>
+    </div>
+  </div>
+
+  <div class="principle-block">
+    <div class="principle-label">The Principle</div>
+    <p class="principle-text">Co-location enforces the kind of consistency that documents cannot. English academies that spread operations across multiple sites create a coordination problem that no philosophy document solves. The Benfica campus is the argument that proximity does what paperwork&nbsp;cannot.</p>
+  </div>
+
+  <div class="at-your-level">
+    <div class="at-your-level-label">At Your Level</div>
+    <div class="at-your-level-text">
+      <p>How many of your coaches across different age groups have watched each other's sessions in the last month? Not in a formal observation context. In passing, because they share a building and a training&nbsp;pitch.</p>
+      <p>If you asked your U14 lead coach today what your U18 players are working on technically, could they answer without making a&nbsp;call?</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODEL 6 — RED BULL NETWORK
+════════════════════════════════════════════════ -->
+<div class="model-page" id="model-6">
+  <div class="model-ghost-number">6</div>
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Model 6 of 8</div>
+  </div>
+
+  <div class="model-header">
+    <div class="model-number">Model 6 · Academy Directors</div>
+    <h2 class="model-name">Red Bull Network</h2>
+    <div class="model-context">Austria · Germany · USA · Brazil</div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">The Structural Decision</div>
+    <div class="model-body">
+      <p>Most academies develop players for one club. The player learns one system, one style, one coaching environment. When they move to a bigger club, they start again. Red Bull operates a network of clubs under a single unified game model: RB Salzburg, RB Leipzig, New York Red Bulls, Red Bull Bragantino in Brazil, with FC Liefering functioning as a dedicated feeder club for&nbsp;Salzburg.</p>
+      <p>The same development philosophy, the same pressing triggers, the same positional structure and the same coaching vocabulary runs across every age group at every club in the network. A player developing at Salzburg and moving to Leipzig does not adapt to a new system. They step up within the same one. FC Liefering exists specifically to provide competitive senior football within the network structure before Salzburg graduates are ready for the first&nbsp;team.</p>
+      <p>Red Bull took over what became RB Leipzig in 2009, when the club was in the fifth tier of German football. Leipzig reached the Bundesliga in 2016–17, seven seasons&nbsp;later.</p>
+    </div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">What It Produced</div>
+    <div class="model-body">
+      <p>Dominik Szoboszlai moved from Salzburg to Leipzig to Liverpool, sold for approximately £60 million. Karim Adeyemi moved from Salzburg to Borussia Dortmund for approximately £30 million. Erling Haaland developed at Salzburg before Borussia Dortmund. The most contested element of the Red Bull model is its ownership structure. The structural argument is separable from that&nbsp;criticism.</p>
+    </div>
+  </div>
+
+  <div class="principle-block">
+    <div class="principle-label">The Principle</div>
+    <p class="principle-text">When every age group at every level of the pathway understands the same game model, player transitions stop being disruptions and become progressions. The investment in a unified philosophy pays out every time a player moves up without needing to start&nbsp;again.</p>
+  </div>
+
+  <div class="at-your-level">
+    <div class="at-your-level-label">At Your Level</div>
+    <div class="at-your-level-text">
+      <p>If you asked every coach in your programme to describe your game model independently, would they describe the same model? Not a similar one. The same&nbsp;one.</p>
+      <p>If the answer is no, the gap is structural. Alignment at that level requires the model to be embedded — written, shared, and built into how sessions are designed and reviewed. The Red Bull solution was to make the model the constant across four clubs on three continents. Your solution is simpler: a single written game model that every coach in your programme has read, understood and can&nbsp;apply.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SECTION DIVIDER — TECHNICAL DIRECTORS
+════════════════════════════════════════════════ -->
+<div class="section-divider-page">
+  <div class="divider-label">Models 7–8</div>
+  <h2 class="divider-title">Technical Directors and Independent Consultants</h2>
+  <p class="divider-subtitle">Ajax / De Toekomst · Athletic Bilbao / Lezama</p>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODEL 7 — AJAX
+════════════════════════════════════════════════ -->
+<div class="model-page" id="model-7">
+  <div class="model-ghost-number">7</div>
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Model 7 of 8</div>
+  </div>
+
+  <div class="model-header">
+    <div class="model-number">Model 7 · Technical Directors and Independent Consultants</div>
+    <h2 class="model-name">Ajax / De Toekomst</h2>
+    <div class="model-context">Netherlands · Eredivisie</div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">The Structural Decision</div>
+    <div class="model-body">
+      <p>Most academies assign positions early. A promising eight-year-old with good spatial awareness becomes a central midfielder. Ajax asked what happens if you do not do that. The Ajax academy philosophy, developed at De Toekomst (The Future) training complex which opened in 1996, is built on position-agnostic development in the early years. Players learn every role before they&nbsp;specialise.</p>
+      <p>The TIPS framework governs assessment across every age group: Technique, Insight, Personality and Speed. It applies before any positional assignment. A player's fundamental cognitive and technical capacities are developed first. Positional identity&nbsp;follows.</p>
+    </div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">What It Produced, and Where It Has Struggled</div>
+    <div class="model-body">
+      <p>Approximately 30% of Eredivisie players at any given point have passed through De Toekomst at some stage in their development. Recent graduates include Frenkie de Jong, Matthijs de Ligt and Ryan&nbsp;Gravenberch.</p>
+      <p>This entry includes something the others do not: following Erik ten Hag's departure for Manchester United in 2022, Ajax experienced significant coaching turnover and a period of poor results. The TIPS framework did not change. The continuity of people applying it did. A development philosophy is not self-sustaining. It requires people who carry it, protect it and apply it consistently over years. When those people leave in quick succession, the philosophy exists on paper rather than in&nbsp;practice.</p>
+    </div>
+  </div>
+
+  <div class="principle-block">
+    <div class="principle-label">The Principle</div>
+    <p class="principle-text">Position-agnostic development is an argument for sequencing. Understand the game first; specialise within that understanding second. Players who understand every position are limited only by how well they execute their&nbsp;own.</p>
+  </div>
+
+  <div class="at-your-level">
+    <div class="at-your-level-label">At Your Level</div>
+    <div class="at-your-level-text">
+      <p>What positions do your coaches fully understand? Not just their own role. The positions they coach adjacent to and the positions players are moving into as they progress through your&nbsp;system.</p>
+      <p>If your central midfielders at U16 understood what your wingers and your defensive midfielders needed from them, would their decision-making look different? Would your coaching of them look&nbsp;different?</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     MODEL 8 — ATHLETIC BILBAO
+════════════════════════════════════════════════ -->
+<div class="model-page" id="model-8">
+  <div class="model-ghost-number">8</div>
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Model 8 of 8</div>
+  </div>
+
+  <div class="model-header">
+    <div class="model-number">Model 8 · Technical Directors and Independent Consultants</div>
+    <h2 class="model-name">Athletic Bilbao / Lezama</h2>
+    <div class="model-context">Spain · La Liga</div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">The Structural Decision</div>
+    <div class="model-body">
+      <p>The default assumption in professional football recruitment is that wider is better. More markets, more scouting, more options. Athletic Bilbao operate on the opposite premise and have done so continuously since 1932. Athletic Bilbao field only players from the Basque Country. The policy is not a financial constraint or a temporary positioning decision. It is the club's founding principle, applied without compromise across more than ninety years of professional&nbsp;football.</p>
+      <p>The result is the longest unbroken record in Spanish football outside Real Madrid and Barcelona. Athletic Bilbao have been in La Liga continuously since 1932. They have never been relegated, with a recruitment pool that eliminates the overwhelming majority of professional footballers on the&nbsp;planet.</p>
+      <p>The Lezama complex, 13 kilometres from Bilbao, houses 15 youth teams from U12 to U19 including Bilbao Athletic. The 2021 opening of new residential accommodation (30 double rooms with customisable furnishings) reflects the model's argument: if the best Basque players know that Lezama is their environment, the environment has to be worth&nbsp;choosing.</p>
+    </div>
+  </div>
+
+  <div class="model-section">
+    <div class="model-section-label">What It Produced</div>
+    <div class="model-body">
+      <p>Athletic Bilbao's policy creates a regional development network that no other model in this document produces. Every grassroots club in the Basque Country knows that Athletic Bilbao is the ceiling available to their players. That knowledge drives investment in coaching quality, in facilities and in the technical development of young players across the entire&nbsp;region.</p>
+      <p>The constraint is the system. Because Athletic Bilbao cannot recruit outside the Basque Country, every structural decision they make is designed to extract maximum development from the talent that exists within&nbsp;it.</p>
+    </div>
+  </div>
+
+  <div class="principle-block">
+    <div class="principle-label">The Principle</div>
+    <p class="principle-text">A constraint treated as a limit produces a smaller version of what a club without the constraint would build. A constraint treated as a design parameter produces something designed specifically for the conditions it operates in. Athletic Bilbao's ninety-year La Liga record is what the second approach looks like across&nbsp;time.</p>
+  </div>
+
+  <div class="at-your-level">
+    <div class="at-your-level-label">At Your Level</div>
+    <div class="at-your-level-text">
+      <p>Your programme operates within constraints: budget, geography, category, staffing. The Athletic Bilbao question is whether those constraints are being treated as limits or as design&nbsp;parameters.</p>
+      <p>What would your programme look like if every structural decision you made was designed specifically for the constraints you actually have, rather than approximating what a programme without those constraints would&nbsp;build?</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     GLOSSARY
+════════════════════════════════════════════════ -->
+<div class="inner-page" id="glossary">
+  <div class="page-header">
+    <div class="page-header-brand">The Alternative Models Framework</div>
+    <div class="page-header-doc">Glossary</div>
+  </div>
+
+  <div class="section-label">Reference</div>
+  <div style="width:40px;height:3px;background:var(--gold);margin-bottom:1rem;margin-top:12px;"></div>
+  <h2 class="glossary-title">Glossary</h2>
+
+  <div class="glossary-item">
+    <div class="glossary-term">EPPP</div>
+    <div class="glossary-def">Elite Player Performance Plan. The framework introduced by the Premier League in 2012 that governs the structure, funding and oversight of professional academy football in England. Academies are categorised from Category 1 to Category 4.</div>
+  </div>
+
+  <div class="glossary-item">
+    <div class="glossary-term">Category 1 to 4</div>
+    <div class="glossary-def">The grading system within the EPPP framework. Category 1 academies receive the highest annual funding from the Premier League and operate the largest full-time staff and facility requirements. Category 2 and 3 academies receive proportionally less. Category 4 applies to clubs outside the professional game.</div>
+  </div>
+
+  <div class="glossary-item">
+    <div class="glossary-term">UEFA Pro Licence</div>
+    <div class="glossary-def">The highest coaching qualification issued by UEFA, required for managers of clubs competing in UEFA competitions and the top domestic divisions of most European countries. The full pathway from UEFA B to UEFA Pro Licence costs approximately £20,000 in England.</div>
+  </div>
+
+  <div class="glossary-item">
+    <div class="glossary-term">B team</div>
+    <div class="glossary-def">A reserve or development team that competes in a competitive professional or semi-professional league, providing senior football for players who have completed academy development but are not yet ready for first-team football. Distinct from an under-23 development squad in that B teams compete against senior opposition in league competition.</div>
+  </div>
+
+  <div class="glossary-item">
+    <div class="glossary-term">Sell-on clause</div>
+    <div class="glossary-def">A contractual provision in a transfer agreement that entitles the selling club to a percentage of any future transfer fee if the buying club sells the player on.</div>
+  </div>
+
+  <div class="glossary-item">
+    <div class="glossary-term">CIES Football Observatory</div>
+    <div class="glossary-def">The Centre International d'Etude du Sport, based in Neuchatel, Switzerland. Produces independent research on professional football including transfer economics, academy output and player demographics. Their academy graduate transfer revenue rankings are the most widely cited independent measure of academy productivity in European football.</div>
+  </div>
+
+  <div class="glossary-item">
+    <div class="glossary-term">Eredivisie</div>
+    <div class="glossary-def">The top division of professional football in the Netherlands.</div>
+  </div>
+
+  <div class="glossary-item">
+    <div class="glossary-term">Danish Superliga</div>
+    <div class="glossary-def">The top division of professional football in Denmark. FC Midtjylland won four Superliga titles between 2015 and 2024: 2014–15, 2017–18, 2019–20 and 2023–24.</div>
+  </div>
+
+  <div class="glossary-item">
+    <div class="glossary-term">TIPS Framework (Ajax)</div>
+    <div class="glossary-def">The four-component assessment framework used across all age groups at Ajax's De Toekomst academy: Technique, Insight, Personality and Speed. Applied before positional assignment to develop fundamental capacities first.</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div>
+    <div class="page-footer-url">hassannobeeboccus.com</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     CLOSING CTA
+════════════════════════════════════════════════ -->
+<div class="cta-page" id="closing">
+  <div>
+    <div class="cta-section-label">Closing</div>
+    <h2 class="cta-title">Eight clubs. Eight structural decisions. Eight different answers to the same question.</h2>
+
+    <p class="cta-body">None of the models in this document is replicable in full. The Benfica campus costs more than most English Category 1 budgets. The Red Bull network requires multi-club ownership. Right to Dream's pipeline runs across two continents. What is replicable, in every case, is the structural question each model asked before it built&nbsp;anything.</p>
+
+    <p class="cta-body">The Architecture Audit ends where it started: with the choices already running in your programme. Some of them are deliberate. Some of them are inherited. The value of studying the models in this document is not that they tell you what to build. It is that they give you better questions to ask about what you are already&nbsp;running.</p>
+
+    <p class="cta-body">If one of these models has identified a structural choice in your programme that deserves a closer look, that is the place to start. Not with a restructure. With a&nbsp;question.</p>
+
+    <p class="cta-body" style="color: #c0a090;">If you want to work through what that looks like for your specific programme, that is what I do.</p>
+  </div>
+
+  <div>
+    <div class="cta-divider"></div>
+    <div class="cta-contact-label">Get in touch</div>
+    <div class="cta-contact-grid">
+      <div class="cta-contact-item">
+        <span>Email</span>
+        <a href="mailto:thefootballghostwriter@outlook.com">thefootballghostwriter<wbr>@outlook.com</a>
+      </div>
+      <div class="cta-contact-item">
+        <span>Website</span>
+        <a href="https://hassannobeeboccus.com" target="_blank" rel="noopener">hassannobeeboccus.com</a>
+      </div>
+      <div class="cta-contact-item">
+        <span>Book a call</span>
+        <a href="https://www.cal.eu/thefootballghostwriter/30min?overlayCalendar=true" target="_blank" rel="noopener">Schedule 30 minutes</a>
+      </div>
+      <div class="cta-contact-item">
+        <span>Free email course</span>
+        <a href="https://hassannobeeboccus.com/5-development-models" target="_blank" rel="noopener">Five Development Models</a>
+      </div>
+    </div>
+
+    <div class="cta-footer">
+      <div class="cta-footer-brand">
+        <span style="color:#5a5450; font-family:'Merriweather',serif; font-weight:700;">Hassan Nobeeboccus</span>
+        <span style="color:#3a3430; margin:0 0.4em; font-weight:300;">|</span>
+        <span style="color:#4a3830; font-style:italic; font-family:'Merriweather',serif;">The Football Ghostwriter</span>
+      </div>
+      <div class="cta-footer-url">hassannobeeboccus.com</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .page -->
+
+<!-- ════════════════════════════════════════════════
+     SITE FOOTER — mirrors hassannobeeboccus.com
+════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <a href="https://hassannobeeboccus.com" class="site-footer-wordmark" target="_blank" rel="noopener">
+      <span class="wm-name">Hassan Nobeeboccus</span>
+      <span class="wm-sep">|</span>
+      <span class="wm-role">The Football Ghostwriter</span>
+    </a>
+    <div class="site-footer-right">hassannobeeboccus.com · 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
