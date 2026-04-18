@@ -96,14 +96,20 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              margin-top 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  max-height: 300px;
+  transition: max-height 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              padding 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.2s linear;
 }
-/* When hidden: translate visually AND collapse layout via negative margin-top
-   (--nav-h set by JS) so the doc-label-bar slides up with no gap. */
+/* When hidden: collapse nav's own box (padding + max-height go to 0) so the
+   doc-label-bar slides up into the vacated space with no gap. */
 .site-nav.nav-hidden {
-  transform: translateY(-100%);
-  margin-top: calc(-1 * var(--nav-h, 60px));
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom-width: 0;
+  opacity: 0;
 }
 
 /* Reading progress bar — fixed top, terracotta to match brand accent */
@@ -2177,20 +2183,24 @@ body {
   var siteNav = document.querySelector('.site-nav');
   var lastScrollY = window.scrollY;
   var scrollThreshold = 100;
+  var moveThreshold = 8; // ignore sub-8px moves to silence rubber-band jitter
 
   window.addEventListener('scroll', function() {
     var y = window.scrollY;
+    var dy = y - lastScrollY;
 
     // Back to top visibility
     btt.classList.toggle('show', y > 600);
 
-    // Auto-hide nav on scroll down, show on scroll up
-    if (y > scrollThreshold && y > lastScrollY) {
-      siteNav.classList.add('nav-hidden');
-    } else if (y < lastScrollY) {
-      siteNav.classList.remove('nav-hidden');
+    // Auto-hide nav on scroll down, show on scroll up (with movement threshold)
+    if (Math.abs(dy) >= moveThreshold) {
+      if (y > scrollThreshold && dy > 0) {
+        siteNav.classList.add('nav-hidden');
+      } else if (dy < 0) {
+        siteNav.classList.remove('nav-hidden');
+      }
+      lastScrollY = y;
     }
-    lastScrollY = y;
 
     // Reading progress
     var h = document.documentElement.scrollHeight - window.innerHeight;
