@@ -10,6 +10,8 @@
     { "source": "/5-development-models", "destination": "/5-development-models.html" },
     { "source": "/alternative-models-framework", "destination": "/alternative-models-framework.html" },
     { "source": "/alternative-models-framework.pdf", "destination": "/alternative-models-framework.html" },
+    { "source": "/conversation-to-content-map", "destination": "/conversation-to-content-map.html" },
+    { "source": "/conversation-to-content-map.pdf", "destination": "/conversation-to-content-map.html" },
     { "source": "/courses", "destination": "/freecourses.html" },
     { "source": "/free-courses", "destination": "/freecourses.html" }
   ]
