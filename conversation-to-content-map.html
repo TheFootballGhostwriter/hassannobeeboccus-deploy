@@ -107,6 +107,21 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-nav.nav-hidden { transform: translateY(-100%); }
+
+/* Reading progress bar — fixed top, gold to match brand accent */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: var(--gold);
+  z-index: 300;
+  transition: width 0.1s linear;
+  pointer-events: none;
 }
 .site-nav-inner {
   width: 100%;
@@ -207,6 +222,7 @@ body {
   z-index: 199;
   flex-shrink: 0;
   margin-top: 0;
+  transition: top 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 /* Gold accent line, page-width, pinned to the bottom of the sticky bar.
    Acts as a visual anchor/reading-ruler that stays in view while scrolling. */
@@ -442,7 +458,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .site-nav-link::after { transition: none; }
-  .back-to-top, .cookie-float, .cookie-options, .skip-link { transition: none; }
+  .back-to-top, .cookie-float, .cookie-options, .skip-link,
+  .site-nav, .doc-label-bar, .reading-progress { transition: none; }
 }
 
 /* ── ACCENT ITALIC ── */
@@ -1313,6 +1330,7 @@ body {
 <body>
 
 <a class="skip-link" href="#main-content">Skip to content</a>
+<div class="reading-progress" id="readingProgress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
 <!-- ── SITE NAV ── -->
 <nav class="site-nav" aria-label="Site navigation">
@@ -2368,9 +2386,43 @@ body {
 
 <script>
   var btt = document.getElementById('backToTop');
+  var progressBar = document.getElementById('readingProgress');
+  var siteNav = document.querySelector('.site-nav');
+  var docLabelBar = document.querySelector('.doc-label-bar');
+  var lastScrollY = window.scrollY;
+  var scrollThreshold = 100;
+
+  function syncBarTop() {
+    if (docLabelBar && siteNav) {
+      docLabelBar.style.top = siteNav.classList.contains('nav-hidden')
+        ? '0px'
+        : siteNav.offsetHeight + 'px';
+    }
+  }
+
   window.addEventListener('scroll', function() {
-    btt.classList.toggle('show', window.scrollY > 600);
-  });
+    var y = window.scrollY;
+
+    btt.classList.toggle('show', y > 600);
+
+    if (y > scrollThreshold && y > lastScrollY) {
+      if (!siteNav.classList.contains('nav-hidden')) {
+        siteNav.classList.add('nav-hidden');
+        syncBarTop();
+      }
+    } else if (y < lastScrollY) {
+      if (siteNav.classList.contains('nav-hidden')) {
+        siteNav.classList.remove('nav-hidden');
+        syncBarTop();
+      }
+    }
+    lastScrollY = y;
+
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? Math.min(100, (y / h) * 100) : 0;
+    progressBar.style.width = p + '%';
+    progressBar.setAttribute('aria-valuenow', Math.round(p));
+  }, { passive: true });
   btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
   function loadAnalytics() {
