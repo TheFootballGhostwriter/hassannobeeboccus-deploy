@@ -298,6 +298,14 @@ body {
   .site-footer-inner { justify-content: center; text-align: center; }
   .site-footer a { min-height: 44px; display: inline-flex; align-items: center; }
 
+  /* Nav wraps on narrow screens so no link escapes the dark-green background */
+  .site-nav { padding: 0.75rem 1rem; }
+  .site-nav-inner { flex-wrap: wrap; gap: 0.4rem 0.75rem; justify-content: center; }
+  .site-nav-right { flex-wrap: wrap; gap: 0.5rem 1rem; justify-content: center; }
+  .site-nav-wordmark { font-size: 0.85rem; }
+  .site-nav-link { font-size: 0.8rem; }
+  .site-nav-cta { padding: 0.4rem 0.85rem; font-size: 0.78rem; }
+
   /* Page becomes fluid on mobile instead of forcing 794px and horizontal scroll */
   .page,
   .cover,
