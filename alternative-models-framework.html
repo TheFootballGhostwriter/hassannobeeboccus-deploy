@@ -196,7 +196,8 @@ body {
   flex-shrink: 0;
 }
 /* Terracotta accent line, page-width, pinned to the bottom of the sticky bar.
-   Acts as a visual anchor/reading-ruler that stays in view while scrolling. */
+   Acts as a visual anchor/reading-ruler that stays in view while scrolling.
+   Colour matches the .cover::before top accent so the two lines read as one at page top. */
 .doc-label-bar::after {
   content: '';
   position: absolute;
@@ -206,7 +207,7 @@ body {
   width: 794px;
   max-width: calc(100% - 3rem);
   height: 3px;
-  background: var(--terracotta);
+  background: #e05a4c;
   pointer-events: none;
 }
 .doc-label-inner {
