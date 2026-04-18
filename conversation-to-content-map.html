@@ -44,6 +44,11 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 /* ── SKIP LINK ── */
 .skip-link {
   position: absolute;
@@ -313,12 +318,14 @@ body {
   .cover-audience { font-size: 14px; }
   .cover-eyebrow { font-size: 10px; }
 
-  /* Contents — legible sizes; stop forcing max-width that was desktop-specific */
-  .contents-name { max-width: 100%; font-size: 14px; }
-  .contents-num { font-size: 13px; min-width: 22px; }
-  .contents-page { font-size: 13px; }
-  .contents-group-label { font-size: 10px; }
+  /* Contents — uniform sizes so numbers, question text, and arrows align visually */
+  .contents-name { max-width: 100%; font-size: 15px; line-height: 1.45; }
+  .contents-num { font-size: 15px; min-width: 24px; font-weight: 700; }
+  .contents-page { font-size: 15px; }
+  .contents-group-label { font-size: 11px; letter-spacing: 0.18em; }
   .contents-title { font-size: 32px; }
+  .contents-audience { font-size: 12px; }
+  .contents-item a { padding: 11px 0; }
 
   /* Entry + how-to typography */
   .entry-question { font-size: 20px; line-height: 1.3; }
