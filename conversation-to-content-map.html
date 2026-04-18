@@ -2405,25 +2405,33 @@ body {
   var progressBar = document.getElementById('readingProgress');
   var siteNav = document.querySelector('.site-nav');
   var lastScrollY = window.scrollY;
-  var scrollThreshold = 100;
-  var moveThreshold = 8; // ignore sub-8px moves to silence rubber-band jitter
+  var edgeBuffer = 150;   // freeze nav state within 150px of top or bottom (stops rubber-band jitter)
+  var moveThreshold = 8;  // ignore sub-8px moves
 
   window.addEventListener('scroll', function() {
     var y = window.scrollY;
+    var maxY = document.documentElement.scrollHeight - window.innerHeight;
     var dy = y - lastScrollY;
 
     btt.classList.toggle('show', y > 600);
 
-    if (Math.abs(dy) >= moveThreshold) {
-      if (y > scrollThreshold && dy > 0) {
+    var nearTop = y < edgeBuffer;
+    var nearBottom = y > maxY - edgeBuffer;
+
+    // Force nav visible at top of page; freeze state near bottom.
+    if (nearTop) {
+      siteNav.classList.remove('nav-hidden');
+      lastScrollY = y;
+    } else if (!nearBottom && Math.abs(dy) >= moveThreshold) {
+      if (dy > 0) {
         siteNav.classList.add('nav-hidden');
-      } else if (dy < 0) {
+      } else {
         siteNav.classList.remove('nav-hidden');
       }
       lastScrollY = y;
     }
 
-    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var h = maxY;
     var p = h > 0 ? Math.min(100, (y / h) * 100) : 0;
     progressBar.style.width = p + '%';
     progressBar.setAttribute('aria-valuenow', Math.round(p));
