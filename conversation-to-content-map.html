@@ -187,6 +187,20 @@ body {
   flex-shrink: 0;
   margin-top: 0;
 }
+/* Gold accent line, page-width, pinned to the bottom of the sticky bar.
+   Acts as a visual anchor/reading-ruler that stays in view while scrolling. */
+.doc-label-bar::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 794px;
+  max-width: calc(100% - 3rem);
+  height: 2px;
+  background: var(--gold);
+  pointer-events: none;
+}
 .doc-label-inner {
   width: 100%;
   max-width: 860px;
@@ -1239,7 +1253,7 @@ body {
 
   <div class="cover-content">
     <div class="cover-eyebrow">Content Framework, 2026</div>
-    <h1 class="cover-title">The Conversation-to-<em class="ai">Content</em> Map</h1>
+    <h1 class="cover-title">The Conversation-to-<em class="ai">Content</em> <em class="ai">Map</em></h1>
     <p class="cover-subtitle">Fourteen questions that practitioners in academy and coaching education keep asking. For each one: the conventional answer, where it runs out and a specific position to publish&nbsp;from.</p>
     <div class="cover-divider"></div>
     <div class="cover-for">For</div>
@@ -1486,18 +1500,18 @@ body {
   <div class="finished-post-block">
     <div class="finished-post-label">The finished post</div>
     <div class="finished-post-text">
-      <p>There's a question I hear more often than any other from coaches trying to implement player-centred approaches.</p>
-      <p>'How do I do it without losing all structure?'</p>
+      <p>There's a question I hear more often than any other from coaches trying to implement player-centred&nbsp;approaches.</p>
+      <p>'How do I do it without losing all&nbsp;structure?'</p>
       <p>The coaching course answer is to move along a spectrum: from direct instruction toward guided discovery, somewhere in the middle. The destination is right; the route is&nbsp;absent.</p>
       <p>Research from the Swedish Football Association's coach education programme found that even coaches who completed UEFA B training and adopted game-based tasks in their sessions still reduced unpredictability when they returned to their clubs. The player-centred philosophy survived the course; back in their clubs, under familiar pressures, coaches defaulted to what they knew. The reason, consistently, is the same: there was no transition sequence. The coach knew where they were trying to go. Nobody told them what to change&nbsp;first.</p>
       <p>Here's what the transition looks&nbsp;like.</p>
-      <p>You don't move from direct instruction to guided discovery in one session. You constrain the environment first and then you constrain it less.</p>
-      <p>Week one: reduce the playing area. Force decisions by compressing space. Keep your instructions exactly as they are. Don't change your coaching style yet. Change the conditions.</p>
+      <p>You don't move from direct instruction to guided discovery in one session. You constrain the environment first and then you constrain it&nbsp;less.</p>
+      <p>Week one: reduce the playing area. Force decisions by compressing space. Keep your instructions exactly as they are. Don't change your coaching style yet. Change the&nbsp;conditions.</p>
       <p>Week two: remove one positional instruction. Let one decision become the player's. Watch what&nbsp;happens.</p>
       <p>Week three: remove verbal coaching during play. For one ten-minute block. Observe what players do when the coaching voice goes&nbsp;silent.</p>
       <p>By week five or six, something shifts. Players start making decisions under pressure without waiting for instruction. The structure is still there, living in the environment now, in the conditions you built and the constraints you&nbsp;set.</p>
       <p>A coach I worked with who'd run structured sessions for eight years ran this sequence over six weeks. He described week five as the first time he'd watched his players make decisions without waiting for a prompt. The sessions looked more chaotic from the outside; the decision-making quality had gone&nbsp;up.</p>
-      <p>If you've been trying to make this shift and stalling: what specifically did you change first?</p>
+      <p>If you've been trying to make this shift and stalling: what specifically did you change&nbsp;first?</p>
     </div>
   </div>
 
@@ -1551,7 +1565,7 @@ body {
 <section class="section-divider-page">
   <div class="divider-label">Section One</div>
   <h2 class="divider-title">Academy <em class="ai">Directors</em></h2>
-  <p class="divider-subtitle">Seven recurring questions from the rooms where player development decisions are made. Each entry maps the conventional answer, the research that complicates it and a specific position to publish from.</p>
+  <p class="divider-subtitle">Seven recurring questions from the rooms where player development decisions are made. Each entry maps the conventional answer, the research that complicates it and a specific position to publish&nbsp;from.</p>
   <div class="divider-footer">
     <span class="divider-footer-brand">Hassan Nobeeboccus</span>
     <span class="divider-footer-num">Entries 1–7</span>
@@ -1576,7 +1590,7 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">The conventional answer</div>
     <div class="entry-body">
-      <p>The coaching course presents player-centredness and structure as opposite ends of a spectrum, asking coaches to position themselves somewhere along it. Guided discovery on one side.<br>Direct instruction on the other. Move toward the middle.</p>
+      <p>The coaching course presents player-centredness and structure as opposite ends of a spectrum, asking coaches to position themselves somewhere along it. Guided discovery on one side.<br>Direct instruction on the other. Move toward the&nbsp;middle.</p>
     </div>
   </div>
 
@@ -1584,7 +1598,7 @@ body {
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
       <p>Research from Frontiers in Sports and Active Living (2023) examined coach education across the Swedish Football Association and found that even game-based task designs promoted on UEFA B courses prolonged inherited coaching beliefs. Coaches implementing player-centred approaches still reduced unpredictability in practice, which runs counter to what skill acquisition research recommends. The philosophy landed; the sequenced handover that makes it work in practice was absent from the course&nbsp;entirely.</p>
-      <p>A 2025 study in Physical Education and Sport Pedagogy on a nationwide talent development programme confirmed the mechanism: research-informed coach education produces better practice transfer, but only when the intervention is designed around practitioners' specific contexts.<br>Generic delivery of player-centred principles does not change what coaches do on Tuesday morning.</p>
+      <p>A 2025 study in Physical Education and Sport Pedagogy on a nationwide talent development programme confirmed the mechanism: research-informed coach education produces better practice transfer, but only when the intervention is designed around practitioners' specific contexts.<br>Generic delivery of player-centred principles does not change what coaches do on Tuesday&nbsp;morning.</p>
     </div>
   </div>
 
@@ -1620,16 +1634,16 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">The conventional answer</div>
     <div class="entry-body">
-      <p>Deselect at the right developmental checkpoint. Communicate clearly and kindly.<br>Give the player honest feedback. Wish them well. Follow the club's process.</p>
+      <p>Deselect at the right developmental checkpoint. Communicate clearly and kindly.<br>Give the player honest feedback. Wish them well. Follow the club's&nbsp;process.</p>
     </div>
   </div>
 
   <div class="entry-section">
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
-      <p>A 2025 systematic review in the Journal of Sport Sciences on psychosocial aspects of release found that psychological impact is significant and consistent across studies: loss of identity, anxiety and depression are reported repeatedly, with younger athletes at greatest risk because they have the least developed coping strategies.</p>
-      <p>The mechanism for that harm was identified in a 2022 qualitative study published in Frontiers in Sports and Active Living: all four players interviewed reported being marginalised before their formal release (left out of starting line-ups, left out of squad communications, while still training with the club). Players didn't disclose this to their parents because they felt they'd let them down.&nbsp;The formal deselection conversation was the moment on record; the two-to-four weeks before it were&nbsp;where the damage was done.</p>
-      <p>A 2025 study in the Journal of Applied Sport Psychology found that parents described feedback as generic and non-individualised. A 2024 qualitative study in Qualitative Research in Sport, Exercise and Health, drawing on players' own reflections on being released, found they described the club environment in terms that evoke a production system: their sense of self had become contingent on their academy status.</p>
+      <p>A 2025 systematic review in the Journal of Sport Sciences on psychosocial aspects of release found that psychological impact is significant and consistent across studies: loss of identity, anxiety and depression are reported repeatedly, with younger athletes at greatest risk because they have the least developed coping&nbsp;strategies.</p>
+      <p>The mechanism for that harm was identified in a 2022 qualitative study published in Frontiers in Sports and Active Living: all four players interviewed reported being marginalised before their formal release (left out of starting line-ups, left out of squad communications, while still training with the club). Players didn't disclose this to their parents because they felt they'd let them down.&nbsp;The formal deselection conversation was the moment on record; the two-to-four weeks before it were&nbsp;where the damage was&nbsp;done.</p>
+      <p>A 2025 study in the Journal of Applied Sport Psychology found that parents described feedback as generic and non-individualised. A 2024 qualitative study in Qualitative Research in Sport, Exercise and Health, drawing on players' own reflections on being released, found they described the club environment in terms that evoke a production system: their sense of self had become contingent on their academy&nbsp;status.</p>
     </div>
   </div>
 
@@ -1673,7 +1687,7 @@ body {
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
       <p>Research published in the Journal of Sports Sciences (Harper et al., 2024) studied academy managers across the English Premier League and EFL. Managers identified psychosocial skills and characteristics as key drivers of player progression but found a significant lack of agreement on which specific skills mattered and how to develop them systematically. Clubs knew the corners existed; they hadn't agreed what went&nbsp;inside&nbsp;them.</p>
-      <p>A 2025 study in the Journal of Applied Sport Psychology evaluated a structured individualised psychosocial skills programme inside an English male professional soccer academy and found that an individualised approach, designed around the specific player and built into a personal development plan, produced measurable development outcomes where group-delivered curricula had not. The Four Corner Model names the areas, but what observable behaviours belong in the psychological corner, what conversations belong in the social corner and how progress in either is assessed remains unanswered across most of the professional game.</p>
+      <p>A 2025 study in the Journal of Applied Sport Psychology evaluated a structured individualised psychosocial skills programme inside an English male professional soccer academy and found that an individualised approach, designed around the specific player and built into a personal development plan, produced measurable development outcomes where group-delivered curricula had not. The Four Corner Model names the areas, but what observable behaviours belong in the psychological corner, what conversations belong in the social corner and how progress in either is assessed remains unanswered across most of the professional&nbsp;game.</p>
     </div>
   </div>
 
@@ -1717,7 +1731,7 @@ body {
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
       <p>A 2025 study in Sport in Society examined children's well-being inside a Category One academy through an 18-month ethnographic study. Three structural patterns were identified: the academy's prioritisation of future market potential over present well-being, the normalisation of accelerated adulthood and the burden placed on children to cope with pressures far ahead of their developmental stage. The language of development was present at the club; the structure rewarded something&nbsp;different.</p>
-      <p>A 2025 study in the Journal of Applied Sport Psychology on cultural sensitivities in elite male English academy multidisciplinary teams found that staff alignment around culture is fragile: coaches, sports scientists, psychologists and education staff bring different professional values to the same working environment and those disciplinary tensions shape what the culture produces, regardless of what the director communicates.</p>
+      <p>A 2025 study in the Journal of Applied Sport Psychology on cultural sensitivities in elite male English academy multidisciplinary teams found that staff alignment around culture is fragile: coaches, sports scientists, psychologists and education staff bring different professional values to the same working environment and those disciplinary tensions shape what the culture produces, regardless of what the director&nbsp;communicates.</p>
     </div>
   </div>
 
@@ -1760,8 +1774,8 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
-      <p>Full-time coaches in Premier League and EFL academies grew from 250 at the Elite Player Performance Plan's (EPPP) launch in 2012 to over 800 by 2024, according to Premier League data.<br>The market for capable academy coaches is competitive and clubs relying on goodwill and<br>development conversations alone lose them.</p>
-      <p>A 2024 study by Galdino and Wicker in the International Journal of Sports Science &amp; Coaching examined how head coach turnovers in professional football create club-wide spillover effects.<br>The finding: coaching replacements disrupt development continuity at first-team level and through the entire backroom staff structure. Clubs that retain backroom staff across head coach changes preserve development continuity; continuity breaks down where they don't. Retention is a development quality issue with direct consequences for player outcomes.</p>
+      <p>Full-time coaches in Premier League and EFL academies grew from 250 at the Elite Player Performance Plan's (EPPP) launch in 2012 to over 800 by 2024, according to Premier League data.<br>The market for capable academy coaches is competitive and clubs relying on goodwill and<br>development conversations alone lose&nbsp;them.</p>
+      <p>A 2024 study by Galdino and Wicker in the International Journal of Sports Science &amp; Coaching examined how head coach turnovers in professional football create club-wide spillover effects.<br>The finding: coaching replacements disrupt development continuity at first-team level and through the entire backroom staff structure. Clubs that retain backroom staff across head coach changes preserve development continuity; continuity breaks down where they don't. Retention is a development quality issue with direct consequences for player&nbsp;outcomes.</p>
     </div>
   </div>
 
@@ -1797,7 +1811,7 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">The conventional answer</div>
     <div class="entry-body">
-      <p>Build relationships with the first-team manager. Present data on graduates.<br>Demonstrate value through first-team appearances. Play the long game.</p>
+      <p>Build relationships with the first-team manager. Present data on graduates.<br>Demonstrate value through first-team appearances. Play the long&nbsp;game.</p>
     </div>
   </div>
 
@@ -1813,8 +1827,8 @@ body {
     <div class="position-block-label">The position</div>
     <div class="position-block-text">
       <p>The buy-in problem is a governance problem. Squad cost ratios and PSR compliance have changed the commercial logic: academies are now a financial strategy. Player development remains the mechanism while financial sustainability is now the stated&nbsp;purpose.</p>
-      <p>Directors who've found operational solutions (specific data-sharing agreements, showcase formats built around what first-team staff need to see and conversations that connect academy outputs to the first team's own risk management and wage bill sustainability) are working at a different level.</p>
-      <p>The specific mechanisms are what to publish.</p>
+      <p>Directors who've found operational solutions (specific data-sharing agreements, showcase formats built around what first-team staff need to see and conversations that connect academy outputs to the first team's own risk management and wage bill sustainability) are working at a different&nbsp;level.</p>
+      <p>The specific mechanisms are what to&nbsp;publish.</p>
     </div>
   </div>
 
@@ -1849,9 +1863,9 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
-      <p>The relative age effect (RAE) is one of the most consistently replicated findings in youth sport science. A study of 1,003 players across 23 UK professional football academies (PMC, 2022) found players born in the first quarter of the selection year were substantially over-represented across squads at every age group. A study of 951 players in the Swedish FA under-15 programme (Science and Medicine in Football, 2024) found a significant bias in favour of relatively older players, most pronounced between regional and national selection levels.</p>
+      <p>The relative age effect (RAE) is one of the most consistently replicated findings in youth sport science. A study of 1,003 players across 23 UK professional football academies (PMC, 2022) found players born in the first quarter of the selection year were substantially over-represented across squads at every age group. A study of 951 players in the Swedish FA under-15 programme (Science and Medicine in Football, 2024) found a significant bias in favour of relatively older players, most pronounced between regional and national selection&nbsp;levels.</p>
       <p>The consequences extend beyond the players being over-selected. Research published in the Journal of Sports Sciences (2024) found that players born late in the selection year achieve more professional career minutes on average than those born early: the late-born players who survive the selection filter tend to be exceptionally&nbsp;talented.</p>
-      <p>A Frontiers in Sports and Active Living study (2023) identified the psychological mechanism: coaches and scouts select relatively older players perceived as physically stronger, without consciously considering long-term potential. Multi-observer review processes don't correct for it because all observers share the same distorted baseline. Bio-banding research from the University of Bath, conducted across four Premier League academies, found that when players were grouped by biological maturity, early maturers found matches significantly more physically demanding and late maturers (the players the standard system was most likely to overlook) showed technical and psychological qualities the age-grouped format had kept invisible.</p>
+      <p>A Frontiers in Sports and Active Living study (2023) identified the psychological mechanism: coaches and scouts select relatively older players perceived as physically stronger, without consciously considering long-term potential. Multi-observer review processes don't correct for it because all observers share the same distorted baseline. Bio-banding research from the University of Bath, conducted across four Premier League academies, found that when players were grouped by biological maturity, early maturers found matches significantly more physically demanding and late maturers (the players the standard system was most likely to overlook) showed technical and psychological qualities the age-grouped format had kept&nbsp;invisible.</p>
     </div>
   </div>
 
@@ -1873,7 +1887,7 @@ body {
 <section class="section-divider-page">
   <div class="divider-label">Section Two</div>
   <h2 class="divider-title">Coaching Education <em class="ai">Founders</em></h2>
-  <p class="divider-subtitle">Seven recurring questions from the people building independent programmes outside the official pathway. Each entry maps the conventional answer, the structural reality and a specific position to publish from.</p>
+  <p class="divider-subtitle">Seven recurring questions from the people building independent programmes outside the official pathway. Each entry maps the conventional answer, the structural reality and a specific position to publish&nbsp;from.</p>
   <div class="divider-footer">
     <span class="divider-footer-brand">Hassan Nobeeboccus</span>
     <span class="divider-footer-num">Entries 8–14</span>
@@ -1898,15 +1912,15 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">The conventional answer</div>
     <div class="entry-body">
-      <p>Market consistently in the run-up to intake. Build a social media presence. Run targeted ads.<br>Offer early-bird pricing. Create urgency through limited places and a closing deadline.</p>
+      <p>Market consistently in the run-up to intake. Build a social media presence. Run targeted ads.<br>Offer early-bird pricing. Create urgency through limited places and a closing&nbsp;deadline.</p>
     </div>
   </div>
 
   <div class="entry-section">
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
-      <p>B2B buyer research by Bain and Google finds that 80–90% of buyers form a shortlist before making first contact with any provider and 90% choose from that shortlist. The enrolment conversation is largely decided before the founder sends the intake email. What determined the outcome was whether the founder's name was on the shortlist when the prospective coach started looking.</p>
-      <p>In a niche where fewer than 1% of practitioners publish consistently (the Nielsen participation rule applies across online communities regardless of sector), the field is structurally uncrowded.<br>A coaching education founder who publishes weekly on the specific problems their programme addresses for twelve months is not competing with other educators for attention during the enrolment window. They've accumulated it across the months when the field was quiet.</p>
+      <p>B2B buyer research by Bain and Google finds that 80–90% of buyers form a shortlist before making first contact with any provider and 90% choose from that shortlist. The enrolment conversation is largely decided before the founder sends the intake email. What determined the outcome was whether the founder's name was on the shortlist when the prospective coach started&nbsp;looking.</p>
+      <p>In a niche where fewer than 1% of practitioners publish consistently (the Nielsen participation rule applies across online communities regardless of sector), the field is structurally uncrowded.<br>A coaching education founder who publishes weekly on the specific problems their programme addresses for twelve months is not competing with other educators for attention during the enrolment window. They've accumulated it across the months when the field was&nbsp;quiet.</p>
     </div>
   </div>
 
@@ -1942,14 +1956,14 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">The conventional answer</div>
     <div class="entry-body">
-      <p>Emphasise practical application. Highlight smaller cohort sizes. Demonstrate your real-world focus. Talk about what's missing from the official pathway and how you fill it.</p>
+      <p>Emphasise practical application. Highlight smaller cohort sizes. Demonstrate your real-world focus. Talk about what's missing from the official pathway and how you fill&nbsp;it.</p>
     </div>
   </div>
 
   <div class="entry-section">
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
-      <p>Research from the Journal of Sports Sciences (Strudwick et al., 2024) found that practitioners believe formal coach education could better prepare them for the social, negotiated and contextual realities of delivering coaching in a real club environment. A 2025 study in Physical Education and Sport Pedagogy arguing for a situated approach to coach education found academic traction for the case that context-specific, practitioner-designed delivery produces better outcomes than pathway-based, decontextualised certification.</p>
+      <p>Research from the Journal of Sports Sciences (Strudwick et al., 2024) found that practitioners believe formal coach education could better prepare them for the social, negotiated and contextual realities of delivering coaching in a real club environment. A 2025 study in Physical Education and Sport Pedagogy arguing for a situated approach to coach education found academic traction for the case that context-specific, practitioner-designed delivery produces better outcomes than pathway-based, decontextualised&nbsp;certification.</p>
     </div>
   </div>
 
@@ -1985,14 +1999,14 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">The conventional answer</div>
     <div class="entry-body">
-      <p>Make sessions practical. Use reflective frameworks. Include follow-up mentoring.<br>Design for application as well as assessment.</p>
+      <p>Make sessions practical. Use reflective frameworks. Include follow-up mentoring.<br>Design for application as well as&nbsp;assessment.</p>
     </div>
   </div>
 
   <div class="entry-section">
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
-      <p>The Frontiers in Sports and Active Living study (2023) on Swedish FA coach education identified the mechanism behind transfer failure: socio-cultural influences created a system inertia that survived the course itself. Coaches returned to familiar contexts and familiar pressures and the reflection framework that landed in the course didn't travel back to the training pitch.</p>
+      <p>The Frontiers in Sports and Active Living study (2023) on Swedish FA coach education identified the mechanism behind transfer failure: socio-cultural influences created a system inertia that survived the course itself. Coaches returned to familiar contexts and familiar pressures and the reflection framework that landed in the course didn't travel back to the training&nbsp;pitch.</p>
       <p>A 2025 study in Physical Education and Sport Pedagogy evaluating a research-informed coach education initiative in a nationwide talent development programme found that better transfer occurs when the post-course environment is deliberately designed, with structured support built in for the weeks after the course&nbsp;ends.</p>
     </div>
   </div>
@@ -2000,7 +2014,7 @@ body {
   <div class="position-block">
     <div class="position-block-label">The position</div>
     <div class="position-block-text">
-      <p>The transfer problem is a context problem: an assessment environment is a contained space with a known evaluator, known criteria and no competitive stakes. A coach's Tuesday morning involves their own players, their own staff watching, parents on the touchline and a result by five o'clock.</p>
+      <p>The transfer problem is a context problem: an assessment environment is a contained space with a known evaluator, known criteria and no competitive stakes. A coach's Tuesday morning involves their own players, their own staff watching, parents on the touchline and a result by five&nbsp;o'clock.</p>
       <p>Educators who've built specific first-use protocols for the weeks after the course (practical prompts, structured observation tasks and accountability check-ins that get coaches applying the methodology in real conditions) are solving a problem the official pathway hasn't touched. The design of the post-course period is the specific methodology to publish&nbsp;from.</p>
     </div>
   </div>
@@ -2029,7 +2043,7 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">The conventional answer</div>
     <div class="entry-body">
-      <p>Research the market. Calculate your delivery costs.<br>Set a premium that reflects your value. Position above commodity, below the licence.</p>
+      <p>Research the market. Calculate your delivery costs.<br>Set a premium that reflects your value. Position above commodity, below the&nbsp;licence.</p>
     </div>
   </div>
 
@@ -2044,7 +2058,7 @@ body {
     <div class="position-block-label">The position</div>
     <div class="position-block-text">
       <p>A coach paying for the official pathway is buying access to a credential that opens doors; the education that changes practice is largely incidental to that&nbsp;transaction.</p>
-      <p>Independent programmes that can name what they substitute (the adaptive expertise the official pathway was never designed to develop, the practitioner judgment a competence assessment has no mechanism to assess, the career trajectory a licence alone cannot open) are answering a different question from the one the market rate poses.<br>Educators who can articulate that argument have a pricing story that stands on its own ground.</p>
+      <p>Independent programmes that can name what they substitute (the adaptive expertise the official pathway was never designed to develop, the practitioner judgment a competence assessment has no mechanism to assess, the career trajectory a licence alone cannot open) are answering a different question from the one the market rate poses.<br>Educators who can articulate that argument have a pricing story that stands on its own&nbsp;ground.</p>
     </div>
   </div>
 
@@ -2079,7 +2093,7 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
-      <p>Ashford et al. (2024, Frontiers in Sports and Active Living) documented a call from researchers for a reorientation in how coaching quality is measured: away from prescribed competency checklists and toward adaptive expertise: what effective coaching looks, sounds and feels like in specific contexts. A systematic review of coach developer professional learning (International Journal of Sports Science &amp; Coaching, 2024) found that coach developers who design for contextual judgment produce different outcomes from those who design for competency demonstration.</p>
+      <p>Ashford et al. (2024, Frontiers in Sports and Active Living) documented a call from researchers for a reorientation in how coaching quality is measured: away from prescribed competency checklists and toward adaptive expertise: what effective coaching looks, sounds and feels like in specific contexts. A systematic review of coach developer professional learning (International Journal of Sports Science &amp; Coaching, 2024) found that coach developers who design for contextual judgment produce different outcomes from those who design for competency&nbsp;demonstration.</p>
       <p>A first-year UEFA B holder and a fifteen-year academy lead are separated by contextual judgment: the ability to read situations they haven't encountered before. Tiered content can accelerate knowledge acquisition, but contextual judgment develops through sustained practice under real&nbsp;conditions.</p>
     </div>
   </div>
@@ -2117,7 +2131,7 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">The conventional answer</div>
     <div class="entry-body">
-      <p>Ask for testimonials. Build an alumni community. Stay in touch.<br>Create a network effect that keeps graduates connected to each other and to your programme.</p>
+      <p>Ask for testimonials. Build an alumni community. Stay in touch.<br>Create a network effect that keeps graduates connected to each other and to your&nbsp;programme.</p>
     </div>
   </div>
 
@@ -2159,14 +2173,14 @@ body {
   <div class="entry-section">
     <div class="entry-section-label">The conventional answer</div>
     <div class="entry-body">
-      <p>When it's been tested across enough cohorts, when you have documented outcomes, when you feel confident enough in the results to stand behind them publicly and when the methodology is fully systematised and you can defend every design decision.</p>
+      <p>When it's been tested across enough cohorts, when you have documented outcomes, when you feel confident enough in the results to stand behind them publicly and when the methodology is fully systematised and you can defend every design&nbsp;decision.</p>
     </div>
   </div>
 
   <div class="entry-section">
     <div class="entry-section-label">What happens in practice</div>
     <div class="entry-body">
-      <p>A systematic review of coach developer professional learning published in the International Journal of Sports Science &amp; Coaching (2024) found that coach developers are key actors in the coaching ecosystem because they shape how coaches learn, but that little is known about the processes through which they develop their own practice. The review identified that the field of coach development is underdeveloped as a professional discipline precisely because most of its practitioners are not making their thinking public. The methodology that stays inside the course room is invisible to the field, unexamined by peers and unrefined by the friction that public articulation produces.</p>
+      <p>A systematic review of coach developer professional learning published in the International Journal of Sports Science &amp; Coaching (2024) found that coach developers are key actors in the coaching ecosystem because they shape how coaches learn, but that little is known about the processes through which they develop their own practice. The review identified that the field of coach development is underdeveloped as a professional discipline precisely because most of its practitioners are not making their thinking public. The methodology that stays inside the course room is invisible to the field, unexamined by peers and unrefined by the friction that public articulation&nbsp;produces.</p>
       <p>Coaching education methodology is a living document: every cohort surfaces edge cases, resistance patterns and transfer failures the previous cohort had kept invisible. The readiness threshold (enough cohorts, enough data, enough confidence) moves each time it's approached. Founders who've been running programmes for five years and still haven't published have crossed from readiness into certainty-seeking, a threshold the work itself never&nbsp;reaches.</p>
     </div>
   </div>
