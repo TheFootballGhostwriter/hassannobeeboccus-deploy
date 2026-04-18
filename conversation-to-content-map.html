@@ -333,8 +333,32 @@ body {
   .divider-title { font-size: 32px; }
   .cta-title { font-size: 28px; }
 
+  /* Body prose sizes up-ranged for mobile readability */
+  .entry-body, .entry-body p, .position-block-text, .position-block-text p,
+  .how-to-body, .how-to-body p, .stage-text, .finished-post-text,
+  .finished-post-text p, .how-to-structure-def, .cta-body { font-size: 15px; line-height: 1.75; }
+
+  /* Section labels — bump tiny uppercase labels to legible sizes on mobile */
+  .section-label, .divider-label, .entry-number,
+  .entry-section-label, .position-block-label,
+  .stage-label, .finished-post-label, .how-to-structure-term,
+  .cta-section-label, .cta-contact-label,
+  .page-header-brand, .page-header-doc,
+  .page-footer-brand, .page-footer-url, .page-number,
+  .doc-label-title, .divider-footer-brand,
+  .divider-footer-num { font-size: 11px; letter-spacing: 0.16em; }
+
+  .entry-audience-tag { font-size: 12px; }
+
+  /* Touch targets — min 44x44 per WCAG AA */
+  .back-to-top, .cookie-btn { width: 44px; height: 44px; }
+  .cookie-opt { height: 44px; padding: 0 0.9rem; font-size: 0.75rem; }
+
   /* Gold accent line: follow fluid page width */
   .doc-label-bar::after { width: 100%; max-width: calc(100% - 2rem); }
+
+  /* Safety net: long URLs/emails wrap */
+  body { overflow-wrap: break-word; word-break: normal; }
 }
 
 /* ── ACCESSIBILITY: focus-visible ── */

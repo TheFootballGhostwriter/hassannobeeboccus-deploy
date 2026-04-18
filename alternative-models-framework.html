@@ -331,8 +331,30 @@ body {
   .divider-title { font-size: 32px; }
   .cta-title { font-size: 28px; }
 
+  /* Body prose sizes up-ranged for mobile readability */
+  .model-body, .model-body p, .principle-text, .at-your-level-text, .how-to-body,
+  .navigation-note, .audit-question, .glossary-def, .cta-body { font-size: 15px; line-height: 1.75; }
+
+  /* Section labels — bump tiny uppercase labels to legible sizes on mobile */
+  .section-label, .audit-block-label, .divider-label,
+  .model-number, .model-section-label, .principle-label,
+  .at-your-level-label, .cta-section-label, .cta-contact-label,
+  .page-header-brand, .page-header-doc,
+  .page-footer-brand, .page-footer-url, .page-number,
+  .doc-label-title { font-size: 11px; letter-spacing: 0.16em; }
+
+  .model-context { font-size: 13px; }
+  .glossary-term { font-size: 14px; }
+
+  /* Touch targets — min 44x44 per WCAG AA */
+  .back-to-top, .cookie-btn { width: 44px; height: 44px; }
+  .cookie-opt { height: 44px; padding: 0 0.9rem; font-size: 0.75rem; }
+
   /* Terracotta accent line: follow fluid page width */
   .doc-label-bar::after { width: 100%; max-width: calc(100% - 2rem); }
+
+  /* Safety net: long URLs/emails wrap */
+  body { overflow-wrap: break-word; word-break: normal; }
 }
 
 /* ── ACCENT ITALIC — matches .accent-italic on website ── */
