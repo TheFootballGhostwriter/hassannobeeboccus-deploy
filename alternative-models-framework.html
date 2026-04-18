@@ -73,9 +73,6 @@ body {
   color: var(--text-body);
   line-height: 1.7;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* ── SITE NAV BAR ── */
@@ -268,6 +265,8 @@ body {
 /* ── PAGE WRAPPER ── */
 .page {
   width: 794px;
+  max-width: 100%;
+  margin: 0 auto;
   background: var(--cream);
   position: relative;
   box-shadow: 0 4px 40px rgba(0,0,0,0.12), 0 1px 0 rgba(0,0,0,0.06);
@@ -2181,14 +2180,16 @@ body {
   var btt = document.getElementById('backToTop');
   var progressBar = document.getElementById('readingProgress');
   var siteNav = document.querySelector('.site-nav');
-  var lastScrollY = window.scrollY;
-  var edgeBuffer = 150;   // freeze nav state within 150px of top or bottom (stops rubber-band jitter)
-  var moveThreshold = 8;  // ignore sub-8px moves
+  var lastY = window.scrollY;
+  var scrollBuffer = 0;     // rolling accumulated direction
+  var edgeBuffer = 150;     // freeze nav state within 150px of top or bottom
+  var toggleThreshold = 40; // only toggle after 40px of sustained scroll in one direction
+  var ticking = false;
 
-  window.addEventListener('scroll', function() {
+  function onScrollFrame() {
     var y = window.scrollY;
     var maxY = document.documentElement.scrollHeight - window.innerHeight;
-    var dy = y - lastScrollY;
+    var dy = y - lastY;
 
     // Back to top visibility
     btt.classList.toggle('show', y > 600);
@@ -2196,24 +2197,35 @@ body {
     var nearTop = y < edgeBuffer;
     var nearBottom = y > maxY - edgeBuffer;
 
-    // Force nav visible at top of page; freeze state near bottom.
     if (nearTop) {
       siteNav.classList.remove('nav-hidden');
-      lastScrollY = y;
-    } else if (!nearBottom && Math.abs(dy) >= moveThreshold) {
-      if (dy > 0) {
+      scrollBuffer = 0;
+    } else if (!nearBottom) {
+      if ((dy > 0 && scrollBuffer < 0) || (dy < 0 && scrollBuffer > 0)) scrollBuffer = 0;
+      scrollBuffer += dy;
+      if (scrollBuffer > toggleThreshold) {
         siteNav.classList.add('nav-hidden');
-      } else {
+        scrollBuffer = 0;
+      } else if (scrollBuffer < -toggleThreshold) {
         siteNav.classList.remove('nav-hidden');
+        scrollBuffer = 0;
       }
-      lastScrollY = y;
     }
 
     // Reading progress
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    var p = h > 0 ? Math.min(100, (y / h) * 100) : 0;
+    var p = maxY > 0 ? Math.min(100, (y / maxY) * 100) : 0;
     progressBar.style.width = p + '%';
     progressBar.setAttribute('aria-valuenow', Math.round(p));
+
+    lastY = y;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(onScrollFrame);
+      ticking = true;
+    }
   }, { passive: true });
 
   btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
