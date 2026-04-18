@@ -101,9 +101,11 @@ body {
 }
 .site-nav {
   width: 100%;
-  background: rgba(27, 58, 45, 0.97);
-  border-bottom: 1px solid rgba(201, 168, 76, 0.12);
-  padding: 0.9rem 1.5rem;
+  background: rgba(27, 58, 45, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,10 +140,12 @@ body {
 }
 .site-nav-inner {
   width: 100%;
-  max-width: 860px;
+  max-width: 960px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .site-nav-wordmark {
   font-family: 'Merriweather', serif;
@@ -157,7 +161,7 @@ body {
 .site-nav-wordmark .wm-name { color: #faf8f5; }
 .site-nav-wordmark .wm-sep {
   color: var(--gold);
-  margin: 0 0.4em;
+  margin: 0 0.3em;
   font-style: normal;
   font-weight: 300;
 }
@@ -187,9 +191,9 @@ body {
 }
 .site-nav-link {
   font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: rgba(250,247,242,0.92);
+  color: rgba(250,247,242,0.75);
   text-decoration: none;
   transition: color 0.2s;
   white-space: nowrap;
@@ -211,15 +215,24 @@ body {
   background: var(--gold);
   color: #1B3A2D;
   font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
   border-radius: 50px;
   text-decoration: none;
-  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(201, 168, 76, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.2s;
   white-space: nowrap;
 }
-.site-nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+.site-nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.25), 0 0 40px rgba(201, 168, 76, 0.08);
+}
+.site-nav-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(201, 168, 76, 0.2);
+  transition-duration: 0.1s;
+}
 
 /* ── DOC LABEL BAR ── */
 .doc-label-bar {
