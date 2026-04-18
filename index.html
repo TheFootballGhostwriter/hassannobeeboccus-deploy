@@ -848,6 +848,20 @@
       .hero-photo:hover { transform: none; }
       .hero-photo::before, .hero-photo img { transition: none; }
       .service-item:hover .service-stage { transition: none; }
+      .reading-progress { transition: none; }
+    }
+
+    /* Reading progress bar — fixed top, gold to match brand accent */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: var(--gold);
+      z-index: 300;
+      transition: width 0.1s linear;
+      pointer-events: none;
     }
   </style>
   <noscript><style>.fade-in,.stagger{opacity:1;transform:none;}</style></noscript>
@@ -855,6 +869,7 @@
 <body>
 
   <a href="#hero" class="skip-link">Skip to content</a>
+  <div class="reading-progress" id="readingProgress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
   <!-- AVAILABILITY BANNER -->
   <!-- NAV -->
@@ -1247,11 +1262,17 @@
     // Back to top
     var btt = document.getElementById('backToTop');
     var tf = document.getElementById('themeFloat');
+    var progressBar = document.getElementById('readingProgress');
     window.addEventListener('scroll', function() {
-      var show = window.scrollY > 600;
+      var y = window.scrollY;
+      var show = y > 600;
       btt.classList.toggle('show', show);
       tf.classList.toggle('show', show);
-    });
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var p = h > 0 ? Math.min(100, (y / h) * 100) : 0;
+      progressBar.style.width = p + '%';
+      progressBar.setAttribute('aria-valuenow', Math.round(p));
+    }, { passive: true });
     btt.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
     tf.addEventListener('click', function() { toggleTheme(); });
 
