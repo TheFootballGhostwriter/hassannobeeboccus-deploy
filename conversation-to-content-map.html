@@ -39,7 +39,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
 <style>
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -133,7 +134,7 @@ body {
   font-weight: 300;
 }
 .site-nav-wordmark .wm-role {
-  color: #C4574A;
+  color: #f0a690;
   font-style: italic;
 }
 .site-nav-right {
@@ -145,7 +146,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 0.82rem;
   font-weight: 500;
-  color: rgba(250,247,242,0.7);
+  color: rgba(250,247,242,0.92);
   text-decoration: none;
   transition: color 0.2s;
   white-space: nowrap;
@@ -261,6 +262,10 @@ body {
   color: rgba(250,247,242,0.5);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 4px;
   transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s;
 }
 .site-footer-brand a[aria-label]:hover {
@@ -287,7 +292,7 @@ body {
   border-top: 1px solid rgba(250,247,242,0.1);
   text-align: center;
   font-size: 0.8rem;
-  color: rgba(250,247,242,0.35);
+  color: rgba(250,247,242,0.65);
 }
 @media (max-width: 640px) {
   .site-footer-inner { justify-content: center; text-align: center; }
