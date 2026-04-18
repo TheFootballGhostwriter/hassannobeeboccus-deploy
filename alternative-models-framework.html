@@ -80,21 +80,30 @@ body {
 
 /* ── SITE NAV BAR ── */
 /* Matches hassannobeeboccus.com nav exactly: dark green, wordmark pattern, gold CTA */
+/* Sticky wrapper — nav + doc-label-bar move as one block */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
 .site-nav {
   width: 100%;
   background: rgba(27, 58, 45, 0.97);
   border-bottom: 1px solid rgba(201, 168, 76, 0.12);
   padding: 0.9rem 1.5rem;
-  position: sticky;
-  top: 0;
-  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              margin-top 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.site-nav.nav-hidden { transform: translateY(-100%); }
+/* When hidden: translate visually AND collapse layout via negative margin-top
+   (--nav-h set by JS) so the doc-label-bar slides up with no gap. */
+.site-nav.nav-hidden {
+  transform: translateY(-100%);
+  margin-top: calc(-1 * var(--nav-h, 60px));
+}
 
 /* Reading progress bar — fixed top, terracotta to match brand accent */
 .reading-progress {
@@ -205,11 +214,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: sticky;
-  top: 53px;   /* sits flush under nav: nav padding (0.9rem×2 = 28.8px) + Inter 0.82rem line (~20px) + border = ~53px */
-  z-index: 199;
   flex-shrink: 0;
-  transition: top 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
 }
 /* Terracotta accent line, page-width, pinned to the bottom of the sticky bar.
    Acts as a visual anchor/reading-ruler that stays in view while scrolling.
@@ -1330,20 +1336,24 @@ body {
 
 </style>
 <script>
-  /* Set doc-label-bar top offset to exact nav height at runtime — avoids px guesswork */
-  document.addEventListener('DOMContentLoaded', function() {
+  /* Publish actual nav height as a CSS variable so the negative margin-top on
+     .site-nav.nav-hidden collapses its layout precisely. */
+  function publishNavHeight() {
     var nav = document.querySelector('.site-nav');
-    var bar = document.querySelector('.doc-label-bar');
-    if (nav && bar) {
-      bar.style.top = nav.getBoundingClientRect().height + 'px';
+    if (nav) {
+      document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
     }
-  });
+  }
+  document.addEventListener('DOMContentLoaded', publishNavHeight);
+  window.addEventListener('resize', publishNavHeight);
 </script>
 <noscript><style>.fade-in,.stagger{opacity:1;transform:none;}</style></noscript>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to content</a>
 <div class="reading-progress" id="readingProgress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+<!-- ── STICKY HEADER (nav + doc-label-bar move as one block) ── -->
+<div class="sticky-header">
 <!-- ════════════════════════════════════════════════
      SITE NAV — mirrors hassannobeeboccus.com
 ════════════════════════════════════════════════ -->
@@ -1376,6 +1386,7 @@ body {
     <span class="doc-label-title">The Alternative Models Framework | 2026 Edition</span>
   </div>
 </div>
+</div><!-- end .sticky-header -->
 
 <main id="main-content">
 <div class="page">
@@ -2163,17 +2174,8 @@ body {
   var btt = document.getElementById('backToTop');
   var progressBar = document.getElementById('readingProgress');
   var siteNav = document.querySelector('.site-nav');
-  var docLabelBar = document.querySelector('.doc-label-bar');
   var lastScrollY = window.scrollY;
   var scrollThreshold = 100;
-
-  function syncBarTop() {
-    if (docLabelBar && siteNav) {
-      docLabelBar.style.top = siteNav.classList.contains('nav-hidden')
-        ? '0px'
-        : siteNav.offsetHeight + 'px';
-    }
-  }
 
   window.addEventListener('scroll', function() {
     var y = window.scrollY;
@@ -2183,15 +2185,9 @@ body {
 
     // Auto-hide nav on scroll down, show on scroll up
     if (y > scrollThreshold && y > lastScrollY) {
-      if (!siteNav.classList.contains('nav-hidden')) {
-        siteNav.classList.add('nav-hidden');
-        syncBarTop();
-      }
+      siteNav.classList.add('nav-hidden');
     } else if (y < lastScrollY) {
-      if (siteNav.classList.contains('nav-hidden')) {
-        siteNav.classList.remove('nav-hidden');
-        syncBarTop();
-      }
+      siteNav.classList.remove('nav-hidden');
     }
     lastScrollY = y;
 
