@@ -1,11 +1,15 @@
 {
+  "redirects": [
+    { "source": "/footballthoughts/:slug", "destination": "/football-thoughts/:slug", "permanent": true },
+    { "source": "/footballthoughts", "destination": "/football-thoughts", "permanent": true },
+    { "source": "/writing", "destination": "/football-thoughts", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/build-your-public-voice", "destination": "/buildyourpublicvoice.html" },
     { "source": "/buildyourpublicvoice", "destination": "/buildyourpublicvoice.html" },
     { "source": "/course", "destination": "/buildyourpublicvoice.html" },
-    { "source": "/footballthoughts/:slug", "destination": "/footballthoughts/:slug.html" },
-    { "source": "/footballthoughts", "destination": "/footballthoughts.html" },
-    { "source": "/writing", "destination": "/footballthoughts.html" },
+    { "source": "/football-thoughts/:slug", "destination": "/football-thoughts/:slug.html" },
+    { "source": "/football-thoughts", "destination": "/football-thoughts.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/5-development-models", "destination": "/5-development-models.html" },
     { "source": "/alternative-models-framework", "destination": "/alternative-models-framework.html" },
