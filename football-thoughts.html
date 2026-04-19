@@ -259,8 +259,10 @@
     }
     .writing-card:hover { border-color: var(--gold); box-shadow: 0 24px 60px rgba(0,0,0,0.2), 0 0 0 2px rgba(201,168,76,0.2); transform: translateY(-2px); }
 
-    .writing-card.blog-card { border-left-color: var(--gold); }
-    .writing-card.blog-card .card-tag { color: var(--gold); }
+    .writing-card.blog-card,
+    .writing-card.note-card { border-left-color: var(--gold); }
+    .writing-card.blog-card .card-tag,
+    .writing-card.note-card .card-tag { color: var(--gold); }
 
     .writing-card .card-tag {
       font-family: 'Merriweather', serif; font-style: italic; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
@@ -408,10 +410,31 @@
     </div>
   </div>
 
+  <!-- NOTES -->
+  <div class="writing-section has-texture fade-in" id="notes" style="background:var(--bg-alt);">
+    <div class="container">
+      <div style="width:40px;height:3px;background:var(--gold);margin-bottom:1.5rem;"></div>
+      <h2>Notes</h2>
+      <p class="section-desc">Short thoughts on football and football development, published here only. More notes coming.</p>
+      <div class="writing-list">
+
+        <div class="writing-card note-card">
+          <div class="card-tag">Coming soon</div>
+          <h3>First note coming shortly</h3>
+          <p class="card-excerpt">Short, site-exclusive thoughts on football and football development that live outside the LinkedIn feed.</p>
+          <div class="card-meta">
+            <span>April 2026</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- MORE -->
   <div class="coming-soon">
     <div class="container">
-      <p>Follow <a href="https://www.linkedin.com/newsletters/football-academy-intelligence-7433166705067130880/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">Football Academy Intelligence</a> on LinkedIn to read each edition first.</p>
+      <p>Subscribe to my LinkedIn newsletter, <a href="https://www.linkedin.com/newsletters/football-academy-intelligence-7433166705067130880/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">Football Academy Intelligence</a>, to read each edition first.</p>
     </div>
   </div>
 
