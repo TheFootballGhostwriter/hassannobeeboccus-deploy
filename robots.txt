@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /SITE-REFERENCE.md
 Sitemap: https://hassannobeeboccus.com/sitemap.xml
