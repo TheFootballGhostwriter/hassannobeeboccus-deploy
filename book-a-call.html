@@ -166,6 +166,24 @@
     .page-header h1 { color: var(--cream); margin-bottom: 0.5rem; }
     .page-header p { color: rgba(250,247,242,0.75); font-size: 0.95rem; max-width: 560px; }
 
+    /* ACCENTS + BUTTONS */
+    .accent-italic { font-family: 'Merriweather', serif; font-style: italic; color: var(--terracotta); }
+    body.dark .accent-italic { color: var(--terracotta); }
+
+    .hero-book-btn {
+      display: inline-block; margin-top: 1.25rem;
+      background: var(--gold); color: var(--green);
+      padding: 0.85rem 1.75rem; border-radius: 50px;
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s var(--ease);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .hero-book-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    body.dark .hero-book-btn { color: #141414; }
+
+    .context-block .gold-bar { width: 40px; height: 3px; background: var(--gold); margin-bottom: 1.25rem; border-radius: 2px; }
+
     /* TEXTURE */
     .has-texture { position: relative; }
     .has-texture::before {
@@ -316,21 +334,24 @@
   <div class="page-header">
     <div class="container">
       <div class="eyebrow">Book a call</div>
-      <h1>Let's talk</h1>
-      <p>30 minutes, video call, no pitch. A conversation to see if we should work together.</p>
+      <h1>Let's <span class="accent-italic">talk</span></h1>
+      <p>30 minutes. Video call. No pitch.</p>
+      <p>A conversation to see if we should work together.</p>
+      <a href="#book" class="hero-book-btn">Pick a time &rarr;</a>
     </div>
   </div>
 
   <section class="context-block has-texture">
     <div class="container">
+      <div class="gold-bar"></div>
       <h2>What to expect</h2>
       <p>This is a free 30-minute introductory call. It's for directors, heads of academy, coaches and football development leaders, whether you want to become known for your thinking or you're working through a specific strategic decision.</p>
-      <p>We'll talk about where you are, what you're working on and whether working together is the right fit. No slides, no pitch. If it's not a fit, I'll say so.</p>
+      <p>We'll talk about where you are, what you're working on and whether working together is the right fit. <span class="accent-italic">No slides, no pitch.</span> If it's not a fit, I'll say so.</p>
       <p class="meta-line">30 minutes &middot; video call &middot; no cost</p>
     </div>
   </section>
 
-  <section class="booking-section fade-in">
+  <section id="book" class="booking-section fade-in">
     <div class="container">
       <div class="cal-wrapper">
         <div id="cal-placeholder" class="cal-placeholder">
