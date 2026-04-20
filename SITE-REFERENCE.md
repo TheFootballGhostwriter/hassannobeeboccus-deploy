@@ -881,6 +881,17 @@ Following progressive-disclosure best practice (trajectorywebdesign 2026): premi
 - **Every Book a Call CTA across the site points to `/book-a-call`.** Grep for `href="/book-a-call"` when auditing.
 - **When adding a new event type**: duplicate `book-a-call.html`, rename the `Cal.ns[...]` namespace everywhere in the script (single string replace), update `calLink`, add to vercel.json and sitemap.xml.
 
+### Director's Debrief price — three places to update if it changes
+
+`£249` lives in:
+
+1. `<meta name="description">` in `directors-debrief.html`
+2. `<meta property="og:description">` + `<meta name="twitter:description">` in the same file
+3. JSON-LD `@graph[1].offers.price` (the Service schema block)
+4. The visible `.investment-price` element in the Investment section
+
+Also update the `priceCurrency` (currently `GBP`) if selling in another currency. The Service schema has the authoritative price — search engines and AI agents read it.
+
 ---
 
 ## 24. Sitemap + robots
