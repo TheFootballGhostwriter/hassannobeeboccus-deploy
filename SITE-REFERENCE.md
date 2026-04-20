@@ -16,7 +16,9 @@ Read this before making any change. It describes how the site is built, what the
 - **DNS**: Namecheap
 - **Email + EECs**: MailerLite (via `/api/subscribe.js`)
 - **Analytics**: GA4 `G-8ER6D68M04` + Vercel Web Analytics, both consent-gated
-- **Booking**: cal.eu `cal.eu/thefootballghostwriter/30min`
+- **Booking**: cal.eu — two events, both embedded inline on dedicated pages:
+  - Free 30-min intro call (`30min` slug) → `/book-a-call`
+  - Paid Director's Debrief (`the-director-s-debrief` slug) → `/directors-debrief`
 
 No build step. Edit HTML → `vercel --prod` → git commit + push. That's the entire loop.
 
@@ -80,6 +82,8 @@ All routing lives in `vercel.json`. Two sections: `redirects` (308 permanent) an
 | `/football-thoughts/blog/[slug]` | `football-thoughts/blog/[slug].html` | Individual blog post |
 | `/football-thoughts/notes` | `football-thoughts/notes.html` | Notes archive |
 | `/football-thoughts/notes/[slug]` | `football-thoughts/notes/[slug].html` | Individual note |
+| `/book-a-call` | `book-a-call.html` | Free 30-min call (Cal embed, consent-gated) |
+| `/directors-debrief` | `directors-debrief.html` | Paid Director's Debrief (Cal embed, consent-gated) |
 | `/privacy` | `privacy.html` | Privacy |
 | `/alternative-models-framework` | `alternative-models-framework.html` | EEC asset viewer |
 | `/alternative-models-framework.pdf` | `alternative-models-framework.html` | Forces `.pdf` URLs to the viewer |
@@ -801,7 +805,85 @@ if (params.get('error') === '1') {
 
 ---
 
-## 23. Sitemap + robots
+## 23. Cal.eu booking embeds (`/book-a-call`, `/directors-debrief`)
+
+Both booking pages embed the cal.eu widget inline so users stay on-site. Same structural pattern, different `calLink` + namespace per event.
+
+### Why separate pages (not one page with both)
+
+Single-CTA landing pages convert ~266% better than multi-offer pages (Colorlib, DigitalApplied, 2026). B2B best practice is one event type per booking page (intelemark, b2bappointmentsetting). Applied here: free intro on one page, paid session on another.
+
+### Page anatomy
+
+```
+Nav (no Book a Call button — the page is the CTA)
+Page header (eyebrow + h1 + standfirst)
+Context block (3–4 sentences + small meta line)
+Cal wrapper card
+  ├── #cal-placeholder  (shown until consent)
+  └── #cal-embed        (cal widget injects here after consent)
+Cross-sell card (links to the other booking page)
+Footer
+```
+
+### Consent-gating
+
+Cal loads a third-party script and sets cookies. Following the site's existing consent pattern, we gate it behind `cookieConsent === 'all'`.
+
+- **Before consent**: `#cal-placeholder` shows a styled card: *"The calendar is hosted by Cal.eu and uses cookies. Accept cookies to load it, or email me to book directly."* with an inline Accept button.
+- **On accept**: `loadCal()` fires, placeholder hides, embed shows. `loadAnalytics()` fires too.
+- **On decline**: placeholder stays. User can email.
+- **On revisit with prior consent**: embed loads immediately.
+
+### Brand colour
+
+The cal.eu dashboard brand-colour setting is paid-tier / unreliable. Force it per-embed via `cssVarsPerTheme`:
+
+```js
+Cal.ns["<namespace>"]("ui", {
+  "cssVarsPerTheme": {
+    "light": {"cal-brand": "#C9A84C"},
+    "dark":  {"cal-brand": "#C9A84C"}
+  },
+  "hideEventTypeDetails": false,
+  "layout": "month_view",
+  "theme": calThemeName()  // syncs to site theme
+});
+```
+
+### Theme sync
+
+When the site's theme toggle fires, re-call `Cal.ns["<namespace>"]("ui", { theme })` with the new value so the embed follows the site instead of OS preference.
+
+```js
+tf.addEventListener('click', function() {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  if (window.Cal && window.Cal.ns && window.Cal.ns["<namespace>"]) {
+    window.Cal.ns["<namespace>"]("ui", { theme: calThemeName() });
+  }
+});
+```
+
+### Where the Director's Debrief gets promoted
+
+Following progressive-disclosure best practice (trajectorywebdesign 2026): premium tiers stay out of nav, surface contextually only.
+
+- **Home page mid-CTA**: small italic line under the primary Book a Call button: *"Or book the Director's Debrief for a paid strategy session."*
+- **`/book-a-call` cross-sell card**: after the embed, linking to `/directors-debrief`
+- **Footer**: secondary link on the home page, `/book-a-call`, and `/directors-debrief` pages only
+- **Not in main nav**. Not at top of home. Not on EEC landings (those have their own conversion goal).
+
+### Key invariants for these pages
+
+- **Do not load cal unconditionally.** Always gate behind consent.
+- **Don't hardcode `target="_blank"` on `/book-a-call` or `/directors-debrief` links.** They are internal same-tab.
+- **Every Book a Call CTA across the site points to `/book-a-call`.** Grep for `href="/book-a-call"` when auditing.
+- **When adding a new event type**: duplicate `book-a-call.html`, rename the `Cal.ns[...]` namespace everywhere in the script (single string replace), update `calLink`, add to vercel.json and sitemap.xml.
+
+---
+
+## 24. Sitemap + robots
 
 `sitemap.xml` is hand-maintained (no generator). Every indexable URL has an entry:
 
@@ -898,7 +980,7 @@ git revert HEAD && git push  # undo the code change in the repo
 - **Search Console**: property owned as `hassannobeeboccus.com` (domain-wide). Verified via DNS TXT.
 - **GA4**: property ID `G-8ER6D68M04`.
 - **MailerLite**: account linked. Groups listed in §22. API key in Vercel env only.
-- **Cal.eu**: booking link `cal.eu/thefootballghostwriter/30min` — used on every Book a Call CTA.
+- **Cal.eu**: two public events — `thefootballghostwriter/30min` (free intro) and `thefootballghostwriter/the-director-s-debrief` (paid). Both are embedded inline on-site — the external URLs are no longer used as CTAs anywhere. Brand colour set via embed `cssVarsPerTheme` to `#C9A84C` (gold) for both light and dark, since the cal dashboard brand setting doesn't apply. Theme is synced to the site's dark mode toggle.
 
 ---
 
@@ -926,7 +1008,8 @@ git revert HEAD && git push  # undo the code change in the repo
 | Change footer links | Every page (currently duplicated inline) — search for the link text |
 | Add an EEC | `api/subscribe.js` COURSES object + new landing page |
 | New redirect | `vercel.json` `redirects` array — set `"permanent": true` for 308 |
-| Change booking link | Every page (search for `cal.eu/thefootballghostwriter/30min`) |
+| Change booking link | Every "Book a Call" CTA points to `/book-a-call` (internal). To change the underlying cal event, update the `calLink` in `book-a-call.html` (and namespace string across the script block). |
+| Add a new cal event page | Duplicate `book-a-call.html`, rename, update canonical/OG/JSON-LD, update `Cal.ns["<namespace>"]` references in the script, set `calLink` and event slug, add rewrite in `vercel.json`, add to `sitemap.xml`. Consent-gating and theme-sync already baked in. |
 
 ---
 

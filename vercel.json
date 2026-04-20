@@ -13,6 +13,8 @@
     { "source": "/football-thoughts/notes/:slug", "destination": "/football-thoughts/notes/:slug.html" },
     { "source": "/football-thoughts/notes", "destination": "/football-thoughts/notes.html" },
     { "source": "/football-thoughts", "destination": "/football-thoughts.html" },
+    { "source": "/book-a-call", "destination": "/book-a-call.html" },
+    { "source": "/directors-debrief", "destination": "/directors-debrief.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/5-development-models", "destination": "/5-development-models.html" },
     { "source": "/alternative-models-framework", "destination": "/alternative-models-framework.html" },
