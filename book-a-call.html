@@ -76,7 +76,7 @@
 
     h1, h2, h3 { font-family: 'Merriweather', serif; line-height: 1.3; color: var(--green); }
     h1 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 900; }
-    h2 { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; }
+    h2 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 700; margin-bottom: 1.25rem; letter-spacing: -0.01em; }
     p { margin-bottom: 1rem; color: var(--text); }
     p:last-child { margin-bottom: 0; }
 
@@ -128,7 +128,15 @@
     @media (max-width: 640px) { nav .wordmark .wm-sep, nav .wordmark .wm-title { display: none; } }
 
     /* HEADER */
-    .page-header { background: var(--green); padding: 3rem 0 2.5rem; position: relative; overflow: hidden; }
+    .page-header { background: var(--green); padding: 3.5rem 0 3rem; position: relative; overflow: hidden; }
+    .page-header::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none; z-index: 0;
+      background-image: url('/goal-bg.webp');
+      background-image: image-set(url('/goal-bg.webp') type('image/webp'), url('/goal-bg.jpg') type('image/jpeg'));
+      background-size: cover; background-position: center;
+      opacity: 0.03; filter: grayscale(100%);
+    }
     .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 25% 50%, rgba(201,168,76,0.18) 0%, transparent 55%), radial-gradient(ellipse at 75% 30%, rgba(192,57,43,0.10) 0%, transparent 50%); pointer-events: none; z-index: 0; }
     .page-header > * { position: relative; z-index: 1; }
     .page-header .eyebrow { font-family: 'Merriweather', serif; font-style: italic; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
@@ -148,7 +156,7 @@
 
     /* CONTEXT */
     .context-block { padding: 2.5rem 0 1.5rem; }
-    .context-block h2 { margin-bottom: 0.75rem; font-size: 1.2rem; }
+    .context-block h2 { margin-bottom: 1rem; }
     .context-block p { font-size: 0.95rem; color: var(--text); margin-bottom: 1rem; }
     .context-block .meta-line {
       font-family: 'Merriweather', serif; font-style: italic;
