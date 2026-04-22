@@ -12,6 +12,7 @@
     { "source": "/football-thoughts/blog", "destination": "/football-thoughts/blog.html" },
     { "source": "/football-thoughts/notes/:slug", "destination": "/football-thoughts/notes/:slug.html" },
     { "source": "/football-thoughts/notes", "destination": "/football-thoughts/notes.html" },
+    { "source": "/football-thoughts/:slug", "destination": "/:slug.html" },
     { "source": "/football-thoughts", "destination": "/football-thoughts.html" },
     { "source": "/book-a-call", "destination": "/book-a-call.html" },
     { "source": "/directors-debrief", "destination": "/directors-debrief.html" },
