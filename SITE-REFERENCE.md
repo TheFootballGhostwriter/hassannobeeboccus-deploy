@@ -260,22 +260,34 @@ Nav tabs are **page-scoped** — an anchor like `#services` only makes sense on 
 
 ## 8. Page header (hero block)
 
-Green block with a radial-gradient mesh, optional SVG texture or image, eyebrow + h1 + subtitle.
+Green block with a radial-gradient mesh, optional SVG texture or image, eyebrow OR breadcrumb + h1 + subtitle.
 
 ```html
 <div class="page-header">
   <div class="container">
-    <div class="eyebrow">Football Thoughts</div>   <!-- optional -->
+    <div class="eyebrow">Football Thoughts</div>   <!-- optional, archive/landing pages -->
     <h1>Page title</h1>
     <p>Standfirst / subtitle.</p>
   </div>
 </div>
 ```
 
+For individual blog posts and notes, swap the `.eyebrow` for a breadcrumb:
+
+```html
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="/football-thoughts">Football Thoughts</a>
+  <span class="bc-divider" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/></svg></span>
+  <a href="/football-thoughts/blog">Blog</a>
+</nav>
+<h1>Article title</h1>
+```
+
 - **Padding**: `3.5rem 0 3rem` desktop, `2.5rem 0 2rem` mobile.
 - **Gradient mesh** (`::before`): two radial gradients at 25%/50% gold (0.18) and 75%/30% terracotta (0.10), transparent beyond 55%.
 - **Optional image texture** (`::after`): `goal-bg.webp` with 0.03 opacity, greyscale. Only used on `football-thoughts.html` and similar brand pages.
 - **Eyebrow**: `Merriweather` italic, 0.78rem, 600, uppercase, gold, letter-spacing 0.08em.
+- **Breadcrumb**: `Merriweather` italic, 0.85rem, gold links with terracotta hover and a sliding 1px underline, separated by the football-hex SVG at 11×11 in soft gold (`rgba(201,168,76,0.55)`). Two crumbs only — `Football Thoughts › Blog` (or `Football Thoughts › Notes`). The article title sits below as the implicit current page; don't repeat it as a third crumb.
 - **h1**: cream, margin-bottom 0.5rem.
 - **Subtitle `p`**: `rgba(250,247,242,0.6)`, 0.95rem.
 
@@ -928,9 +940,9 @@ Also update the `priceCurrency` (currently `GBP`) if selling in another currency
 5. Set `.reading-time` (e.g. "8 min read · April 2026")
 6. Write the article body (use `<h2>` for section breaks, `<blockquote>` for pulls)
 7. Set the `<a class="article-linkedin" href="[LINKEDIN_URL]">` to the LinkedIn original
-8. Update `.article-back` is already pointing to `/football-thoughts/blog` — leave it
+8. `.article-back` points to `/football-thoughts` (the FT hub) so readers return to the same parent regardless of where they entered from. The breadcrumb at the top of the article (`Football Thoughts › Blog`) gives the second route.
 9. Add card to `/football-thoughts/blog` archive (at the top, most recent first)
-10. Consider adding to `/football-thoughts` main page Blog section if recent
+10. Add card to `/football-thoughts` main page Blog section (most recent first, capped at 3 — see "Main page previews" below)
 11. Update `sitemap.xml` — new `<url>` entry
 12. Deploy + commit
 
@@ -946,9 +958,9 @@ Also update the `priceCurrency` (currently `GBP`) if selling in another currency
 8. Update `sitemap.xml`
 9. Deploy + commit
 
-### Main page previews (optional)
+### Main page previews
 
-When Blog or Notes sections on `/football-thoughts` have more than 6 items, cap to the 6 most recent and add a `<a href="/football-thoughts/blog">View all editions &rarr;</a>` or `<a href="/football-thoughts/notes">View all notes &rarr;</a>` link under each section.
+The Blog (and Notes) sections on `/football-thoughts` are capped at the **3 most recent** with a `.section-link` button below the cards: `<a class="section-link" href="/football-thoughts/blog">View all editions <span class="sl-arrow">&rarr;</span></a>`. The link is a soft gold-tinted pill (Merriweather italic, gold border at 0.45 alpha, terracotta hover) — it's the only way visitors discover the full archive from the FT hub, so it has to read as a deliberate CTA, not an afterthought.
 
 ---
 

@@ -247,6 +247,12 @@
     .section-desc a { color: var(--text-muted); text-decoration: underline; }
     .section-note { font-size: 0.88rem; font-style: italic; color: var(--text-muted); margin-top: 1.5rem; }
     .section-note a { color: var(--gold); text-decoration: underline; }
+    .section-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.5rem; font-family: 'Merriweather', serif; font-style: italic; font-size: 0.95rem; color: var(--green); text-decoration: none; padding: 0.55rem 1.05rem 0.55rem 1.1rem; border: 1px solid rgba(201,168,76,0.45); border-radius: 50px; background: rgba(201,168,76,0.06); transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s cubic-bezier(0.22,1,0.36,1); }
+    .section-link .sl-arrow { color: var(--gold); font-style: normal; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1); }
+    .section-link:hover { background: rgba(201,168,76,0.14); border-color: var(--gold); color: var(--terracotta); transform: translateY(-1px); }
+    .section-link:hover .sl-arrow { transform: translateX(4px); color: var(--terracotta); }
+    body.dark .section-link { color: var(--gold); }
+    body.dark .section-link:hover { color: var(--terracotta); }
 
     .writing-list { display: flex; flex-direction: column; gap: 1.25rem; }
 
@@ -418,6 +424,7 @@
         </a>
 
       </div>
+      <a class="section-link" href="/football-thoughts/blog">View all editions <span class="sl-arrow">&rarr;</span></a>
       <p class="section-note">Subscribe to my LinkedIn newsletter, <a href="https://www.linkedin.com/newsletters/football-academy-intelligence-7433166705067130880/" target="_blank" rel="noopener">Football Academy Intelligence</a>, to read each edition first.</p>
     </div>
   </div>
