@@ -52,12 +52,14 @@
       transition: width 0.1s linear;
       pointer-events: none;
     }
-    /* Terracotta accent line — sits below the progress bar, pinned to the top of the nav */
-    .reading-rule {
-      position: fixed; top: 3px; left: 0; right: 0;
+    /* Terracotta accent line — pinned to the bottom of the sticky nav, full-width */
+    nav::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      bottom: -2px;
       height: 2px;
       background: var(--terracotta);
-      z-index: 299;
       pointer-events: none;
     }
 
@@ -347,7 +349,6 @@
 
   <!-- NAV -->
   <div class="reading-progress" id="readingProgress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
-  <div class="reading-rule" aria-hidden="true"></div>
   <nav>
     <div class="nav-inner">
       <div class="nav-brand">
