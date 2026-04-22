@@ -287,6 +287,7 @@ For individual blog posts and notes, swap the `.eyebrow` for a breadcrumb:
 - **Gradient mesh** (`::before`): two radial gradients at 25%/50% gold (0.18) and 75%/30% terracotta (0.10), transparent beyond 55%.
 - **Optional image texture** (`::after`): `goal-bg.webp` with 0.03 opacity, greyscale. Only used on `football-thoughts.html` and similar brand pages.
 - **Eyebrow**: `Merriweather` italic, 0.78rem, 600, uppercase, gold, letter-spacing 0.08em.
+- **Hub mark (Football Thoughts pages)**: the football-hex SVG scaled up to 52×52 (44×44 mobile), gold stroke at 1.75, soft gold drop-shadow (`rgba(201,168,76,0.35)` at 10px blur). Appears above the eyebrow/H1 on `/football-thoughts`, `/football-thoughts/blog`, and `/football-thoughts/notes` so visitors who clicked the nav hex icon see the same mark confirming where they landed. Do not use on individual post/note pages — those use the breadcrumb instead.
 - **Breadcrumb**: `Merriweather` italic, 0.85rem, gold links with terracotta hover and a sliding 1px underline, separated by the football-hex SVG at 11×11 in soft gold (`rgba(201,168,76,0.55)`). Two crumbs only — `Football Thoughts › Blog` (or `Football Thoughts › Notes`). The article title sits below as the implicit current page; don't repeat it as a third crumb.
 - **h1**: cream, margin-bottom 0.5rem.
 - **Subtitle `p`**: `rgba(250,247,242,0.6)`, 0.95rem.
@@ -459,7 +460,7 @@ Dark green, 2.5rem padding, two-group layout (brand+icons left, links right), co
 
 ```html
 <footer>
-  <div style="max-width:700px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;">
+  <div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:1rem;">
     <div style="display:flex;align-items:center;gap:0.5rem;">
       <span style="font-family:'Merriweather',serif;font-size:0.88rem;font-weight:700;color:rgba(250,247,242,0.6);">Hassan Nobeeboccus</span>
       <a href="https://www.linkedin.com/in/thefootballghostwriter/" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:rgba(250,247,242,0.5);"><!-- LinkedIn SVG --></a>
@@ -487,7 +488,8 @@ Dark green, 2.5rem padding, two-group layout (brand+icons left, links right), co
 - **Mobile**: links get `min-height: 44px` for touch targets
 - **Icons (aria-label links)**: `display: inline-flex; align-items: center`, scale to 1.15 on hover (`transition: transform 0.2s var(--ease), color 0.2s`). This rule lives in `shared.css` and applies to every page automatically.
 - **Link text**: include `Home`, `Services` (home anchor), `Courses` (→ `/courses`), `Email` (mailto), `Privacy Policy`. EEC landing pages may have reduced sets (Home · Email · Privacy Policy only).
-- **Vertical alignment**: outer flex uses `align-items: center` so the brand+icons row (44px tall — driven by `footer a[aria-label]` touch-target rule in `shared.css`) stays vertically centred against the right-hand link list (~23px). Using `flex-start` here causes the link list to sit at the top of the brand row instead of in line with the brand text — that's the "footer misalignment" symptom.
+- **Layout**: outer flex stacks vertically (`flex-direction: column; align-items: flex-start; gap: 1rem`) so every page gets three rows — brand+icons, link list, copyright — regardless of how many links fit. The alternative (row + `space-between`) leaves the LinkedIn and Football Thoughts icons floating in the middle of the footer when the link list is short, and the mismatch against the home page (where 9 links force a natural wrap) reads as a spacing bug. Stacking is the consistent answer.
+- The copyright `<div>` stays a sibling of the flex container with `width:100%; text-align:center`, so it renders full-width and centred no matter how the rows above stack.
 
 ### Required footer icons
 
