@@ -29,22 +29,21 @@ No build step. Edit HTML → `vercel --prod` → git commit + push. That's the e
 ```
 hassannobeeboccus-deploy/
 ├── index.html                          Main home page
-├── football-thoughts.html              Football Thoughts landing (Blog + Notes preview)
-├── football-thoughts/
-│   ├── blog.html                       Blog archive page
-│   ├── notes.html                      Notes archive page
-│   ├── blog/
-│   │   └── [slug].html                 Individual blog posts
-│   └── notes/
-│       └── [slug].html                 Individual notes
+├── football-thoughts.html              Football Thoughts hub — unified feed (filter bar + card badges)
+├── <post-slug>.html                    Individual Football Thoughts post
+│                                       (editions, articles, notes all live at repo root
+│                                       and resolve via /football-thoughts/:slug wildcard)
+│   e.g.  does-coaching-licence-develop-you.html
+│         female-coaches-football-decline-uk.html
+│         football-development-practitioners-invisible-online.html
 ├── buildyourpublicvoice.html           EEC landing (Build Your Public Voice)
 ├── 5-development-models.html           EEC landing (5 Development Models)
 ├── freecourses.html                    Courses hub (/courses)
 ├── privacy.html                        Privacy policy
 ├── alternative-models-framework.html   In-browser PDF-style viewer (EEC2 asset)
 ├── conversation-to-content-map.html    In-browser PDF-style viewer (EEC1 asset)
-├── blog-post-template.html             Template — duplicate for new blog posts
-├── note-template.html                  Template — duplicate for new notes
+├── blog-post-template.html             Template — duplicate for new editions / articles
+├── note-template.html                  Template — duplicate for new notes (site-exclusive)
 ├── shared.css                          Tiny base stylesheet (loaded on every page)
 ├── vercel.json                         Routing (redirects + rewrites)
 ├── sitemap.xml                         Sitemap (manually maintained)
@@ -277,7 +276,7 @@ For individual blog posts and notes, swap the `.eyebrow` for a breadcrumb:
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   <a href="/football-thoughts">Football Thoughts</a>
   <span class="bc-divider" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/></svg></span>
-  <a href="/football-thoughts/blog">Blog</a>
+  <a href="/football-thoughts">Football Thoughts</a>
 </nav>
 <h1>Article title</h1>
 ```
@@ -286,8 +285,8 @@ For individual blog posts and notes, swap the `.eyebrow` for a breadcrumb:
 - **Gradient mesh** (`::before`): two radial gradients at 25%/50% gold (0.18) and 75%/30% terracotta (0.10), transparent beyond 55%.
 - **Optional image texture** (`::after`): `goal-bg.webp` with 0.03 opacity, greyscale. Only used on `football-thoughts.html` and similar brand pages.
 - **Eyebrow**: `Merriweather` italic, 0.78rem, 600, uppercase, gold, letter-spacing 0.08em.
-- **Hub mark (Football Thoughts pages)**: the football-hex SVG scaled to 52×52 (44×44 mobile), gold stroke at 1.75, soft gold drop-shadow (`rgba(201,168,76,0.35)` at 10px blur). Sits **inline to the left of the H1** inside a `.hero-title-row` flex wrapper (`display: flex; align-items: center; gap: 1rem; flex-wrap: wrap`) so the mark and the heading read as a single title unit. Used on `/football-thoughts`, `/football-thoughts/blog`, and `/football-thoughts/notes` so visitors who clicked the nav hex icon see the same mark confirming where they landed. On blog/notes the eyebrow (`Football Thoughts`) still sits above the row; on `/football-thoughts` there's no eyebrow and the row is the first element. Do not use on individual post/note pages — those use the breadcrumb instead.
-- **Breadcrumb**: `Merriweather` italic, 0.85rem, gold links with terracotta hover and a sliding 1px underline, separated by the football-hex SVG at 11×11 in soft gold (`rgba(201,168,76,0.55)`). Two crumbs only — `Football Thoughts › Blog` (or `Football Thoughts › Notes`). The article title sits below as the implicit current page; don't repeat it as a third crumb.
+- **Hub mark (Football Thoughts pages)**: the football-hex SVG scaled to 52×52 (44×44 mobile), gold stroke at 1.75, soft gold drop-shadow (`rgba(201,168,76,0.35)` at 10px blur). Sits **inline to the left of the H1** inside a `.hero-title-row` flex wrapper (`display: flex; align-items: center; gap: 1rem; flex-wrap: wrap`) so the mark and the heading read as a single title unit. Used on `/football-thoughts` only. Do not use on individual post/note pages — those use the breadcrumb instead.
+- **Breadcrumb**: `Merriweather` italic, 0.85rem, gold links with terracotta hover and a sliding 1px underline, separated by the football-hex SVG at 11×11 in soft gold (`rgba(201,168,76,0.55)`). One crumb only — `Football Thoughts`. The article title sits below as the implicit current page; don't add a second crumb.
 - **h1**: cream, margin-bottom 0.5rem.
 - **Subtitle `p`**: `rgba(250,247,242,0.6)`, 0.95rem.
 
@@ -326,26 +325,49 @@ Dark mode: header background darkens to `#0d1f16`.
 | `.writing-card.note-card` | `var(--gold)` | gold | Notes (site-exclusive short form) |
 
 ```html
-<!-- Blog post card (links to on-site slug) -->
-<a class="writing-card blog-card" href="/football-thoughts/blog/[slug]">
+<!-- Football Thoughts card (used on /football-thoughts feed) -->
+<a class="writing-card blog-card fade-in" data-type="edition" href="/football-thoughts/[slug]">
+  <div class="card-type-badge">Edition</div>
   <div class="card-tag">Football Academy Intelligence &middot; Edition 3</div>
   <h3>Card title</h3>
   <p class="card-excerpt">2–3 sentence hook.</p>
   <div class="card-meta">
-    <span>8 min read</span>
-    <span>&middot;</span>
     <span>April 2026</span>
+    <span>&middot;</span>
+    <span>6 min read</span>
   </div>
 </a>
-
-<!-- Coming-soon placeholder card (div, not a) -->
-<div class="writing-card blog-card">
-  <div class="card-tag">Coming soon</div>
-  <h3>Placeholder title</h3>
-  <p class="card-excerpt">Placeholder copy.</p>
-  <div class="card-meta"><span>April 2026</span></div>
-</div>
 ```
+
+### Filter bar (Football Thoughts hub only)
+
+The `/football-thoughts` hub prepends a sticky filter bar **outside** `.writing-section`, directly below the `.page-header`:
+
+```html
+<nav class="writing-filter" aria-label="Filter writing by type">
+  <div class="wf-inner" role="group">
+    <button class="wf-chip is-active" data-filter="all" aria-pressed="true">All</button>
+    <button class="wf-chip" data-filter="edition" aria-pressed="false">Editions</button>
+    <button class="wf-chip" data-filter="article" aria-pressed="false">Articles</button>
+    <button class="wf-chip" data-filter="note" aria-pressed="false">Notes</button>
+    <span class="wf-count" aria-live="polite"></span>
+  </div>
+</nav>
+```
+
+- **Sticky positioning**: `top: 60px` desktop, `110px` ≤900px, `100px` ≤640px (below the nav).
+- **Chip**: Merriweather italic pill with terracotta hover and gold outline. Active chip flips to Inter 600 on a solid gold background.
+- **Filter JS** (inline on `/football-thoughts`): reads `data-type` on each card, toggles `.hidden`, updates the live count. `?filter=edition|article|note` URL param pre-selects the chip (used by the `/blog` and `/notes` 308 redirects). On filter change the feed scrolls into view (honours `prefers-reduced-motion`).
+- **Show more**: initial render caps the list at 6 cards; a `.show-more` button reveals the rest with a "`Show N more`" label. Lives inside `.show-more-wrap`, which the JS toggles via the `[hidden]` attribute.
+- **Critical CSS guard**: the default `.writing-card { display: block }` overrides the native `[hidden]` attribute, so the page stylesheet **must** include `.writing-card[hidden], .show-more-wrap[hidden] { display: none }` alongside the base rule. Without that rule the JS fires but cards stay visible.
+
+### Card type badge (Football Thoughts only)
+
+Every card on `/football-thoughts` carries:
+
+- `data-type="edition" | "article" | "note"` on the `<a>` (filter hook)
+- `<div class="card-type-badge">Edition|Article|Note</div>` as the first child — a small pill in the top-right corner. **Edition badges are terracotta**; article/note badges are gold.
+- `.card-tag` gets `padding-right: 5.5rem` so it never collides with the badge.
 
 ### Card styling (exact)
 
@@ -669,7 +691,7 @@ Use `@type: "WebPage"` with `name`, `description`, `url`, `author`.
   "@type": "Article",
   "headline": "Post title",
   "description": "Post description.",
-  "url": "https://hassannobeeboccus.com/football-thoughts/blog/post-slug",
+  "url": "https://hassannobeeboccus.com/football-thoughts/post-slug",
   "author": {
     "@type": "Person",
     "name": "Hassan Nobeeboccus",
@@ -923,7 +945,7 @@ Also update the `priceCurrency` (currently `GBP`) if selling in another currency
 
 - **Home**: priority 1.0
 - **Main landing pages** (EECs, FT): 0.7–0.9
-- **Archives** (`/football-thoughts/blog`, `/football-thoughts/notes`): 0.6
+- **Individual posts/notes**: 0.7, `changefreq: monthly`
 - **Individual posts**: 0.5–0.7, `changefreq: monthly`
 
 `robots.txt` is static and points to the sitemap. Don't disallow anything unless you specifically want to de-index something.
@@ -932,36 +954,32 @@ Also update the `priceCurrency` (currently `GBP`) if selling in another currency
 
 ## 24. Templates + publishing workflow
 
-### New blog post
+### New blog post (Edition or Article)
 
 1. Duplicate `blog-post-template.html`
-2. Save as `football-thoughts/blog/<slug>.html`
-3. Populate all meta tags, JSON-LD, canonical, OG
+2. Save as `<slug>.html` at the repo root (e.g. `does-coaching-licence-develop-you.html`)
+3. Populate all meta tags, JSON-LD, canonical, OG — canonical points to `/football-thoughts/<slug>`
 4. Set `.page-header h1` + standfirst
 5. Set `.reading-time` (e.g. "8 min read · April 2026")
 6. Write the article body (use `<h2>` for section breaks, `<blockquote>` for pulls)
 7. Set the `<a class="article-linkedin" href="[LINKEDIN_URL]">` to the LinkedIn original
-8. `.article-back` points to `/football-thoughts` (the FT hub) so readers return to the same parent regardless of where they entered from. The breadcrumb at the top of the article (`Football Thoughts › Blog`) gives the second route.
-9. Add card to `/football-thoughts/blog` archive (at the top, most recent first)
-10. Add card to `/football-thoughts` main page Blog section (most recent first, capped at 3 — see "Main page previews" below)
-11. Update `sitemap.xml` — new `<url>` entry
+8. `.article-back` points to `/football-thoughts`
+9. Breadcrumb: two crumbs — `Football Thoughts › <Type>` where `<Type>` is `Editions` / `Articles` / `Notes`, linking to `/football-thoughts?filter=edition|article|note` so the reader returns to the same slice of the feed. See §8 for the breadcrumb snippet.
+10. Add card to the `.writing-list` on `/football-thoughts`, most recent first. Set `data-type="edition|article|note"` on the `<a class="writing-card ...">` and add a `<div class="card-type-badge">Edition / Article / Note</div>` as the first child — this is how the filter bar identifies the card.
+11. Update `sitemap.xml` — new `<url>` entry at `/football-thoughts/<slug>`
 12. Deploy + commit
 
 ### New note
 
 1. Duplicate `note-template.html`
-2. Save as `football-thoughts/notes/<slug>.html`
-3. Same metadata workflow (but `og:type="article"`, canonical points to `/football-thoughts/notes/[slug]`)
+2. Save as `<slug>.html` at the repo root
+3. Same metadata workflow — canonical points to `/football-thoughts/<slug>`, `og:type="article"`
 4. Notes have **no** "Also published on LinkedIn" link — they are site-exclusive
-5. `.article-back` points to `/football-thoughts/notes`
-6. Add card to `/football-thoughts/notes` archive
-7. Consider adding to `/football-thoughts` main page Notes section
+5. `.article-back` points to `/football-thoughts`
+6. Breadcrumb: `Football Thoughts › Notes` linking to `/football-thoughts?filter=note`
+7. Add card to `/football-thoughts` writing list with `data-type="note"` and a `<div class="card-type-badge">Note</div>`
 8. Update `sitemap.xml`
 9. Deploy + commit
-
-### Main page previews
-
-The Blog (and Notes) sections on `/football-thoughts` are capped at the **3 most recent** with a `.section-link` button below the cards: `<a class="section-link" href="/football-thoughts/blog">View all editions <span class="sl-arrow">&rarr;</span></a>`. The link is a soft gold-tinted pill (Merriweather italic, gold border at 0.45 alpha, terracotta hover) — it's the only way visitors discover the full archive from the FT hub, so it has to read as a deliberate CTA, not an afterthought.
 
 ---
 
@@ -1026,8 +1044,8 @@ git revert HEAD && git push  # undo the code change in the repo
 
 | Change | Files |
 |---|---|
-| New blog post | Copy `blog-post-template.html` → `football-thoughts/blog/<slug>.html`, update `sitemap.xml`, update `/football-thoughts/blog.html` archive, optionally update `/football-thoughts` main |
-| New note | Copy `note-template.html` → `football-thoughts/notes/<slug>.html`, update `sitemap.xml`, update `/football-thoughts/notes.html` archive |
+| New blog post | Copy `blog-post-template.html` → `<slug>.html` (repo root), update `sitemap.xml`, add card to `football-thoughts.html` writing list |
+| New note | Copy `note-template.html` → `<slug>.html` (repo root), update `sitemap.xml`, add card to `football-thoughts.html` writing list |
 | Change a colour | `shared.css` `:root` + every page's `<style>` `:root` (they duplicate the tokens) |
 | Add a new page | Use any existing page as starting point, update `vercel.json` rewrites, add to `sitemap.xml`, footer link if global |
 | Change footer links | Every page (currently duplicated inline) — search for the link text |

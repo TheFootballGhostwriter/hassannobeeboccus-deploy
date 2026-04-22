@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Note title | Football Thoughts | Hassan Nobeeboccus</title>
   <meta name="description" content="Note description goes here." />
-  <link rel="canonical" href="https://hassannobeeboccus.com/football-thoughts/notes/note-slug" />
+  <link rel="canonical" href="https://hassannobeeboccus.com/football-thoughts/note-slug" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <meta name="robots" content="index, follow" />
 
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://hassannobeeboccus.com/football-thoughts/notes/note-slug" />
+  <meta property="og:url" content="https://hassannobeeboccus.com/football-thoughts/note-slug" />
   <meta property="og:title" content="Note title | Hassan Nobeeboccus" />
   <meta property="og:description" content="Note description goes here." />
   <meta property="og:image" content="https://hassannobeeboccus.com/og-image.png" />
@@ -26,7 +26,7 @@
     "@type": "Article",
     "headline": "Note title",
     "description": "Note description goes here.",
-    "url": "https://hassannobeeboccus.com/football-thoughts/notes/note-slug",
+    "url": "https://hassannobeeboccus.com/football-thoughts/note-slug",
     "author": {
       "@type": "Person",
       "name": "Hassan Nobeeboccus",
@@ -191,6 +191,27 @@
       font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 0.75rem;
     }
+    .breadcrumbs {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 0.55rem;
+      margin-bottom: 0.85rem;
+      font-family: 'Merriweather', serif; font-style: italic; font-size: 0.85rem;
+    }
+    .breadcrumbs a {
+      color: var(--gold); text-decoration: none; position: relative; padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .breadcrumbs a::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+      background: var(--terracotta); transform: scaleX(0); transform-origin: left center;
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    .breadcrumbs a:hover { color: var(--terracotta); }
+    .breadcrumbs a:hover::after { transform: scaleX(1); }
+    .bc-divider {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 11px; height: 11px; color: rgba(201,168,76,0.55);
+    }
+    .bc-divider svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.91; stroke-miterlimit: 10; }
     .page-header h1 { color: var(--cream); margin-bottom: 0.5rem; }
     .page-header p { color: rgba(250,247,242,0.65); font-size: 0.95rem; }
 
@@ -325,7 +346,7 @@
   <!-- HEADER -->
   <div class="page-header">
     <div class="container">
-      <div class="eyebrow">Note</div>
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/football-thoughts">Football Thoughts</a><span class="bc-divider" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/></svg></span><a href="/football-thoughts?filter=note">Notes</a></nav>
       <h1>Note title</h1>
       <p>Short standfirst sentence that sits under the title.</p>
     </div>
