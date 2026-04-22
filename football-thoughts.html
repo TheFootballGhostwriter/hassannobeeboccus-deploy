@@ -191,20 +191,21 @@
       z-index: 0;
     }
     .page-header > * { position: relative; z-index: 1; }
-    .hero-title-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
-    .hub-mark {
+    .page-header h1 { display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; color: var(--cream); margin-bottom: 0.5rem; }
+    .page-header h1 .hub-mark {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 52px; height: 52px; flex-shrink: 0;
+      width: 1em; height: 1em; flex-shrink: 0;
       color: var(--gold);
-      filter: drop-shadow(0 0 10px rgba(201,168,76,0.35));
+      filter: drop-shadow(0 0 0.2em rgba(201,168,76,0.45));
     }
-    .hub-mark svg {
+    .page-header h1 .hub-mark svg {
       width: 100%; height: 100%;
       fill: none; stroke: currentColor; stroke-width: 1.75; stroke-miterlimit: 10;
     }
-    .hero-title-row h1 { margin-bottom: 0; }
-    @media (max-width: 640px) { .hub-mark { width: 44px; height: 44px; } .hero-title-row { gap: 0.75rem; } }
-    .page-header h1 { color: var(--cream); margin-bottom: 0.5rem; }
+    .page-header h1 .h1-accent {
+      font-family: 'Merriweather', serif; font-style: italic;
+      color: var(--terracotta);
+    }
     .page-header p { color: rgba(250,247,242,0.6); font-size: 0.95rem; }
 
     /* ── NAV TABS (second row) ── */
@@ -402,11 +403,8 @@
   <!-- HEADER -->
   <div class="page-header">
     <div class="container">
-      <div class="hero-title-row">
-        <div class="hub-mark" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/><line x1="19.64" y1="12" x2="16.41" y2="12" stroke-linecap="square"/><line x1="7.59" y1="12" x2="4.36" y2="12" stroke-linecap="square"/><line x1="15.82" y1="5.39" x2="14.2" y2="8.18" stroke-linecap="square"/><line x1="9.8" y1="15.82" x2="8.18" y2="18.62" stroke-linecap="square"/><line x1="9.8" y1="8.18" x2="8.18" y2="5.39" stroke-linecap="square"/><line x1="15.82" y1="18.62" x2="14.2" y2="15.82" stroke-linecap="square"/></svg></div>
-        <h1>Football <span style="font-family:'Merriweather',serif;font-style:italic;color:var(--terracotta);">thoughts</span></h1>
-      </div>
-      <p>Thoughts on EPPP, coaching education, player development and more.</p>
+      <h1><span class="hub-mark" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/><line x1="19.64" y1="12" x2="16.41" y2="12" stroke-linecap="square"/><line x1="7.59" y1="12" x2="4.36" y2="12" stroke-linecap="square"/><line x1="15.82" y1="5.39" x2="14.2" y2="8.18" stroke-linecap="square"/><line x1="9.8" y1="15.82" x2="8.18" y2="18.62" stroke-linecap="square"/><line x1="9.8" y1="8.18" x2="8.18" y2="5.39" stroke-linecap="square"/><line x1="15.82" y1="18.62" x2="14.2" y2="15.82" stroke-linecap="square"/></svg></span><span>Football <span class="h1-accent">thoughts</span></span></h1>
+      <p>Thoughts on EPPP, coaching education, player development and <span style="font-family:'Merriweather',serif;font-style:italic;color:var(--terracotta);">more</span>.</p>
     </div>
   </div>
 
@@ -476,7 +474,7 @@
   <!-- CTA BRIDGE -->
   <div class="ft-cta">
     <div style="max-width:700px;margin:0 auto;position:relative;z-index:1;">
-      <p style="font-size:0.95rem;color:rgba(250,247,242,0.75);margin-bottom:1.25rem;">This is the kind of content I ghostwrite<br>for football development leaders.<br>If you want to get known for your thinking, let's talk.</p>
+      <p style="font-size:0.95rem;color:rgba(250,247,242,0.75);margin-bottom:1.25rem;">This is the kind of content I ghostwrite<br>for football development leaders.<br>If you want to get known for <span style="font-family:'Merriweather',serif;font-style:italic;color:var(--terracotta);">your thinking</span>, let's talk.</p>
       <a href="/book-a-call" style="display:inline-block;background:var(--gold);color:var(--green);font-family:'Inter',sans-serif;font-weight:600;font-size:1rem;padding:0.9rem 2rem;border-radius:50px;text-decoration:none;">Book a Call</a>
     </div>
   </div>
