@@ -77,11 +77,8 @@ All routing lives in `vercel.json`. Two sections: `redirects` (308 permanent) an
 | `/5-development-models` | `5-development-models.html` | EEC landing |
 | `/courses` | `freecourses.html` | Courses hub |
 | `/free-courses` | `freecourses.html` | Alias |
-| `/football-thoughts` | `football-thoughts.html` | FT landing (Blog + Notes preview) |
-| `/football-thoughts/blog` | `football-thoughts/blog.html` | Blog archive |
-| `/football-thoughts/blog/[slug]` | `football-thoughts/blog/[slug].html` | Individual blog post |
-| `/football-thoughts/notes` | `football-thoughts/notes.html` | Notes archive |
-| `/football-thoughts/notes/[slug]` | `football-thoughts/notes/[slug].html` | Individual note |
+| `/football-thoughts` | `football-thoughts.html` | FT hub — unified feed with filter bar (All · Editions · Articles · Notes) |
+| `/football-thoughts/[slug]` | `/[slug].html` | Individual post (editions, articles, notes — single flat namespace) |
 | `/book-a-call` | `book-a-call.html` | Free 30-min call (Cal embed, consent-gated) |
 | `/directors-debrief` | `directors-debrief.html` | Paid Director's Debrief (Cal embed, consent-gated) |
 | `/privacy` | `privacy.html` | Privacy |
@@ -97,6 +94,8 @@ All routing lives in `vercel.json`. Two sections: `redirects` (308 permanent) an
 | `/footballthoughts` | `/football-thoughts` |
 | `/footballthoughts/:slug` | `/football-thoughts/:slug` |
 | `/writing` | `/football-thoughts` |
+| `/football-thoughts/blog` | `/football-thoughts?filter=edition` |
+| `/football-thoughts/notes` | `/football-thoughts?filter=note` |
 
 ### Rules for adding routes
 

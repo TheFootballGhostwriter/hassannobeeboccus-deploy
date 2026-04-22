@@ -2,16 +2,14 @@
   "redirects": [
     { "source": "/footballthoughts/:slug", "destination": "/football-thoughts/:slug", "permanent": true },
     { "source": "/footballthoughts", "destination": "/football-thoughts", "permanent": true },
-    { "source": "/writing", "destination": "/football-thoughts", "permanent": true }
+    { "source": "/writing", "destination": "/football-thoughts", "permanent": true },
+    { "source": "/football-thoughts/blog", "destination": "/football-thoughts?filter=edition", "permanent": true },
+    { "source": "/football-thoughts/notes", "destination": "/football-thoughts?filter=note", "permanent": true }
   ],
   "rewrites": [
     { "source": "/build-your-public-voice", "destination": "/buildyourpublicvoice.html" },
     { "source": "/buildyourpublicvoice", "destination": "/buildyourpublicvoice.html" },
     { "source": "/course", "destination": "/buildyourpublicvoice.html" },
-    { "source": "/football-thoughts/blog/:slug", "destination": "/football-thoughts/blog/:slug.html" },
-    { "source": "/football-thoughts/blog", "destination": "/football-thoughts/blog.html" },
-    { "source": "/football-thoughts/notes/:slug", "destination": "/football-thoughts/notes/:slug.html" },
-    { "source": "/football-thoughts/notes", "destination": "/football-thoughts/notes.html" },
     { "source": "/football-thoughts/:slug", "destination": "/:slug.html" },
     { "source": "/football-thoughts", "destination": "/football-thoughts.html" },
     { "source": "/book-a-call", "destination": "/book-a-call.html" },
