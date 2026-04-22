@@ -447,7 +447,7 @@ Dark green, 2.5rem padding, two-group layout (brand+icons left, links right), co
 
 ```html
 <footer>
-  <div style="max-width:700px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem;">
+  <div style="max-width:700px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;">
     <div style="display:flex;align-items:center;gap:0.5rem;">
       <span style="font-family:'Merriweather',serif;font-size:0.88rem;font-weight:700;color:rgba(250,247,242,0.6);">Hassan Nobeeboccus</span>
       <a href="https://www.linkedin.com/in/thefootballghostwriter/" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:rgba(250,247,242,0.5);"><!-- LinkedIn SVG --></a>
@@ -475,6 +475,7 @@ Dark green, 2.5rem padding, two-group layout (brand+icons left, links right), co
 - **Mobile**: links get `min-height: 44px` for touch targets
 - **Icons (aria-label links)**: `display: inline-flex; align-items: center`, scale to 1.15 on hover (`transition: transform 0.2s var(--ease), color 0.2s`). This rule lives in `shared.css` and applies to every page automatically.
 - **Link text**: include `Home`, `Services` (home anchor), `Courses` (→ `/courses`), `Email` (mailto), `Privacy Policy`. EEC landing pages may have reduced sets (Home · Email · Privacy Policy only).
+- **Vertical alignment**: outer flex uses `align-items: center` so the brand+icons row (44px tall — driven by `footer a[aria-label]` touch-target rule in `shared.css`) stays vertically centred against the right-hand link list (~23px). Using `flex-start` here causes the link list to sit at the top of the brand row instead of in line with the brand text — that's the "footer misalignment" symptom.
 
 ### Required footer icons
 
