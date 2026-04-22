@@ -648,9 +648,15 @@
         active = btn.dataset.filter;
         showAll = false;
         render();
-        // Scroll feed into view on filter change (respect reduced motion)
-        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        document.getElementById('feed').scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+        // Scroll only if the filter bar isn't already pinned beneath the nav.
+        // If the user is already viewing the feed, don't jump.
+        var navEl = document.querySelector('nav');
+        var navH = navEl ? navEl.offsetHeight : 60;
+        var filterTop = filter.getBoundingClientRect().top;
+        if (filterTop > navH + 8) {
+          var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: filter.offsetTop - navH, behavior: prefersReduced ? 'auto' : 'smooth' });
+        }
       });
 
       showMoreBtn.addEventListener('click', function(){
