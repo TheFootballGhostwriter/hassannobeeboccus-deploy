@@ -39,7 +39,6 @@
 
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/merriweather-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/fonts/merriweather-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/shared.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -215,33 +214,42 @@
       font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--gold); margin-bottom: 0.75rem;
     }
-    .breadcrumbs {
-      display: flex; align-items: center; flex-wrap: wrap; gap: 0.55rem;
-      margin-bottom: 0.85rem;
-      font-family: 'Merriweather', serif; font-style: italic; font-size: 0.85rem;
+    .page-header .accent-line {
+      width: 40px; height: 3px; background: var(--gold);
+      margin-bottom: 1.1rem;
     }
-    .breadcrumbs a {
-      color: var(--gold); text-decoration: none; position: relative; padding-bottom: 2px;
-      transition: color 0.2s;
-    }
-    .breadcrumbs a::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
-      background: var(--terracotta); transform: scaleX(0); transform-origin: left center;
-      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
-    }
-    .breadcrumbs a:hover { color: var(--terracotta); }
-    .breadcrumbs a:hover::after { transform: scaleX(1); }
-    .bc-divider {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 11px; height: 11px; color: rgba(201,168,76,0.55);
-    }
-    .bc-divider svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.91; stroke-miterlimit: 10; }
     .page-header h1 { color: var(--cream); margin-bottom: 0.5rem; }
     .page-header p { color: rgba(250,247,242,0.65); font-size: 0.95rem; }
 
-    /* ARTICLE BODY */
-    .article-body { padding: 3rem 0 4rem; }
-    .article-body article { max-width: 680px; margin: 0 auto; }
+    /* ARTICLE BODY — card on a textured ground, matching the site-wide card treatment */
+    .article-body {
+      padding: 3.5rem 0 4.5rem;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-alt);
+    }
+    .article-body::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.10) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 40%, rgba(192,57,43,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .article-body > * { position: relative; z-index: 1; }
+    .article-body .container { max-width: 820px; }
+    .article-body article {
+      max-width: 720px; margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--terracotta);
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.06), 0 0 0 1px rgba(201,168,76,0.04);
+    }
+    body.dark .article-body { background: #0f0f0f; }
+    body.dark .article-body article { background: var(--card-bg); }
     .article-body h2 { margin: 2rem 0 0.75rem; font-size: 1.25rem; }
     .article-body h3 { margin: 1.5rem 0 0.5rem; font-size: 1.1rem; }
     .article-body p { margin-bottom: 1.25rem; line-height: 1.8; }
@@ -303,7 +311,8 @@
       body { font-size: 16px; }
       .container { padding: 0 1.25rem; }
       .page-header { padding: 2.25rem 0 1.75rem; }
-      .article-body { padding: 2rem 0 3rem; }
+      .article-body { padding: 2.25rem 0 3rem; }
+      .article-body article { padding: 2rem 1.5rem; border-radius: 10px; }
       footer a { min-height: 44px; display: inline-flex; align-items: center; }
     }
 
@@ -371,7 +380,7 @@
   <!-- HEADER -->
   <div class="page-header">
     <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/football-thoughts">Football Thoughts</a><span class="bc-divider" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/></svg></span><a href="/football-thoughts?filter=edition">Editions</a></nav>
+      <div class="accent-line" aria-hidden="true"></div>
       <h1>Female Coaches in Football Are Declining as the Pay Gets Better: What the Data Shows</h1>
       <p>Between 2022 and 2024, the proportion of UK coaches receiving pay rose from 38% to 53%. Over the same period, female coaches fell from 44% to 38%.</p>
     </div>
