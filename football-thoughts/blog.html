@@ -166,9 +166,10 @@
       pointer-events: none; z-index: 0;
     }
     .page-header > * { position: relative; z-index: 1; }
+    .hero-title-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
     .hub-mark {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 52px; height: 52px; margin-bottom: 1rem;
+      width: 52px; height: 52px; flex-shrink: 0;
       color: var(--gold);
       filter: drop-shadow(0 0 10px rgba(201,168,76,0.35));
     }
@@ -176,7 +177,8 @@
       width: 100%; height: 100%;
       fill: none; stroke: currentColor; stroke-width: 1.75; stroke-miterlimit: 10;
     }
-    @media (max-width: 640px) { .hub-mark { width: 44px; height: 44px; } }
+    .hero-title-row h1 { margin-bottom: 0; }
+    @media (max-width: 640px) { .hub-mark { width: 44px; height: 44px; } .hero-title-row { gap: 0.75rem; } }
     .page-header .eyebrow { font-family: 'Merriweather', serif; font-style: italic; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
     .page-header h1 { color: var(--cream); margin-bottom: 0.5rem; }
     .page-header p { color: rgba(250,247,242,0.6); font-size: 0.95rem; }
@@ -274,9 +276,11 @@
   <main id="main-content">
   <div class="page-header">
     <div class="container">
-      <div class="hub-mark" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/><line x1="19.64" y1="12" x2="16.41" y2="12" stroke-linecap="square"/><line x1="7.59" y1="12" x2="4.36" y2="12" stroke-linecap="square"/><line x1="15.82" y1="5.39" x2="14.2" y2="8.18" stroke-linecap="square"/><line x1="9.8" y1="15.82" x2="8.18" y2="18.62" stroke-linecap="square"/><line x1="9.8" y1="8.18" x2="8.18" y2="5.39" stroke-linecap="square"/><line x1="15.82" y1="18.62" x2="14.2" y2="15.82" stroke-linecap="square"/></svg></div>
       <div class="eyebrow">Football Thoughts</div>
-      <h1>Blog</h1>
+      <div class="hero-title-row">
+        <div class="hub-mark" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/><line x1="19.64" y1="12" x2="16.41" y2="12" stroke-linecap="square"/><line x1="7.59" y1="12" x2="4.36" y2="12" stroke-linecap="square"/><line x1="15.82" y1="5.39" x2="14.2" y2="8.18" stroke-linecap="square"/><line x1="9.8" y1="15.82" x2="8.18" y2="18.62" stroke-linecap="square"/><line x1="9.8" y1="8.18" x2="8.18" y2="5.39" stroke-linecap="square"/><line x1="15.82" y1="18.62" x2="14.2" y2="15.82" stroke-linecap="square"/></svg></div>
+        <h1>Blog</h1>
+      </div>
       <p>Newsletters and articles on football development, published in full.</p>
     </div>
   </div>
