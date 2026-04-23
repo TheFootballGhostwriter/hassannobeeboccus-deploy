@@ -4,7 +4,11 @@
     { "source": "/footballthoughts", "destination": "/football-thoughts", "permanent": true },
     { "source": "/writing", "destination": "/football-thoughts", "permanent": true },
     { "source": "/football-thoughts/blog", "destination": "/football-thoughts?filter=edition", "permanent": true },
-    { "source": "/football-thoughts/notes", "destination": "/football-thoughts?filter=note", "permanent": true }
+    { "source": "/football-thoughts/notes", "destination": "/football-thoughts?filter=note", "permanent": true },
+    { "source": "/courses", "destination": "/resources", "permanent": true },
+    { "source": "/free-courses", "destination": "/resources", "permanent": true },
+    { "source": "/freecourses", "destination": "/resources", "permanent": true },
+    { "source": "/freecourses.html", "destination": "/resources", "permanent": true }
   ],
   "rewrites": [
     { "source": "/build-your-public-voice", "destination": "/buildyourpublicvoice.html" },
@@ -12,6 +16,7 @@
     { "source": "/course", "destination": "/buildyourpublicvoice.html" },
     { "source": "/football-thoughts/:slug", "destination": "/:slug.html" },
     { "source": "/football-thoughts", "destination": "/football-thoughts.html" },
+    { "source": "/resources", "destination": "/resources.html" },
     { "source": "/book-a-call", "destination": "/book-a-call.html" },
     { "source": "/directors-debrief", "destination": "/directors-debrief.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
@@ -19,8 +24,6 @@
     { "source": "/alternative-models-framework", "destination": "/alternative-models-framework.html" },
     { "source": "/alternative-models-framework.pdf", "destination": "/alternative-models-framework.html" },
     { "source": "/conversation-to-content-map", "destination": "/conversation-to-content-map.html" },
-    { "source": "/conversation-to-content-map.pdf", "destination": "/conversation-to-content-map.html" },
-    { "source": "/courses", "destination": "/freecourses.html" },
-    { "source": "/free-courses", "destination": "/freecourses.html" }
+    { "source": "/conversation-to-content-map.pdf", "destination": "/conversation-to-content-map.html" }
   ]
 }
