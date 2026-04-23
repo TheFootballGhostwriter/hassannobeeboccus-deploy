@@ -605,8 +605,7 @@
     #services .service-list { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
     .service-item { border: 1px solid var(--border); border-left: 4px solid var(--terracotta); padding: 2rem 1.75rem; background: var(--card-bg); border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.08), 0 0 0 1px rgba(201,168,76,0.04); transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease); }
     .service-item:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.2), 0 0 0 2px rgba(201,168,76,0.2); transform: translateY(-2px); }
-    .service-stage { font-family: 'Merriweather', serif; font-style: italic; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.5rem; transition: color 0.3s var(--ease); display: flex; align-items: baseline; gap: 0.5rem; }
-    .service-stage .service-num { font-family: 'Merriweather', serif; font-style: italic; font-weight: 900; font-size: 1.4rem; line-height: 1; color: var(--gold); letter-spacing: 0; opacity: 0.75; }
+    .service-stage { font-family: 'Merriweather', serif; font-style: italic; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.5rem; transition: color 0.3s var(--ease); }
     .service-item:hover .service-stage { color: var(--gold); }
     .service-item h3 { color: var(--green); font-size: 1.1rem; }
     body.dark .service-item h3 { color: var(--gold); }
@@ -903,7 +902,7 @@
     <div class="container">
       <div class="hero-layout">
         <div class="hero-text">
-          <div class="accent-line" style="margin-bottom: 0.9rem;"></div>
+          <div class="accent-line" style="margin-bottom: 0.9rem; background: var(--cream);"></div>
           <div class="hero-eyebrow">Ghostwriting for football development leaders</div>
           <h1>The best people in <br class="desk-br">football development <br>are <span class="accent-italic">invisible online.</span><span class="hero-gap"></span>I help change that by <br class="desk-br">getting you known <br>for <span class="accent-italic">your thinking.</span></h1>
           <p class="hero-sub">I'm Hassan. I ghostwrite LinkedIn content, newsletters <br class="desk-br">and educational email courses for academy directors, <br class="desk-br">coaching education founders and technical directors.</p>
@@ -992,7 +991,7 @@
   <section id="services" class="section-alt has-texture">
     <div class="container fade-in">
       <div class="accent-line"></div>
-      <h2>How the work <span class="accent-italic">builds</span></h2>
+      <h2>What <span class="accent-italic">my work</span> looks like</h2>
       <div class="services-intro">
         <p>Each works on its own.<br>Together they take a reader from finding you, to subscribing, to hiring you.</p>
         <div class="services-flow">
@@ -1007,7 +1006,7 @@
       </div>
       <div class="service-list stagger-parent">
         <div class="service-item stagger stagger-delay-1">
-          <div class="service-stage"><span class="service-num">01</span> Get known</div>
+          <div class="service-stage">Get known</div>
           <h3>LinkedIn Content</h3>
           <p>Consistent publishing that puts your thinking in front of the people who make hiring, booking and enrolment decisions. You share the thinking. I handle everything else.</p>
           <ul class="service-includes">
@@ -1015,11 +1014,11 @@
             <li>Built from monthly conversations, not templates</li>
             <li>Profile, positioning and editorial calendar included</li>
           </ul>
-          <p class="service-connector">This is where most people start. Once the right people are paying attention, the next question is how to keep them.</p>
+          <p class="service-connector">This is where most people start. Once the right people are paying attention, the next step is how to keep them.</p>
           <a class="service-cta" href="/book-a-call">Book a Call &rarr;</a>
         </div>
         <div class="service-item stagger stagger-delay-2">
-          <div class="service-stage"><span class="service-num">02</span> Own the contact</div>
+          <div class="service-stage">Own the contact</div>
           <h3>Educational Email Course</h3>
           <p>A done-for-you email sequence that teaches your audience something specific and positions you as the authority before you've asked them for anything.</p>
           <ul class="service-includes">
@@ -1031,7 +1030,7 @@
           <a class="service-cta" href="/book-a-call">Book a Call &rarr;</a>
         </div>
         <div class="service-item stagger stagger-delay-3">
-          <div class="service-stage"><span class="service-num">03</span> Build the relationship</div>
+          <div class="service-stage">Build the relationship</div>
           <h3>Newsletter</h3>
           <p>A regular newsletter sent directly to the people who've already said they want to hear from you. The place where the thinking goes deeper and the relationship develops over time.</p>
           <ul class="service-includes">
@@ -1083,6 +1082,7 @@
   <!-- PROCESS -->
   <section id="process" class="has-goal-bg">
     <div class="container fade-in">
+      <div class="accent-line"></div>
       <h2>How it works</h2>
       <div class="steps stagger-parent">
         <div class="step stagger stagger-delay-1">
