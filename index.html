@@ -499,8 +499,8 @@
     #hero .hero-sub { color: rgba(250,247,242,0.7); font-size: 17px; line-height: 1.7; margin-bottom: 1.5rem; }
     .hero-cta-note { color: rgba(250,247,242,0.6); font-size: 0.95rem; }
     .hero-scarcity { color: rgba(250,247,242,0.7); font-size: inherit; line-height: 1.7; margin-top: 0.5rem; margin-bottom: 1.5rem; }
-    .hero-secondary { display: inline-block; background: transparent; color: var(--gold); border: 1.5px solid var(--gold); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; position: relative; transition: background 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.3s var(--ease); box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.1); }
-    .hero-secondary:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 0 2px rgba(201,168,76,0.28), 0 0 30px rgba(201,168,76,0.1); }
+    .hero-secondary { display: inline-block; background: transparent; color: var(--gold); border: 1.5px solid var(--gold); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; position: relative; transition: background 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.3s var(--ease); box-shadow: 0 6px 16px rgba(0,0,0,0.08), 0 0 0 1px rgba(201,168,76,0.08); }
+    .hero-secondary:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.16), 0 0 0 2px rgba(201,168,76,0.22), 0 0 24px rgba(201,168,76,0.08); }
     .hero-cta-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
     .btn-primary { display: inline-block; background: var(--gold); color: var(--green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; position: relative; transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.2s; box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.15), 0 0 24px rgba(201,168,76,0.08); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 0 2px rgba(201,168,76,0.28), 0 0 40px rgba(201,168,76,0.18); opacity: 1; }
@@ -587,13 +587,13 @@
       background: var(--card-bg); border: 1px solid var(--border);
       padding: 0.5rem 1.1rem; border-radius: 50px;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 0 0 1px rgba(201,168,76,0.04);
+      box-shadow: 0 0 0 1px rgba(201,168,76,0.06);
       transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease), border-color 0.2s, color 0.2s;
     }
     a.flow-step { cursor: pointer; }
     .flow-step:hover {
       border-color: var(--gold); color: var(--terracotta);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1.5px rgba(201,168,76,0.25);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1), 0 0 0 1.5px rgba(201,168,76,0.22);
       transform: translateY(-2px);
     }
     a.flow-step:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
@@ -774,9 +774,9 @@
     .contact-form input, .contact-form textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; background: var(--card-bg); color: var(--text); transition: border-color 0.2s; }
     .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--gold); }
     .contact-form textarea { min-height: 120px; resize: vertical; }
-    .contact-form .btn-submit { display: inline-block; background: var(--green); color: var(--cream); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; padding: 0.8rem 1.75rem; border: none; border-radius: 50px; cursor: pointer; align-self: flex-start; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(27,58,45,0.18); transition: opacity 0.2s, box-shadow 0.3s ease, transform 0.2s ease; }
-    .contact-form .btn-submit:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 0 2px rgba(27,58,45,0.3), 0 0 28px rgba(27,58,45,0.15); }
-    .contact-form .btn-submit:active { transform: translateY(0px); box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 0 0 1px rgba(27,58,45,0.18); transition-duration: 0.1s; }
+    .contact-form .btn-submit { display: inline-block; background: var(--green); color: var(--cream); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; padding: 0.8rem 1.75rem; border: none; border-radius: 50px; cursor: pointer; align-self: flex-start; text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,0.1), 0 0 0 1px rgba(27,58,45,0.12); transition: opacity 0.2s, box-shadow 0.3s ease, transform 0.2s ease; }
+    .contact-form .btn-submit:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.18), 0 0 0 2px rgba(27,58,45,0.25); }
+    .contact-form .btn-submit:active { transform: translateY(0px); box-shadow: 0 3px 8px rgba(0,0,0,0.12), 0 0 0 1px rgba(27,58,45,0.12); transition-duration: 0.1s; }
 
     /* ── FOOTER ── */
     footer { background: var(--green-dark); padding: 2.5rem 1.5rem; }
@@ -946,7 +946,7 @@
     <div class="container fade-in">
       <div class="accent-line"></div>
       <div class="about-header">
-        <h2>Why work <span class="accent-italic">with me</span></h2>
+        <h2>Why work with me</h2>
         <picture><source srcset="/headshot.webp" type="image/webp" /><img class="about-headshot" src="/headshot.jpg" alt="Hassan Nobeeboccus" loading="lazy" /></picture>
       </div>
       <p>I understand EPPP categorisation and Category 1 to 3 academy operations.</p>
@@ -961,7 +961,7 @@
   <section id="why-matters" class="section-alt has-texture">
     <div class="container fade-in">
       <div class="accent-line"></div>
-      <h2>Why the best people in football development <br><span class="accent-italic">stay invisible</span></h2>
+      <h2>Why the best people in football development <br>stay invisible</h2>
       <p>The people making decisions about who to hire, book or enrol are forming views before they make contact. They're reading LinkedIn. They're scanning newsletters. They're comparing who sounds like they know what they're talking about and who doesn't show up at all.</p>
       <div class="stat-callout">
         <p><strong>80 to 90% of the people who hire consultants, <br>book speakers or enrol in courses already <br class="mob-br">have a shortlist <br class="desk-br">before they reach out to anyone.</strong><a href="https://www.bain.com/insights/what-b2bs-need-to-know-about-their-buyers-hbr/" target="_blank" rel="noopener" style="color:var(--gold);font-size:0.75rem;vertical-align:super;text-decoration:none;margin-left:2px;">1</a></p>
@@ -977,7 +977,7 @@
   <section id="who" class="has-texture">
     <div class="container fade-in">
       <div class="accent-line"></div>
-      <h2><span class="accent-italic">Who I</span> work with</h2>
+      <h2>Who I work with</h2>
       <div class="who-grid stagger-parent">
         <div class="who-card stagger stagger-delay-1">
           <h3>Academy and club leaders</h3>
@@ -1008,7 +1008,7 @@
   <section id="services" class="section-alt has-texture">
     <div class="container fade-in">
       <div class="accent-line"></div>
-      <h2>What <span class="accent-italic">my work</span> looks like</h2>
+      <h2>What my work looks like</h2>
       <div class="services-intro">
         <p>Each works on its own.<br>Together they take a reader from finding you, to subscribing, to hiring you.</p>
         <div class="services-flow">
@@ -1075,7 +1075,7 @@
   <section id="proof" class="section-alt has-texture">
     <div class="container fade-in">
       <div class="accent-line"></div>
-      <h2>What <span class="accent-italic">my approach</span> delivers</h2>
+      <h2>What my approach delivers</h2>
       <p>These are results from my own content, published on LinkedIn using the same framework and process I use for the people I work with.</p>
       <div class="proof-grid stagger-parent">
         <div class="proof-card stagger stagger-delay-1">
@@ -1202,7 +1202,7 @@
   <section id="contact" class="has-texture">
     <div class="container fade-in">
       <div class="accent-line"></div>
-      <h2>Or <span class="accent-italic">send me</span> a message</h2>
+      <h2>Or send me a message</h2>
       <div class="contact-layout">
         <div class="contact-text">
           <p>If you'd rather send a note than book a call, that's fine. Tell me a bit about what you do and what you're looking for. I'll get back to you within 24 hours.</p>
