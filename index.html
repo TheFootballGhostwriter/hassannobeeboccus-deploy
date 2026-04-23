@@ -183,6 +183,10 @@
     .section-alt { background: var(--bg-alt); }
 
     .accent-line { width: 40px; height: 3px; background: var(--gold); margin-bottom: 1.5rem; }
+    .section-eyebrow { font-family: 'Merriweather', serif; font-style: italic; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 1.1rem; }
+    body.dark .section-eyebrow { color: var(--gold); }
+    .proof-mark { display: inline-flex; width: 28px; height: 28px; color: var(--terracotta); margin-bottom: 1.25rem; }
+    .proof-mark svg { width: 100%; height: 100%; fill: currentColor; }
 
     /* ── SECTION GRADIENT DIVIDERS ── */
     section + section {
@@ -944,7 +948,7 @@
   <!-- ABOUT -->
   <section id="about" class="has-texture">
     <div class="container fade-in">
-      <div class="accent-line"></div>
+      <div class="section-eyebrow">Behind the writing</div>
       <div class="about-header">
         <h2>Why work with me</h2>
         <picture><source srcset="/headshot.webp" type="image/webp" /><img class="about-headshot" src="/headshot.jpg" alt="Hassan Nobeeboccus" loading="lazy" /></picture>
@@ -960,13 +964,12 @@
   <!-- WHY THIS MATTERS -->
   <section id="why-matters" class="section-alt has-texture">
     <div class="container fade-in">
-      <div class="accent-line"></div>
-      <h2>Why the best people in football development <br>stay invisible</h2>
-      <p>The people making decisions about who to hire, book or enrol are forming views before they make contact. They're reading LinkedIn. They're scanning newsletters. They're comparing who sounds like they know what they're talking about and who doesn't show up at all.</p>
       <div class="stat-callout">
         <p><strong>80 to 90% of the people who hire consultants, <br>book speakers or enrol in courses already <br class="mob-br">have a shortlist <br class="desk-br">before they reach out to anyone.</strong><a href="https://www.bain.com/insights/what-b2bs-need-to-know-about-their-buyers-hbr/" target="_blank" rel="noopener" style="color:var(--gold);font-size:0.75rem;vertical-align:super;text-decoration:none;margin-left:2px;">1</a></p>
         <p>If you're not visible when the list is being formed, <br class="mob-br">you're not in the conversation.</p>
       </div>
+      <h2>Why the best people in football development <br>stay invisible</h2>
+      <p>The people making decisions about who to hire, book or enrol are forming views before they make contact. They're reading LinkedIn. They're scanning newsletters. They're comparing who sounds like they know what they're talking about and who doesn't show up at all.</p>
       <p>When an academy board is looking for a consultant, when a federation is assembling a course delivery panel, when a club is assessing who to bring in for a development review, they're starting with the names they already know.</p>
       <p>Most football development professionals with 10 or 15 years of experience aren't on the list. The knowledge is there but nobody sees it.</p>
       <p>Some of the people I work with have never written <br class="mob-br">a LinkedIn post. <br class="desk-br">They don't need to have. <br class="mob-br">The thinking is already there. <br class="desk-br">The writing is <span style="font-style:italic;color:var(--terracotta);">my job</span>.</p>
@@ -1074,7 +1077,7 @@
   <!-- SOCIAL PROOF -->
   <section id="proof" class="section-alt has-texture">
     <div class="container fade-in">
-      <div class="accent-line"></div>
+      <div class="proof-mark" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
       <h2>What my approach delivers</h2>
       <p>These are results from my own content, published on LinkedIn using the same framework and process I use for the people I work with.</p>
       <div class="proof-grid stagger-parent">
@@ -1124,7 +1127,7 @@
   <!-- FREE COURSE BRIDGE -->
   <section id="free-course" class="section-alt has-texture">
     <div class="container fade-in">
-      <div class="accent-line"></div>
+      <div class="section-eyebrow">A free starting point</div>
       <h2>Want to see <span class="accent-italic">my thinking</span> behind this first?</h2>
       <div class="course-bridge">
         <div class="course-bridge-text">
@@ -1201,7 +1204,6 @@
   <!-- CONTACT -->
   <section id="contact" class="has-texture">
     <div class="container fade-in">
-      <div class="accent-line"></div>
       <h2>Or send me a message</h2>
       <div class="contact-layout">
         <div class="contact-text">
