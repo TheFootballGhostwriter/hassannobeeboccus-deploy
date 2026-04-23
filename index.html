@@ -582,9 +582,24 @@
     .services-intro { margin-bottom: 2.5rem; }
     .services-intro p { font-size: 1.02rem; color: var(--text-muted); }
     .services-flow { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin: 2rem 0 0.5rem; flex-wrap: wrap; text-align: center; width: 100%; }
-    .flow-step { font-size: 0.82rem; font-weight: 600; color: var(--green); background: var(--card-bg); border: 1px solid var(--border); padding: 0.4rem 1rem; border-radius: 20px; }
+    .flow-step {
+      font-size: 0.82rem; font-weight: 600; color: var(--green);
+      background: var(--card-bg); border: 1px solid var(--border);
+      padding: 0.5rem 1.1rem; border-radius: 50px;
+      text-decoration: none; cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 0 0 1px rgba(201,168,76,0.04);
+      transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease), border-color 0.2s, color 0.2s;
+    }
+    .flow-step:hover {
+      border-color: var(--gold); color: var(--terracotta);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1.5px rgba(201,168,76,0.25);
+      transform: translateY(-2px);
+    }
+    .flow-step:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
     body.dark .flow-step { color: var(--gold); }
-    .flow-arrow { color: var(--gold); font-size: 0.9rem; }
+    body.dark .flow-step:hover { color: var(--terracotta); }
+    .flow-arrow { color: rgba(26,26,26,0.4); font-size: 0.9rem; }
+    body.dark .flow-arrow { color: rgba(250,247,242,0.75); }
 
     .services-flow .flow-step,
     .services-flow .flow-arrow {
@@ -902,7 +917,7 @@
     <div class="container">
       <div class="hero-layout">
         <div class="hero-text">
-          <div class="accent-line" style="margin-bottom: 0.9rem; background: var(--cream);"></div>
+          <div class="accent-line" style="margin-bottom: 0.9rem; background: #FAF7F2;"></div>
           <div class="hero-eyebrow">Ghostwriting for football development leaders</div>
           <h1>The best people in <br class="desk-br">football development <br>are <span class="accent-italic">invisible online.</span><span class="hero-gap"></span>I help change that by <br class="desk-br">getting you known <br>for <span class="accent-italic">your thinking.</span></h1>
           <p class="hero-sub">I'm Hassan. I ghostwrite LinkedIn content, newsletters <br class="desk-br">and educational email courses for academy directors, <br class="desk-br">coaching education founders and technical directors.</p>
@@ -995,17 +1010,17 @@
       <div class="services-intro">
         <p>Each works on its own.<br>Together they take a reader from finding you, to subscribing, to hiring you.</p>
         <div class="services-flow">
-          <span class="flow-step">Get known</span>
-          <span class="flow-arrow">&rarr;</span>
-          <span class="flow-step">Own the contact</span>
-          <span class="flow-arrow">&rarr;</span>
-          <span class="flow-step">Build the relationship</span>
-          <span class="flow-arrow">&rarr;</span>
-          <span class="flow-step">They come to you</span>
+          <a class="flow-step" href="#service-linkedin">Get known</a>
+          <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+          <a class="flow-step" href="#service-eec">Own the contact</a>
+          <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+          <a class="flow-step" href="#service-newsletter">Build the relationship</a>
+          <span class="flow-arrow" aria-hidden="true">&rarr;</span>
+          <a class="flow-step" href="/book-a-call">They come to you</a>
         </div>
       </div>
       <div class="service-list stagger-parent">
-        <div class="service-item stagger stagger-delay-1">
+        <div class="service-item stagger stagger-delay-1" id="service-linkedin">
           <div class="service-stage">Get known</div>
           <h3>LinkedIn Content</h3>
           <p>Consistent publishing that puts your thinking in front of the people who make hiring, booking and enrolment decisions. You share the thinking. I handle everything else.</p>
@@ -1017,7 +1032,7 @@
           <p class="service-connector">This is where most people start. Once the right people are paying attention, the next step is how to keep them.</p>
           <a class="service-cta" href="/book-a-call">Book a Call &rarr;</a>
         </div>
-        <div class="service-item stagger stagger-delay-2">
+        <div class="service-item stagger stagger-delay-2" id="service-eec">
           <div class="service-stage">Own the contact</div>
           <h3>Educational Email Course</h3>
           <p>A done-for-you email sequence that teaches your audience something specific and positions you as the authority before you've asked them for anything.</p>
@@ -1029,7 +1044,7 @@
           <p class="service-connector">Followers are borrowed. A subscriber list is yours. This is how you stop depending on the algorithm.</p>
           <a class="service-cta" href="/book-a-call">Book a Call &rarr;</a>
         </div>
-        <div class="service-item stagger stagger-delay-3">
+        <div class="service-item stagger stagger-delay-3" id="service-newsletter">
           <div class="service-stage">Build the relationship</div>
           <h3>Newsletter</h3>
           <p>A regular newsletter sent directly to the people who've already said they want to hear from you. The place where the thinking goes deeper and the relationship develops over time.</p>
