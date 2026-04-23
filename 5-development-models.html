@@ -88,8 +88,8 @@
     nav .nav-linkedin { color: rgba(250,247,242,0.5); text-decoration: none; display: flex; align-items: center; transition: color 0.2s, transform 0.2s cubic-bezier(0.22,1,0.36,1); }
     nav .nav-linkedin:hover { color: var(--cream); transform: scale(1.15); }
     nav .nav-linkedin:active, nav .nav-linkedin:visited { color: var(--cream); }
-    nav .nav-cta { background: var(--gold); color: var(--green); font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none; transition: opacity 0.2s; white-space: nowrap; }
-    nav .nav-cta:hover { opacity: 0.85; }
+    nav .nav-cta { background: var(--gold); color: var(--green); font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none; white-space: nowrap; box-shadow: 0 6px 16px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.15); transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.2s; }
+    nav .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.2), 0 0 0 2px rgba(201,168,76,0.28), 0 0 24px rgba(201,168,76,0.14); opacity: 1; }
     .nav-form-input { padding: 0.5rem 1.5rem; border: 1px solid rgba(250,247,242,0.25); border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 0.85rem; text-align: center; background: rgba(250,247,242,0.08); color: var(--cream); width: 170px; }
 
     .nav-tabs {
@@ -146,8 +146,8 @@
     .inline-form form { display: flex; flex-direction: column; gap: 0.5rem; max-width: 360px; margin: 0 auto; align-items: center; }
     .inline-form input[type="email"] { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 0.93rem; text-align: center; background: var(--card-bg); color: var(--text); }
     .inline-form input[type="email"]:focus { outline: none; border-color: var(--gold); }
-    .inline-form button { width: 100%; background: var(--gold); color: var(--green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.93rem; padding: 0.75rem 1.75rem; border: none; border-radius: 50px; cursor: pointer; transition: opacity 0.2s; white-space: nowrap; }
-    .inline-form button:hover { opacity: 0.88; }
+    .inline-form button { width: 100%; background: var(--gold); color: var(--green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.93rem; padding: 0.75rem 1.75rem; border: none; border-radius: 50px; cursor: pointer; white-space: nowrap; box-shadow: 0 8px 20px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.15); transition: opacity 0.2s, transform 0.2s ease, box-shadow 0.3s ease; }
+    .inline-form button:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.22), 0 0 0 2px rgba(201,168,76,0.28), 0 0 28px rgba(201,168,76,0.18); }
     .inline-form .form-micro { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.4rem; width: 100%; }
     .inline-form .form-micro a { color: var(--text-muted); text-decoration: underline; }
 

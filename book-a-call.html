@@ -120,7 +120,7 @@
     body.dark nav .nav-linkedin { color: rgba(201,168,76,0.5); }
     body.dark nav .nav-linkedin:hover { color: var(--gold); }
     nav .nav-cta { background: var(--gold); color: var(--green); font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none; transition: opacity 0.2s; white-space: nowrap; }
-    nav .nav-cta:hover { opacity: 0.85; }
+    nav .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.2), 0 0 0 2px rgba(201,168,76,0.28), 0 0 24px rgba(201,168,76,0.14); opacity: 1; }
     body.dark .nav-cta { background: var(--gold); color: #141414; }
 
     .nav-tabs { display: flex; gap: 1.5rem; align-items: center; }
@@ -177,10 +177,10 @@
       padding: 0.85rem 1.75rem; border-radius: 50px;
       font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
       text-decoration: none;
-      transition: opacity 0.2s, transform 0.2s var(--ease);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: opacity 0.2s, transform 0.2s var(--ease), box-shadow 0.3s var(--ease);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.15), 0 0 24px rgba(201,168,76,0.08);
     }
-    .hero-book-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .hero-book-btn:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 0 2px rgba(201,168,76,0.28), 0 0 40px rgba(201,168,76,0.18); }
     body.dark .hero-book-btn { color: #141414; }
 
     .context-block .gold-bar { width: 40px; height: 3px; background: var(--gold); margin-bottom: 1.25rem; border-radius: 2px; }

@@ -591,14 +591,14 @@
       transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease), border-color 0.2s, color 0.2s;
     }
     a.flow-step { cursor: pointer; }
-    a.flow-step:hover {
+    .flow-step:hover {
       border-color: var(--gold); color: var(--terracotta);
       box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1.5px rgba(201,168,76,0.25);
       transform: translateY(-2px);
     }
     a.flow-step:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
     body.dark .flow-step { color: var(--gold); }
-    body.dark a.flow-step:hover { color: var(--terracotta); }
+    body.dark .flow-step:hover { color: var(--terracotta); }
     .flow-arrow { color: rgba(26,26,26,0.4); font-size: 0.9rem; }
     body.dark .flow-arrow { color: rgba(250,247,242,0.75); }
 
@@ -774,8 +774,9 @@
     .contact-form input, .contact-form textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; background: var(--card-bg); color: var(--text); transition: border-color 0.2s; }
     .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--gold); }
     .contact-form textarea { min-height: 120px; resize: vertical; }
-    .contact-form .btn-submit { display: inline-block; background: var(--green); color: var(--cream); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; padding: 0.8rem 1.75rem; border: none; border-radius: 50px; cursor: pointer; transition: opacity 0.2s; align-self: flex-start; text-align: center; }
-    .contact-form .btn-submit:hover { opacity: 0.85; }
+    .contact-form .btn-submit { display: inline-block; background: var(--green); color: var(--cream); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; padding: 0.8rem 1.75rem; border: none; border-radius: 50px; cursor: pointer; align-self: flex-start; text-align: center; box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(27,58,45,0.18); transition: opacity 0.2s, box-shadow 0.3s ease, transform 0.2s ease; }
+    .contact-form .btn-submit:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 0 2px rgba(27,58,45,0.3), 0 0 28px rgba(27,58,45,0.15); }
+    .contact-form .btn-submit:active { transform: translateY(0px); box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 0 0 1px rgba(27,58,45,0.18); transition-duration: 0.1s; }
 
     /* ── FOOTER ── */
     footer { background: var(--green-dark); padding: 2.5rem 1.5rem; }
@@ -964,7 +965,7 @@
       <p>The people making decisions about who to hire, book or enrol are forming views before they make contact. They're reading LinkedIn. They're scanning newsletters. They're comparing who sounds like they know what they're talking about and who doesn't show up at all.</p>
       <div class="stat-callout">
         <p><strong>80 to 90% of the people who hire consultants, <br>book speakers or enrol in courses already <br class="mob-br">have a shortlist <br class="desk-br">before they reach out to anyone.</strong><a href="https://www.bain.com/insights/what-b2bs-need-to-know-about-their-buyers-hbr/" target="_blank" rel="noopener" style="color:var(--gold);font-size:0.75rem;vertical-align:super;text-decoration:none;margin-left:2px;">1</a></p>
-        <p>90% choose from that shortlist. <br class="mob-br">If you're not visible <br class="desk-br">when the list is being formed, <br class="mob-br">you're not in the conversation.</p>
+        <p>If you're not visible when the list is being formed, <br class="mob-br">you're not in the conversation.</p>
       </div>
       <p>When an academy board is looking for a consultant, when a federation is assembling a course delivery panel, when a club is assessing who to bring in for a development review, they're starting with the names they already know.</p>
       <p>Most football development professionals with 10 or 15 years of experience aren't on the list. The knowledge is there but nobody sees it.</p>
