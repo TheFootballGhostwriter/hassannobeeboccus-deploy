@@ -586,18 +586,19 @@
       font-size: 0.82rem; font-weight: 600; color: var(--green);
       background: var(--card-bg); border: 1px solid var(--border);
       padding: 0.5rem 1.1rem; border-radius: 50px;
-      text-decoration: none; cursor: pointer;
+      text-decoration: none;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 0 0 1px rgba(201,168,76,0.04);
       transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease), border-color 0.2s, color 0.2s;
     }
-    .flow-step:hover {
+    a.flow-step { cursor: pointer; }
+    a.flow-step:hover {
       border-color: var(--gold); color: var(--terracotta);
       box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1.5px rgba(201,168,76,0.25);
       transform: translateY(-2px);
     }
-    .flow-step:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    a.flow-step:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
     body.dark .flow-step { color: var(--gold); }
-    body.dark .flow-step:hover { color: var(--terracotta); }
+    body.dark a.flow-step:hover { color: var(--terracotta); }
     .flow-arrow { color: rgba(26,26,26,0.4); font-size: 0.9rem; }
     body.dark .flow-arrow { color: rgba(250,247,242,0.75); }
 
@@ -1016,7 +1017,7 @@
           <span class="flow-arrow" aria-hidden="true">&rarr;</span>
           <a class="flow-step" href="#service-newsletter">Build the relationship</a>
           <span class="flow-arrow" aria-hidden="true">&rarr;</span>
-          <a class="flow-step" href="/book-a-call">They come to you</a>
+          <span class="flow-step">They come to you</span>
         </div>
       </div>
       <div class="service-list stagger-parent">
@@ -1188,7 +1189,7 @@
   <!-- CTA -->
   <section id="cta" class="has-goal-bg">
     <div class="container">
-      <h2>Let's see if there's a fit.</h2>
+      <h2>Let's see if <span class="accent-italic">we fit</span>.</h2>
       <p>30-minute call. I'll tell you what I think would actually work for your situation, whether that involves working together or not.</p>
       <a class="btn-primary" href="/book-a-call">Book a Call</a>
       <a class="cta-secondary" href="/resources" style="color:var(--gold);">Not ready for a call? Browse the free resources &rarr;</a>
