@@ -380,9 +380,9 @@
     body.dark .nav-theme-btn .theme-moon { display: none; }
     body.dark .nav-theme-btn { color: var(--gold); }
 
-    nav .nav-cta { background: var(--gold); color: var(--green); font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.2s; white-space: nowrap; box-shadow: 0 2px 8px rgba(201, 168, 76, 0.15); }
-    nav .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(201, 168, 76, 0.25), 0 0 40px rgba(201, 168, 76, 0.08); opacity: 1; }
-    nav .nav-cta:active { transform: translateY(0px); box-shadow: 0 1px 4px rgba(201, 168, 76, 0.2); transition-duration: 0.1s; }
+    nav .nav-cta { background: var(--gold); color: var(--green); font-size: 0.85rem; font-weight: 600; padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.2s; white-space: nowrap; box-shadow: 0 6px 16px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.15); }
+    nav .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.2), 0 0 0 2px rgba(201,168,76,0.28), 0 0 24px rgba(201,168,76,0.14); opacity: 1; }
+    nav .nav-cta:active { transform: translateY(0px); box-shadow: 0 3px 8px rgba(0,0,0,0.15), 0 0 0 1px rgba(201,168,76,0.15); transition-duration: 0.1s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
@@ -499,12 +499,12 @@
     #hero .hero-sub { color: rgba(250,247,242,0.7); font-size: 17px; line-height: 1.7; margin-bottom: 1.5rem; }
     .hero-cta-note { color: rgba(250,247,242,0.6); font-size: 0.95rem; }
     .hero-scarcity { color: rgba(250,247,242,0.7); font-size: inherit; line-height: 1.7; margin-top: 0.5rem; margin-bottom: 1.5rem; }
-    .hero-secondary { display: inline-block; background: transparent; color: var(--gold); border: 1.5px solid var(--gold); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; position: relative; transition: background 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.3s var(--ease); box-shadow: 0 2px 8px rgba(201,168,76,0.1); }
-    .hero-secondary:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(201,168,76,0.2), 0 0 30px rgba(201,168,76,0.06); }
+    .hero-secondary { display: inline-block; background: transparent; color: var(--gold); border: 1.5px solid var(--gold); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; position: relative; transition: background 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.3s var(--ease); box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.1); }
+    .hero-secondary:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 0 2px rgba(201,168,76,0.28), 0 0 30px rgba(201,168,76,0.1); }
     .hero-cta-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-    .btn-primary { display: inline-block; background: var(--gold); color: var(--green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; position: relative; transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.2s; box-shadow: 0 2px 8px rgba(201, 168, 76, 0.15); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(201, 168, 76, 0.25), 0 0 40px rgba(201, 168, 76, 0.08); opacity: 1; }
-    .btn-primary:active { transform: translateY(0px); box-shadow: 0 1px 4px rgba(201, 168, 76, 0.2); transition-duration: 0.1s; }
+    .btn-primary { display: inline-block; background: var(--gold); color: var(--green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none; position: relative; transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.2s; box-shadow: 0 10px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.15), 0 0 24px rgba(201,168,76,0.08); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 0 2px rgba(201,168,76,0.28), 0 0 40px rgba(201,168,76,0.18); opacity: 1; }
+    .btn-primary:active { transform: translateY(0px); box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 0 0 1px rgba(201,168,76,0.15); transition-duration: 0.1s; }
 
     /* ── BREATHING GLOW ON HERO CTA ── */
     #hero .btn-primary::before {
@@ -920,7 +920,7 @@
         <div class="hero-text">
           <div class="accent-line" style="margin-bottom: 0.9rem; background: #FAF7F2;"></div>
           <div class="hero-eyebrow">Ghostwriting for football development leaders</div>
-          <h1>The best people in <br class="desk-br">football development <br>are <span class="accent-italic">invisible online.</span><span class="hero-gap"></span>I help change that by <br class="desk-br">getting you known <br>for <span class="accent-italic">your thinking.</span></h1>
+          <h1>The best people in <br class="desk-br">football development <br>are <span class="accent-italic">invisible online</span>.<span class="hero-gap"></span>I help change that by <br class="desk-br">getting you known <br>for <span class="accent-italic">your thinking</span>.</h1>
           <p class="hero-sub">I'm Hassan. I ghostwrite LinkedIn content, newsletters <br class="desk-br">and educational email courses for academy directors, <br class="desk-br">coaching education founders and technical directors.</p>
           <p class="hero-sub">I keep the client list short because <br class="mob-br">the work is better for it. <br>If the timing doesn't line up when you get in touch, <br>I'll let you know when a spot opens.</p>
           <div>
@@ -968,7 +968,7 @@
       </div>
       <p>When an academy board is looking for a consultant, when a federation is assembling a course delivery panel, when a club is assessing who to bring in for a development review, they're starting with the names they already know.</p>
       <p>Most football development professionals with 10 or 15 years of experience aren't on the list. The knowledge is there but nobody sees it.</p>
-      <p>Some of the people I work with have never written <br class="mob-br">a LinkedIn post. <br class="desk-br">They don't need to have. <br class="mob-br">The thinking is already there. <br class="desk-br">The writing is <span style="font-style:italic;color:var(--terracotta);">my job.</span></p>
+      <p>Some of the people I work with have never written <br class="mob-br">a LinkedIn post. <br class="desk-br">They don't need to have. <br class="mob-br">The thinking is already there. <br class="desk-br">The writing is <span style="font-style:italic;color:var(--terracotta);">my job</span>.</p>
     </div>
   </section>
 
