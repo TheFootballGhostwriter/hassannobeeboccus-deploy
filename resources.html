@@ -317,10 +317,6 @@
     .writing-card[data-type="course"] .card-type-badge {
       color: var(--gold); border-color: rgba(201,168,76,0.32); background: rgba(201,168,76,0.12);
     }
-    .writing-card[data-type="guide"] .card-type-badge {
-      color: #4a7c6f; border-color: rgba(27,58,45,0.35); background: rgba(27,58,45,0.08);
-    }
-    .writing-card[data-type="guide"] { border-left-color: var(--green); }
 
     .resource-action {
       margin-top: 1.1rem;
@@ -564,7 +560,6 @@
       <button class="wf-chip is-active" data-filter="all" aria-pressed="true">All</button>
       <button class="wf-chip" data-filter="course" aria-pressed="false">Courses</button>
       <button class="wf-chip" data-filter="framework" aria-pressed="false">Frameworks</button>
-      <button class="wf-chip" data-filter="guide" aria-pressed="false">Guides</button>
       <span class="wf-count" aria-live="polite"></span>
     </div>
   </nav>
@@ -602,8 +597,8 @@
         </div>
 
         <!-- GUIDE 1: The Coaching Pathway Guide in England -->
-        <div class="writing-card framework-card fade-in" data-type="guide" data-resource="cpg">
-          <div class="card-type-badge">Guide</div>
+        <div class="writing-card framework-card fade-in" data-type="framework" data-resource="cpg">
+          <div class="card-type-badge">Framework</div>
           <div class="card-tag">Free reference guide &middot; 12 sections</div>
           <h3>The Coaching Pathway Guide in England</h3>
           <p class="card-excerpt">The full cost of the coaching pathway in England, the eligibility requirements, the hidden costs, the job market and what the qualifications will and won't give you. Everything the course pages don't tell you.</p>
@@ -743,8 +738,8 @@
       var countEl = document.querySelector('.wf-count');
       var emptyEl = null;
       var active = 'all';
-      var typeLabels = { all: 'All', course: 'Courses', framework: 'Frameworks', guide: 'Guides' };
-      var typeSingular = { course: 'course', framework: 'framework', guide: 'guide' };
+      var typeLabels = { all: 'All', course: 'Courses', framework: 'Frameworks' };
+      var typeSingular = { course: 'course', framework: 'framework' };
 
       function pluralise(n, type) {
         var label = type === 'all' ? (n === 1 ? 'resource' : 'resources') : (typeSingular[type] + (n === 1 ? '' : 's'));
