@@ -3,7 +3,8 @@ const COURSES = {
   models: { group: '183924441027184080', redirect: '/5-development-models' },
   voice:  { group: '184737667850700274', redirect: '/build-your-public-voice' },
   amf:    { group: '185546911183275136', redirect: '/resources' },
-  ccm:    { group: '185546914392966331', redirect: '/resources' }
+  ccm:    { group: '185546914392966331', redirect: '/resources' },
+  cpg:    { group: '185800853427324705', redirect: '/resources' }
 };
 
 const DEFAULT_COURSE = 'models';
