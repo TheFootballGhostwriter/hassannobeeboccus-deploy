@@ -24,6 +24,7 @@
     { "source": "/alternative-models-framework", "destination": "/alternative-models-framework.html" },
     { "source": "/alternative-models-framework.pdf", "destination": "/alternative-models-framework.html" },
     { "source": "/conversation-to-content-map", "destination": "/conversation-to-content-map.html" },
-    { "source": "/conversation-to-content-map.pdf", "destination": "/conversation-to-content-map.html" }
+    { "source": "/conversation-to-content-map.pdf", "destination": "/conversation-to-content-map.html" },
+    { "source": "/the-coaching-pathway-guide-in-england", "destination": "/the-coaching-pathway-guide-in-england.html" }
   ]
 }
