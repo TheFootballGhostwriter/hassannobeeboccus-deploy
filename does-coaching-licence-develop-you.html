@@ -350,11 +350,16 @@
     body.dark .cookie-opt { background: var(--gold); color: #141414; }
     .cookie-float.hidden { display: none; }
 
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       body { transition: none; }
+      .fade-in { transition: none; opacity: 1; transform: none; }
     }
   </style>
+  <noscript><style>.fade-in{opacity:1;transform:none;}</style></noscript>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
@@ -387,7 +392,7 @@
   </div>
 
   <!-- ARTICLE -->
-  <div class="article-body">
+  <div class="article-body fade-in">
     <div class="container">
       <article>
         <p class="reading-time">6 min read &middot; March 2026</p>
@@ -466,7 +471,7 @@
   </div>
 
   <!-- CTA BRIDGE -->
-  <div class="ft-cta">
+  <div class="ft-cta fade-in">
     <div style="max-width:700px;margin:0 auto;position:relative;z-index:1;">
       <p style="font-size:0.95rem;color:rgba(250,247,242,0.75);margin-bottom:1.25rem;">This is the kind of content I ghostwrite<br>for football development leaders.<br>If you want to get known for <span style="font-family:'Merriweather',serif;font-style:italic;font-size:inherit;line-height:inherit;color:var(--terracotta);">your thinking</span>, let's talk.</p>
       <a href="/book-a-call" class="ft-cta-book" style="display:inline-block;background:var(--gold);color:var(--green);font-family:'Inter',sans-serif;font-weight:600;font-size:1rem;padding:0.9rem 2rem;border-radius:50px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.15), 0 0 24px rgba(201,168,76,0.08);transition:opacity 0.2s,transform 0.2s ease,box-shadow 0.3s ease;">Book a Call</a>
@@ -571,6 +576,12 @@
     ct.addEventListener('click', function() {
       cc.classList.toggle('open');
     });
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(function(el) { revealObserver.observe(el); });
+    setTimeout(function() { document.querySelectorAll('.fade-in').forEach(function(el) { el.classList.add('visible'); }); }, 3000);
+
     document.querySelectorAll('.cookie-opt').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var choice = this.dataset.consent;
