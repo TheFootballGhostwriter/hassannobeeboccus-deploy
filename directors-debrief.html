@@ -71,12 +71,12 @@
     :root {
       --cream: #FAF7F2; --green: #1B3A2D; --gold: #C9A84C; --terracotta: #C0392B;
       --green-dark: #0f2318; --text: #1a1a1a; --text-muted: #555;
-      --border: #e2ddd6; --bg-alt: #f0ebe2; --card-bg: #fff;
+      --border: #e2ddd6; --bg-alt: #eae1d0; --card-bg: #fff;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
     body.dark {
       --cream: #141414; --text: #e0ddd8; --text-muted: #9a9590;
-      --border: #2a2725; --bg-alt: #1c1c1c; --card-bg: #1e1e1e;
+      --border: #2a2725; --bg-alt: #232320; --card-bg: #1e1e1e;
     }
     body.dark nav { background: rgba(13, 31, 22, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201, 168, 76, 0.12); }
     body.dark nav .wordmark { color: #e0ddd8; }
@@ -171,12 +171,12 @@
     .has-texture { position: relative; }
     .has-texture::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none; z-index: 0; opacity: 0.05;
+      pointer-events: none; z-index: 0; opacity: 0.11;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Cg fill='none' stroke='%231B3A2D' stroke-linecap='round'%3E%3Cpath d='M20 30c18-7 35 3 55 8s32 11 52 6' stroke-width='1.2'/%3E%3Cpath d='M350 20c12-3 22 4 34 6s18 5 28 1' stroke-width='0.8'/%3E%3Cpath d='M80 120c25-6 45 4 65 9s32 8 50 3' stroke-width='1'/%3E%3Cpath d='M400 100c20-5 36 3 52 7s28 6 42 2' stroke-width='0.9'/%3E%3Cpath d='M50 230c30-8 55 4 78 11s42 9 62 3' stroke-width='1.1'/%3E%3Cpath d='M380 210c15-4 28 3 42 6s22 5 34 1' stroke-width='0.8'/%3E%3Cpath d='M100 330c22-6 40 4 58 8s32 7 48 2' stroke-width='1'/%3E%3Ccircle cx='200' cy='50' r='5' stroke-width='1.3'/%3E%3Ccircle cx='450' cy='140' r='4' stroke-width='1.2'/%3E%3Ccircle cx='280' cy='270' r='5' stroke-width='1.3'/%3E%3C/g%3E%3C/svg%3E");
       background-size: 600px 400px;
     }
     .has-texture > * { position: relative; z-index: 1; }
-    body.dark .has-texture::before { opacity: 0.025; filter: invert(1); }
+    body.dark .has-texture::before { opacity: 0.055; filter: invert(1); }
 
     /* HERO BOOK BUTTON */
     .hero-book-btn {
