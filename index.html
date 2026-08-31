@@ -458,7 +458,11 @@
       flex-shrink: 0; width: 200px; position: relative; margin-top: 0.5rem;
       transition: transform 0.3s var(--ease);
     }
-    .hero-photo:hover { transform: translateY(-3px); }
+    /* The lift sits on the children, not on .hero-photo. The parallax below animates the
+       parent's transform, and an animation beats a hover rule in the cascade, so a lift
+       declared on the parent would never fire. */
+    .hero-photo:hover img,
+    .hero-photo:hover .crest-rim { transform: translateY(-3px); }
     /* Gold bloom: the crest again, scaled up and blurred, sitting directly behind the
        photo. Clipping before blurring keeps the halo crest-shaped, which the old
        rectangular version could not do. */
@@ -475,7 +479,7 @@
       transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
     }
     .hero-photo:hover::before {
-      transform: scale(1.11);
+      transform: translateY(-3px) scale(1.11);
       opacity: 0.8;
     }
     /* clipPathUnits="objectBoundingBox" means the path is expressed in fractions of the
@@ -492,7 +496,7 @@
               drop-shadow(0 24px 50px rgba(0,0,0,0.6))
               drop-shadow(0 6px 14px rgba(0,0,0,0.35));
       display: block;
-      transition: filter 0.3s var(--ease);
+      transition: filter 0.3s var(--ease), transform 0.3s var(--ease);
     }
     .hero-photo:hover img {
       filter: grayscale(100%) contrast(1.08) brightness(1.02)
@@ -506,6 +510,7 @@
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       z-index: 2; pointer-events: none;
+      transition: transform 0.3s var(--ease);
     }
     .hero-photo .crest-rim path { fill: none; stroke: var(--gold); stroke-width: 5; }
     .hero-gap { display: block; height: 0.5em; }
@@ -936,8 +941,9 @@
       .faq-question::after { transition: none; }
       .who-card:hover, .service-item:hover, .proof-card:hover, .course-bridge:hover { transform: none; }
       .hero-photo { animation: none; }
-      .hero-photo:hover { transform: none; }
-      .hero-photo::before { transition: none; }
+      .hero-photo:hover img, .hero-photo:hover .crest-rim { transform: none; }
+      .hero-photo:hover::before { transform: scale(1.11); }
+      .hero-photo::before, .hero-photo img, .hero-photo .crest-rim { transition: none; }
       .service-item:hover .service-stage { transition: none; }
       .reading-progress { transition: none; }
     }
