@@ -216,16 +216,16 @@ body {
 /* Breathing glow, matching the Book a Call buttons elsewhere. Inlined rather than pulled
    from shared.css because this page does not load it. */
 .site-nav-cta::before {
-  content: ''; position: absolute; inset: -4px; border-radius: 50px;
-  background: rgba(201,168,76,0.15); filter: blur(12px); opacity: 0.4;
+  content: ''; position: absolute; inset: -6px; border-radius: 50px;
+  background: rgba(201,168,76,0.55); filter: blur(16px); opacity: 0.5;
   animation: cta-breathe 4s ease-in-out infinite; z-index: -1; pointer-events: none;
 }
 @keyframes cta-breathe {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.05); }
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .site-nav-cta::before { animation: none; opacity: 0.4; }
+  .site-nav-cta::before { animation: none; opacity: 0.7; }
 }
 .site-nav-cta:hover {
   transform: translateY(-2px);
