@@ -459,33 +459,45 @@
       transition: transform 0.3s var(--ease);
     }
     .hero-photo:hover { transform: translateY(-3px); }
-    /* A second crest in terracotta, offset behind the photo. Replaces the gold glow that
-       sat here before: that was a blurred rectangle and it showed square corners leaking
-       out from behind the crest. */
+    /* Gold bloom: the crest again, scaled up and blurred, sitting directly behind the
+       photo. Clipping before blurring keeps the halo crest-shaped, which the old
+       rectangular version could not do. */
     .hero-photo::before {
       content: '';
       position: absolute;
       inset: 0;
       z-index: 0;
-      background: var(--terracotta);
+      background: var(--gold);
       clip-path: url(#crest);
-      transform: translate(9px, 9px);
-      filter: blur(6px);
-      transition: transform 0.3s var(--ease);
+      transform: scale(1.06);
+      filter: blur(20px);
+      opacity: 0.6;
+      transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
     }
     .hero-photo:hover::before {
-      transform: translate(12px, 12px);
+      transform: scale(1.11);
+      opacity: 0.8;
     }
     /* clipPathUnits="objectBoundingBox" means the path is expressed in fractions of the
-       element, so the crest scales exactly with the photo at any width. Only the offset
-       above is absolute and needs a mobile override. */
+       element, so the crest scales exactly with the photo at any width. Only the blur
+       radii below are absolute and need a mobile override. */
     .hero-photo img {
       position: relative; z-index: 1;
       width: 100%; height: auto;
       clip-path: url(#crest);
+      /* Depth borrowed from the cards: a wide soft cast shadow plus a tight contact
+         shadow. box-shadow would draw a rectangle here because it ignores clip-path,
+         so both are drop-shadows, which trace the crest. */
       filter: grayscale(100%) contrast(1.08) brightness(1.02)
-              drop-shadow(0 0 14px rgba(201,168,76,0.45));
+              drop-shadow(0 24px 50px rgba(0,0,0,0.6))
+              drop-shadow(0 6px 14px rgba(0,0,0,0.35));
       display: block;
+      transition: filter 0.3s var(--ease);
+    }
+    .hero-photo:hover img {
+      filter: grayscale(100%) contrast(1.08) brightness(1.02)
+              drop-shadow(0 32px 64px rgba(0,0,0,0.7))
+              drop-shadow(0 8px 18px rgba(0,0,0,0.45));
     }
     /* Gold trim. Drawn as a stroked path rather than a scaled copy of the crest, because
        scaling the shape thickens the bottom curve and thins the top. Stroke width is in
@@ -505,13 +517,13 @@
       .hero-photo {
         width: 120px; flex-shrink: 0; margin-top: 0.5rem;
       }
-      /* The crest scales itself. The offset does not, so at 120px the desktop 9px would
-         sit roughly 1.7x too far out against the shape. */
-      .hero-photo::before { transform: translate(5px, 5px); filter: blur(3px); }
-      .hero-photo:hover::before { transform: translate(7px, 7px); }
+      /* The crest scales itself. Blur radii do not, so at 120px the desktop values would
+         read roughly 1.7x heavier against the shape. */
+      .hero-photo::before { filter: blur(12px); }
       .hero-photo img {
         filter: grayscale(100%) contrast(1.08) brightness(1.02)
-                drop-shadow(0 0 8px rgba(201,168,76,0.45));
+                drop-shadow(0 14px 28px rgba(0,0,0,0.55))
+                drop-shadow(0 4px 8px rgba(0,0,0,0.32));
       }
     }
     #hero .hero-eyebrow {
