@@ -459,6 +459,9 @@
       transition: transform 0.3s var(--ease);
     }
     .hero-photo:hover { transform: translateY(-3px); }
+    /* DEAD since the photo became a crest. Both rules drew a blurred gold rectangle
+       behind the image, which showed as square glow leaking out of the cut corners.
+       The glow is now a drop-shadow on the img, so it follows the silhouette.
     .hero-photo::before {
       content: '';
       position: absolute;
@@ -473,16 +476,24 @@
       background: rgba(201,168,76,0.65);
       filter: blur(28px);
     }
+    */
+    /* clipPathUnits="objectBoundingBox" means the path is expressed in fractions of the
+       element, so the crest scales exactly with the photo at any width. Only the shadow
+       lengths below are absolute and need a mobile override. */
     .hero-photo img {
       position: relative; z-index: 1;
-      width: 100%; height: auto; border-radius: 12px;
-      filter: grayscale(100%) contrast(1.08) brightness(1.02);
+      width: 100%; height: auto;
+      clip-path: url(#crest);
+      filter: grayscale(100%) contrast(1.08) brightness(1.02)
+              drop-shadow(0 0 16px rgba(201,168,76,0.55))
+              drop-shadow(0 14px 26px rgba(0,0,0,0.40));
       display: block;
-      box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.15);
-      transition: box-shadow 0.3s var(--ease);
+      transition: filter 0.3s var(--ease);
     }
     .hero-photo:hover img {
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 2px rgba(201,168,76,0.25);
+      filter: grayscale(100%) contrast(1.08) brightness(1.02)
+              drop-shadow(0 0 22px rgba(201,168,76,0.7))
+              drop-shadow(0 18px 32px rgba(0,0,0,0.5));
     }
     .hero-gap { display: block; height: 0.5em; }
     .desk-br { display: inline; }
@@ -493,8 +504,17 @@
       .hero-photo {
         width: 120px; flex-shrink: 0; margin-top: 0.5rem;
       }
-      .hero-photo::before {
-        top: -6px; left: -6px; right: -6px; bottom: -6px;
+      /* The crest scales itself. The shadows do not, so at 120px the desktop values
+         would sit roughly 1.7x too heavy against the shape. */
+      .hero-photo img {
+        filter: grayscale(100%) contrast(1.08) brightness(1.02)
+                drop-shadow(0 0 10px rgba(201,168,76,0.5))
+                drop-shadow(0 8px 16px rgba(0,0,0,0.35));
+      }
+      .hero-photo:hover img {
+        filter: grayscale(100%) contrast(1.08) brightness(1.02)
+                drop-shadow(0 0 13px rgba(201,168,76,0.62))
+                drop-shadow(0 10px 20px rgba(0,0,0,0.44));
       }
     }
     #hero .hero-eyebrow {
@@ -908,7 +928,7 @@
       .who-card:hover, .service-item:hover, .proof-card:hover, .course-bridge:hover { transform: none; }
       .hero-photo { animation: none; }
       .hero-photo:hover { transform: none; }
-      .hero-photo::before, .hero-photo img { transition: none; }
+      .hero-photo img { transition: none; }
       .service-item:hover .service-stage { transition: none; }
       .reading-progress { transition: none; }
     }
@@ -976,6 +996,7 @@
           </div>
         </div>
         <div class="hero-photo">
+          <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><clipPath id="crest" clipPathUnits="objectBoundingBox"><path d="M0.05,0 H0.95 A0.05,0.042 0 0 1 1,0.042 V0.62 C1,0.82 0.78,0.94 0.5,1 C0.22,0.94 0,0.82 0,0.62 V0.042 A0.05,0.042 0 0 1 0.05,0 Z"/></clipPath></defs></svg>
           <picture><source srcset="/headshot.webp" type="image/webp" /><img src="/headshot.jpg" alt="Hassan Nobeeboccus" width="400" height="474" loading="eager" fetchpriority="high" /></picture>
         </div>
       </div>
