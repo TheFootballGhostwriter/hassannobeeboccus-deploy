@@ -463,9 +463,10 @@
        declared on the parent would never fire. */
     .hero-photo:hover img,
     .hero-photo:hover .crest-rim { transform: translateY(-3px); }
-    /* Gold bloom: the crest again, scaled up and blurred, sitting directly behind the
-       photo. Clipping before blurring keeps the halo crest-shaped, which the old
-       rectangular version could not do. */
+    /* Breathing gold halo, the same two-layer idea as the hero CTA: a pulsing bloom
+       behind, plus an edge-hugging glow on the photo itself. Here the bloom is the crest
+       again rather than a rounded rectangle, so the halo keeps the badge shape.
+       The animation owns this element's transform, so no hover rule may set it. */
     .hero-photo::before {
       content: '';
       position: absolute;
@@ -473,14 +474,12 @@
       z-index: 0;
       background: var(--gold);
       clip-path: url(#crest);
-      transform: scale(1.06);
-      filter: blur(20px);
-      opacity: 0.6;
-      transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+      filter: blur(22px);
+      animation: crest-breathe 4s ease-in-out infinite;
     }
-    .hero-photo:hover::before {
-      transform: translateY(-3px) scale(1.11);
-      opacity: 0.8;
+    @keyframes crest-breathe {
+      0%, 100% { opacity: 0.45; transform: scale(1.04); }
+      50%      { opacity: 0.85; transform: scale(1.10); }
     }
     /* clipPathUnits="objectBoundingBox" means the path is expressed in fractions of the
        element, so the crest scales exactly with the photo at any width. Only the blur
@@ -489,10 +488,12 @@
       position: relative; z-index: 1;
       width: 100%; height: auto;
       clip-path: url(#crest);
-      /* Depth borrowed from the cards: a wide soft cast shadow plus a tight contact
-         shadow. box-shadow would draw a rectangle here because it ignores clip-path,
-         so both are drop-shadows, which trace the crest. */
+      /* Zero-offset gold glow hugging the edge, matching the button's 0 0 24px, then the
+         cards' depth: a wide soft cast plus a tight contact shadow. box-shadow would draw
+         a rectangle here because it ignores clip-path, so these are all drop-shadows,
+         which trace the crest instead. */
       filter: grayscale(100%) contrast(1.08) brightness(1.02)
+              drop-shadow(0 0 18px rgba(201,168,76,0.45))
               drop-shadow(0 24px 50px rgba(0,0,0,0.6))
               drop-shadow(0 6px 14px rgba(0,0,0,0.35));
       display: block;
@@ -500,6 +501,7 @@
     }
     .hero-photo:hover img {
       filter: grayscale(100%) contrast(1.08) brightness(1.02)
+              drop-shadow(0 0 30px rgba(201,168,76,0.75))
               drop-shadow(0 32px 64px rgba(0,0,0,0.7))
               drop-shadow(0 8px 18px rgba(0,0,0,0.45));
     }
@@ -524,9 +526,10 @@
       }
       /* The crest scales itself. Blur radii do not, so at 120px the desktop values would
          read roughly 1.7x heavier against the shape. */
-      .hero-photo::before { filter: blur(12px); }
+      .hero-photo::before { filter: blur(13px); }
       .hero-photo img {
         filter: grayscale(100%) contrast(1.08) brightness(1.02)
+                drop-shadow(0 0 11px rgba(201,168,76,0.45))
                 drop-shadow(0 14px 28px rgba(0,0,0,0.55))
                 drop-shadow(0 4px 8px rgba(0,0,0,0.32));
       }
@@ -942,8 +945,8 @@
       .who-card:hover, .service-item:hover, .proof-card:hover, .course-bridge:hover { transform: none; }
       .hero-photo { animation: none; }
       .hero-photo:hover img, .hero-photo:hover .crest-rim { transform: none; }
-      .hero-photo:hover::before { transform: scale(1.11); }
-      .hero-photo::before, .hero-photo img, .hero-photo .crest-rim { transition: none; }
+      .hero-photo::before { animation: none; opacity: 0.65; transform: scale(1.07); }
+      .hero-photo img, .hero-photo .crest-rim { transition: none; }
       .service-item:hover .service-stage { transition: none; }
       .reading-progress { transition: none; }
     }
