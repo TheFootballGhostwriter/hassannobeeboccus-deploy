@@ -463,10 +463,9 @@
        declared on the parent would never fire. */
     .hero-photo:hover img,
     .hero-photo:hover .crest-rim { transform: translateY(-3px); }
-    /* Breathing gold halo, the same two-layer idea as the hero CTA: a pulsing bloom
-       behind, plus an edge-hugging glow on the photo itself. Here the bloom is the crest
-       again rather than a rounded rectangle, so the halo keeps the badge shape.
-       The animation owns this element's transform, so no hover rule may set it. */
+    /* Static gold halo, the crest again so the glow keeps the badge shape. Deliberately
+       not animated: the photo is not a link, and a pulsing glow reads as an invitation to
+       click. The breathing version of this lives on the Book a Call buttons instead. */
     .hero-photo::before {
       content: '';
       position: absolute;
@@ -475,11 +474,8 @@
       background: var(--gold);
       clip-path: url(#crest);
       filter: blur(22px);
-      animation: crest-breathe 4s ease-in-out infinite;
-    }
-    @keyframes crest-breathe {
-      0%, 100% { opacity: 0.45; transform: scale(1.04); }
-      50%      { opacity: 0.85; transform: scale(1.10); }
+      transform: scale(1.05);
+      opacity: 0.5;
     }
     /* clipPathUnits="objectBoundingBox" means the path is expressed in fractions of the
        element, so the crest scales exactly with the photo at any width. Only the blur
@@ -551,22 +547,8 @@
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 0 2px rgba(201,168,76,0.28), 0 0 40px rgba(201,168,76,0.18); opacity: 1; }
     .btn-primary:active { transform: translateY(0px); box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 0 0 1px rgba(201,168,76,0.15); transition-duration: 0.1s; }
 
-    /* ── BREATHING GLOW ON HERO CTA ── */
-    #hero .btn-primary::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: inherit;
-      background: rgba(201, 168, 76, 0.15);
-      filter: blur(12px);
-      opacity: 0.4;
-      animation: breathe 4s ease-in-out infinite;
-      z-index: -1;
-    }
-    @keyframes breathe {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.05); }
-    }
+    /* The breathing glow that used to live here is now a site-wide rule in shared.css,
+       covering every Book a Call button rather than just the hero one. */
 
     /* ── ABOUT ── */
     .about-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.25rem; }
@@ -933,7 +915,6 @@
       html { scroll-behavior: auto; }
       body { transition: none; }
       .btn-primary:hover { transform: none; }
-      #hero .btn-primary::before { animation: none; opacity: 0.4; }
 
       .fade-in { transition: none; opacity: 1; transform: none; }
       .stagger { transition: none; opacity: 1; transform: none; }
@@ -945,7 +926,6 @@
       .who-card:hover, .service-item:hover, .proof-card:hover, .course-bridge:hover { transform: none; }
       .hero-photo { animation: none; }
       .hero-photo:hover img, .hero-photo:hover .crest-rim { transform: none; }
-      .hero-photo::before { animation: none; opacity: 0.65; transform: scale(1.07); }
       .hero-photo img, .hero-photo .crest-rim { transition: none; }
       .service-item:hover .service-stage { transition: none; }
       .reading-progress { transition: none; }
