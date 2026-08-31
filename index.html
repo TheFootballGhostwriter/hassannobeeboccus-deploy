@@ -470,6 +470,7 @@
       background: var(--terracotta);
       clip-path: url(#crest);
       transform: translate(9px, 9px);
+      filter: blur(6px);
       transition: transform 0.3s var(--ease);
     }
     .hero-photo:hover::before {
@@ -482,7 +483,8 @@
       position: relative; z-index: 1;
       width: 100%; height: auto;
       clip-path: url(#crest);
-      filter: grayscale(100%) contrast(1.08) brightness(1.02);
+      filter: grayscale(100%) contrast(1.08) brightness(1.02)
+              drop-shadow(0 0 14px rgba(201,168,76,0.45));
       display: block;
     }
     /* Gold trim. Drawn as a stroked path rather than a scaled copy of the crest, because
@@ -505,8 +507,12 @@
       }
       /* The crest scales itself. The offset does not, so at 120px the desktop 9px would
          sit roughly 1.7x too far out against the shape. */
-      .hero-photo::before { transform: translate(5px, 5px); }
+      .hero-photo::before { transform: translate(5px, 5px); filter: blur(3px); }
       .hero-photo:hover::before { transform: translate(7px, 7px); }
+      .hero-photo img {
+        filter: grayscale(100%) contrast(1.08) brightness(1.02)
+                drop-shadow(0 0 8px rgba(201,168,76,0.45));
+      }
     }
     #hero .hero-eyebrow {
       font-family: 'Merriweather', serif; font-style: italic;
