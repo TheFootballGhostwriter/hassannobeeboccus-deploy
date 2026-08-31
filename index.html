@@ -779,6 +779,10 @@
     .faq-answer > * { overflow: hidden; }
     .faq-item.open .faq-answer { grid-template-rows: 1fr; padding: 0 0 1.5rem 0; }
     .faq-answer p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-top: 0.75rem; }
+    /* grid-template-rows: 0fr defines one row, so a second child would land in an auto
+       implicit row and stay visible when closed. Multi-paragraph answers wrap in this. */
+    .faq-answer-body { margin-top: 0.75rem; }
+    .faq-answer-body > p:first-child { margin-top: 0; }
 
     /* ── CTA ── */
     #cta { background: var(--green); text-align: center; }
@@ -1007,7 +1011,7 @@
       <p>The people making decisions about who to hire, book or enrol are forming views before they make contact. They're reading LinkedIn. They're scanning newsletters. They're comparing who sounds like they know what they're talking about and who doesn't show up at all.</p>
       <p>When an academy board is looking for a consultant, when a federation is assembling a course delivery panel, when a club is assessing who to bring in for a development review, they're starting with the names they already know.</p>
       <p>Most football development professionals with 10 or 15 years of experience aren't on the list. The knowledge is there but nobody sees it.</p>
-      <p>You might never have written <br class="mob-br">a LinkedIn post. You don't need to have. The thinking is already there. The writing is <span style="font-style:italic;color:var(--terracotta);">my job</span>.</p>
+      <p>You might never have written <br class="mob-br">a LinkedIn post. You don't need to have. Your thinking is already there. The writing is <span style="font-style:italic;color:var(--terracotta);">my job</span>.</p>
     </div>
   </section>
 
@@ -1208,7 +1212,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How long before I see results?</button>
-          <div class="faq-answer"><p>I won't put a timeline on it, because anyone who does is guessing. What I can show you is my own account, where two posts <strong>alone</strong> brought almost 70,000 impressions. That led industry leaders, in football and elsewhere, to reach out and ask how I could help them.</p><p>Expect the early signals to be profile views and connection requests from the right people, well before anything that looks like a pipeline. How quickly it compounds depends on how consistently you publish.</p></div>
+          <div class="faq-answer"><div class="faq-answer-body"><p>I won't put a timeline on it, because anyone who does is guessing. What I can show you is my own account, where two posts <strong>alone</strong> brought almost 70,000 impressions. That led industry leaders, in football and elsewhere, to reach out and ask how I could help them.</p><p>Expect the early signals to be profile views and connection requests from the right people, well before anything that looks like a pipeline. How quickly it compounds depends on how consistently you publish.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">I work at a Category 3 academy. Is this relevant for me?</button>
