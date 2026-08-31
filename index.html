@@ -10,13 +10,13 @@
   <meta name="robots" content="index, follow" />
 
   <!-- Primary meta -->
-  <meta name="description" content="Ghostwriting for football development leaders. I help academy directors, coaching education founders and technical directors get known for the quality of their thinking." />
+  <meta name="description" content="Ghostwriting for football development leaders. I help academy directors, coaching education leaders and football technology founders get known for the quality of their thinking." />
 
   <!-- Open Graph / LinkedIn -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hassannobeeboccus.com" />
   <meta property="og:title" content="The best people in football development are invisible online. I help change that." />
-  <meta property="og:description" content="I ghostwrite LinkedIn content, newsletters and email courses for football development leaders. Book a call." />
+  <meta property="og:description" content="I ghostwrite LinkedIn posts, newsletters and email courses for football development leaders. Book a call." />
   <meta property="og:image" content="https://hassannobeeboccus.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="627" />
@@ -41,7 +41,7 @@
         "@type": "Person",
         "name": "Hassan Nobeeboccus",
         "jobTitle": "Ghostwriter",
-        "description": "Ghostwriter for football development leaders. Specialising in LinkedIn content, newsletters and educational email courses for academy directors, coaching education founders and technical directors.",
+        "description": "Ghostwriter for football development leaders. Specialising in LinkedIn posts, newsletters and educational email courses for academy directors, coaching education leaders and football technology founders.",
         "url": "https://hassannobeeboccus.com",
         "email": "thefootballghostwriter@outlook.com",
         "sameAs": ["https://www.linkedin.com/in/thefootballghostwriter/"],
@@ -61,9 +61,9 @@
         "mainEntity": [
           {"@type":"Question","name":"Will the content actually sound like me?","acceptedAnswer":{"@type":"Answer","text":"That's the whole point. Before I write anything, we spend time talking. I learn how you explain things, the phrases you use, the way you structure an argument. The content that comes out of that process sounds like you on your best day, not like a content writer guessing at your voice."}},
           {"@type":"Question","name":"How much of my time does this take each month?","acceptedAnswer":{"@type":"Answer","text":"One conversation, typically 45 minutes to an hour. You talk about what's on your mind in the sector, what you've been working on, what you think people are getting wrong. I handle everything from there: research, drafting, editing, revisions. You review and approve before anything goes out."}},
-          {"@type":"Question","name":"I'm not active on LinkedIn at all. Is that a problem?","acceptedAnswer":{"@type":"Answer","text":"Not at all. Most of the people I work with come to me with an empty profile or no posting history. We build the whole thing from the ground up. You don't need an existing audience for this to work."}},
+          {"@type":"Question","name":"I'm not active on LinkedIn at all. Is that a problem?","acceptedAnswer":{"@type":"Answer","text":"Not at all. An empty profile or no posting history is a normal starting point. We build the whole thing from the ground up. You don't need an existing audience for this to work."}},
           {"@type":"Question","name":"Do you use AI to write the content?","acceptedAnswer":{"@type":"Answer","text":"AI is a research and editing tool, not a ghostwriter. Every piece of content is written by me, grounded in your specific expertise and the conversations we have. The quality difference between AI-generated content and writing that comes from someone who understands your sector is obvious to any reader in football development."}},
-          {"@type":"Question","name":"How long before I see results?","acceptedAnswer":{"@type":"Answer","text":"Most people start seeing meaningful engagement within 8 to 12 weeks of consistent publishing. That means profile views, connection requests from the right people, and conversations starting in your DMs. The longer you publish consistently, the stronger it gets."}},
+          {"@type":"Question","name":"How long before I see results?","acceptedAnswer":{"@type":"Answer","text":"I won't put a timeline on it, because anyone who does is guessing. What I can show you is my own account, where two posts alone brought almost 70,000 impressions. That led industry leaders, in football and elsewhere, to reach out and ask how I could help them. Expect the early signals to be profile views and connection requests from the right people, well before anything that looks like a pipeline. How quickly it compounds depends on how consistently you publish."}},
           {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on what you need. The best way to find out is to book a call and we'll talk through what makes sense for your situation. No pricing is listed on the site because every engagement is scoped to the individual."}}
         ]
       }
@@ -626,6 +626,14 @@
     .fade-in.visible .services-flow .flow-step:nth-child(7) { transition-delay: 0.6s; }
 
     #services .service-list { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+    /* Three across on wide screens: single column ran the card copy to ~160 characters a line.
+       Held back to 1100px because below that the three columns get too narrow to read.
+       Two across is not an option: three cards would leave an orphan with an empty half beside it. */
+    @media (min-width: 1100px) {
+      #services .service-list { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+      #services .service-list .service-item { display: flex; flex-direction: column; }
+      #services .service-list .service-connector { margin-top: auto; }
+    }
     .service-item { border: 1px solid var(--border); border-left: 4px solid var(--terracotta); padding: 2rem 1.75rem; background: var(--card-bg); border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.08), 0 0 0 1px rgba(201,168,76,0.04); transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease); }
     .service-item:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.2), 0 0 0 2px rgba(201,168,76,0.2); transform: translateY(-2px); }
     .service-stage { font-family: 'Merriweather', serif; font-style: italic; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.5rem; transition: color 0.3s var(--ease); }
@@ -633,16 +641,26 @@
     .service-item h3 { color: var(--green); font-size: 1.1rem; }
     body.dark .service-item h3 { color: var(--gold); }
     .service-item > p { font-size: 0.96rem; color: var(--text-muted); }
+    /* DEAD after the 31 Aug 2026 copy pass. No markup uses this. Retained for a later tidy. */
     .service-includes { list-style: none; padding: 0; margin: 1.25rem 0 0.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
     .service-includes li { font-size: 1rem; color: var(--text); padding-left: 1.25rem; position: relative; }
     body.dark .service-includes li { color: #e0ddd8; }
     .service-includes li::before { content: ''; position: absolute; left: 0; top: 0.55rem; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
     .service-connector { font-size: 0.88rem; color: var(--green); font-style: italic; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
     body.dark .service-connector { color: var(--text-muted); }
+    /* DEAD after the 31 Aug 2026 copy pass. No markup uses this. Retained for a later tidy. */
     .service-cta { display: inline-block; margin-top: 1rem; font-size: 0.9rem; font-weight: 600; color: var(--green); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; transition: color 0.2s, transform 0.2s ease, box-shadow 0.3s ease; }
     .service-cta:hover { color: var(--terracotta); transform: translateY(-2px); }
     .service-cta:active { transform: translateY(0px); transition-duration: 0.1s; }
     body.dark .service-cta { color: var(--gold); }
+
+    /* ── SERVICES: TIER TWO (standalone offers) ── */
+    .service-tier-break { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0 1.75rem; }
+    #services .service-extras { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+    .service-item-lite { border-left: 3px solid var(--gold); padding: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.05), 0 0 0 1px rgba(201,168,76,0.03); }
+    .service-item-lite h3 { font-size: 1rem; }
+    .service-item-lite > p { margin-bottom: 0; }
+    @media (max-width: 900px) { #services .service-extras { grid-template-columns: 1fr; } }
 
     /* ── MID-PAGE CTA ── */
     .mid-cta { text-align: center; padding: 3rem 0; background: var(--green); position: relative; overflow: hidden; }
@@ -939,15 +957,15 @@
       <div class="hero-layout">
         <div class="hero-text">
           <div class="hero-eyebrow">Ghostwriting for football development leaders</div>
-          <h1>The best people in football development are <span class="accent-italic">invisible online</span><span style="color:var(--gold);">.</span><span class="hero-gap"></span>I help change that by getting you known for <span class="accent-italic">your thinking</span><span style="color:var(--gold);">.</span></h1>
-          <p class="hero-sub">I'm Hassan. I ghostwrite LinkedIn content, newsletters and educational email courses for academy directors, coaching education founders and technical directors.</p>
-          <p class="hero-sub">I keep the client list short because <br class="mob-br">the work is better for it. If the timing doesn't line up when you get in touch, I'll let you know when a spot opens.</p>
+          <h1>The best people in football development are <span class="accent-italic">invisible online</span><span style="color:var(--gold);">.</span><span class="hero-gap"></span>I get you known for <span class="accent-italic">your thinking</span><span style="color:var(--gold);">.</span></h1>
+          <p class="hero-sub">I'm Hassan. I ghostwrite thought leadership for academy directors, coaching education leaders and football technology founders. This includes LinkedIn posts, newsletters and educational email courses.</p>
+          <p class="hero-sub">I only take on a small number of people at a time. The work runs on one proper chat a month.</p>
           <div>
             <a class="btn-primary" href="/book-a-call">Book a Call</a><br><br>
-            <span class="hero-cta-note">Just a 30 min conversation to see if we're a good fit.</span>
+            <span class="hero-cta-note">Just 30 minutes to see if we're a good fit.</span>
           </div>
           <hr style="border:none;border-top:1px solid rgba(201,168,76,0.2);margin:1.5rem 0;">
-          <p class="hero-sub">If a call feels too early, the resources page has free courses and frameworks for football development leaders.</p>
+          <p class="hero-sub">If a call feels too early, the resources page has free courses and frameworks.</p>
           <div>
             <a class="hero-secondary" href="/resources">Browse resources &rarr;</a><br><br>
             <span class="hero-cta-note">Pick whatever fits where you are.</span>
@@ -965,14 +983,16 @@
     <div class="container fade-in">
       <div class="section-eyebrow">Behind the writing</div>
       <div class="about-header">
-        <h2>Why work with me</h2>
+        <h2>Who I am</h2>
         <picture><source srcset="/headshot.webp" type="image/webp" /><img class="about-headshot" src="/headshot.jpg" alt="Hassan Nobeeboccus" loading="lazy" /></picture>
       </div>
-      <p>I understand EPPP categorisation and Category 1 to 3 academy operations.</p>
-      <p>I write about bio-banding, ecological dynamics and constraints-led methodology because I've researched and worked within the sector.</p>
-      <p>When I write for a GPS analytics founder or a UEFA course provider, the content reads like someone who has sat in the room. The research behind it does.</p>
-      <p>Everything is ghostwritten in your voice, grounded in your expertise.</p>
-      <p>Your audience builds around your thinking, not mine.</p>
+      <p>I've spent over 10 years in education, on Pearson and City &amp; Guilds qualifications.</p>
+      <p>I make sure young people understand their specifications, assessments and question papers. I do this by working with subject experts who write down what they know.</p>
+      <p>In football development, though, we don't always know what the best people are thinking. When it is written down, it's not always clear.</p>
+      <p>You've got the expertise. But this time, you tell me your thinking and I'll do the writing.</p>
+      <p>I understand <a href="https://www.linkedin.com/posts/thefootballghostwriter_premier-league-clubs-say-their-academies-share-7439613386923024384-m3vu/" target="_blank" rel="noopener">EPPP categorisation</a> and <a href="https://www.linkedin.com/posts/thefootballghostwriter_footballequality-academysystem-youthdevelopment-share-7394297834482593792-s54M/" target="_blank" rel="noopener">Category 1 to 3 academy operations</a>. I write about <a href="https://www.linkedin.com/posts/thefootballghostwriter_weve-known-about-birth-date-bias-for-two-share-7432371451422314496-Q-_M/" target="_blank" rel="noopener">bio-banding</a>, ecological dynamics and constraints-led methodology.</p>
+      <p>I've sat down with people across the game. The chief executive of Kick It Out. Coaches who developed players at Manchester United under Sir Alex Ferguson. A former Rangers assistant manager, a football analytics founder and an award-winning community club.</p>
+      <p>Your audience builds around your thinking, not mine. Everything is grounded in your expertise and ghostwritten in your voice.</p>
     </div>
   </section>
 
@@ -981,13 +1001,13 @@
     <div class="container fade-in">
       <div class="stat-callout">
         <p><strong>80 to 90% of the people who hire consultants, book speakers or enrol in courses already have a shortlist before they reach out to anyone.</strong><a href="https://www.bain.com/insights/what-b2bs-need-to-know-about-their-buyers-hbr/" target="_blank" rel="noopener" style="color:var(--gold);font-size:0.75rem;vertical-align:super;text-decoration:none;margin-left:2px;">1</a></p>
-        <p>If your name's not already on that shortlist, <br class="mob-br">you won't get the call.</p>
+        <p>If you're not on that shortlist, <br class="mob-br">you won't get the call.</p>
       </div>
       <h2>Why the best people in football development stay invisible</h2>
       <p>The people making decisions about who to hire, book or enrol are forming views before they make contact. They're reading LinkedIn. They're scanning newsletters. They're comparing who sounds like they know what they're talking about and who doesn't show up at all.</p>
       <p>When an academy board is looking for a consultant, when a federation is assembling a course delivery panel, when a club is assessing who to bring in for a development review, they're starting with the names they already know.</p>
       <p>Most football development professionals with 10 or 15 years of experience aren't on the list. The knowledge is there but nobody sees it.</p>
-      <p>Some of the people I work with have never written <br class="mob-br">a LinkedIn post. They don't need to have. The thinking is already there. The writing is <span style="font-style:italic;color:var(--terracotta);">my job</span>.</p>
+      <p>You might never have written <br class="mob-br">a LinkedIn post. You don't need to have. The thinking is already there. The writing is <span style="font-style:italic;color:var(--terracotta);">my job</span>.</p>
     </div>
   </section>
 
@@ -1005,7 +1025,7 @@
           <div class="who-pain-wrap"><p class="who-pain">Your online presence doesn't reflect what you actually know.</p></div>
         </div>
         <div class="who-card stagger stagger-delay-2">
-          <h3>Coaching education founders</h3>
+          <h3>Coaching education leaders</h3>
           <div class="who-body">
             <p>UEFA course providers, CPD platforms, methodology programmes. You have a curriculum or philosophy that advances how coaches think. The coaches who'd pay for it are scrolling past.</p>
           </div>
@@ -1028,7 +1048,7 @@
       <div class="accent-line"></div>
       <h2>What my work looks like</h2>
       <div class="services-intro">
-        <p>Each works on its own.<br>Together they take a reader from finding you, to subscribing, to hiring you.</p>
+        <p>Each one works on its own.<br>Together they take a reader from finding you, to subscribing, to hiring you.</p>
         <div class="services-flow">
           <a class="flow-step" href="#service-linkedin">Get known</a>
           <span class="flow-arrow" aria-hidden="true">&rarr;</span>
@@ -1043,38 +1063,40 @@
         <div class="service-item stagger stagger-delay-1" id="service-linkedin">
           <div class="service-stage">Get known</div>
           <h3>LinkedIn Content</h3>
-          <p>Consistent publishing that puts your thinking in front of the people who make hiring, booking and enrolment decisions. You share the thinking. I handle everything else.</p>
-          <ul class="service-includes">
-            <li>Ghostwritten posts in your voice, published under your name</li>
-            <li>Built from monthly conversations, not templates</li>
-            <li>Profile, positioning and editorial calendar included</li>
-          </ul>
-          <p class="service-connector">This is where most people start. Once the right people are paying attention, the next step is how to keep them.</p>
-          <a class="service-cta" href="/book-a-call">Book a Call &rarr;</a>
+          <p>The people who might hire you, enrol on your programme or buy what you've built are already on LinkedIn. We talk once a month, and I turn that conversation into a set number of posts each week, published under your name. Your profile, positioning and editorial calendar come with it.</p>
+          <p class="service-connector">If you're starting anywhere, start here. Once the right people are paying attention, the next step is keeping them.</p>
         </div>
         <div class="service-item stagger stagger-delay-2" id="service-eec">
           <div class="service-stage">Get their email</div>
           <h3>Educational Email Course</h3>
-          <p>A done-for-you email sequence that teaches your audience something specific. By the time you ask for anything, they already trust what you know.</p>
-          <ul class="service-includes">
-            <li>Five to ten emails, written from your expertise, not generic advice</li>
-            <li>Turns followers into subscribers you actually own</li>
-            <li>Works as a lead magnet or a standalone paid product</li>
-          </ul>
+          <p>An email course teaches one specific thing over a short series, and people sign up by email, building your subscriber list. I write five to ten emails from your expertise. It works as a free lead magnet or can be sold on its own.</p>
           <p class="service-connector">Followers are borrowed. A subscriber list is yours. This is how you stop depending on the algorithm.</p>
-          <a class="service-cta" href="/book-a-call">Book a Call &rarr;</a>
         </div>
         <div class="service-item stagger stagger-delay-3" id="service-newsletter">
           <div class="service-stage">Keep teaching them</div>
           <h3>Newsletter</h3>
-          <p>A regular newsletter sent directly to the people who've already said they want to hear from you. The place where the thinking goes deeper and the relationship develops over time.</p>
-          <ul class="service-includes">
-            <li>Ghostwritten in your voice, on your schedule</li>
-            <li>Topics developed from your conversations and sector knowledge</li>
-            <li>An owned channel that moves your audience closer to a decision</li>
-          </ul>
-          <p class="service-connector">Teach consistently and the trust is already built by the time the conversation turns to what you provide.</p>
-          <a class="service-cta" href="/book-a-call">Book a Call &rarr;</a>
+          <p>A newsletter arrives directly with the people who've already said they want to hear from you. The topics come out of the same monthly conversation we have. It goes out weekly, fortnightly or monthly, whichever works for you.</p>
+          <p class="service-connector">Someone who's been reading you for months doesn't need convincing when they get in touch.</p>
+        </div>
+      </div>
+      <hr class="service-tier-break" />
+      <div class="section-eyebrow">Also available on their own</div>
+      <div class="service-extras">
+        <div class="service-item service-item-lite">
+          <h3>Thought leadership articles</h3>
+          <p>Long-form pieces for your own site or the trade press. Sometimes your thinking needs more than a post.</p>
+        </div>
+        <div class="service-item service-item-lite">
+          <h3>Video scripts</h3>
+          <p>Scripts for LinkedIn video, YouTube and course modules. So you know what you're saying before you hit record.</p>
+        </div>
+        <div class="service-item service-item-lite">
+          <h3>Whitepapers and reports</h3>
+          <p>Original research published under your name. Something the sector quotes and the press picks up.</p>
+        </div>
+        <div class="service-item service-item-lite">
+          <h3>Case studies</h3>
+          <p>A short write-up of what a club or a customer got from working with you. Most useful if you're selling a product or a course.</p>
         </div>
       </div>
     </div>
@@ -1083,7 +1105,7 @@
   <!-- MID-PAGE CTA -->
   <div class="mid-cta">
     <div class="container">
-      <p>Want to talk through which of these makes sense for your situation?</p>
+      <p>If you're not sure which of these fits, let's have a chat about it.</p>
       <a class="btn-primary" href="/book-a-call">Book a Call</a>
       <p style="margin-top:1.25rem;margin-bottom:0;font-size:0.88rem;font-style:italic;color:rgba(250,247,242,0.6);">Or book <a href="/directors-debrief" style="color:var(--gold);text-decoration:underline;">the Director's Debrief</a> for a paid strategy session.</p>
     </div>
@@ -1101,18 +1123,18 @@
       <div class="proof-grid stagger-parent">
         <div class="proof-card stagger stagger-delay-1">
           <div class="proof-label"><a href="https://www.linkedin.com/posts/thefootballghostwriter_brentford-football-club-academy-cost-2-million-activity-7430190178612375552-FuzE" target="_blank" rel="noopener">Post 1: EPPP and academy economics <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-          <div class="proof-stat"><span class="stat-label">Impressions</span><span class="stat-value proof-value" data-target="37242">0</span></div>
-          <div class="proof-stat"><span class="stat-label">Reactions</span><span class="stat-value proof-value" data-target="487">0</span></div>
-          <div class="proof-stat"><span class="stat-label">Comments</span><span class="stat-value proof-value" data-target="100">0</span></div>
+          <div class="proof-stat"><span class="stat-label">Impressions</span><span class="stat-value proof-value" data-target="37445">37,445</span></div>
+          <div class="proof-stat"><span class="stat-label">Reactions</span><span class="stat-value proof-value" data-target="485">485</span></div>
+          <div class="proof-stat"><span class="stat-label">Comments</span><span class="stat-value proof-value" data-target="99">99</span></div>
         </div>
         <div class="proof-card stagger stagger-delay-2">
-          <div class="proof-label"><a href="https://www.linkedin.com/posts/thefootballghostwriter_coachingequality-footballdiversity-classbarriers-share-7388887468873359360--oQh" target="_blank" rel="noopener">Post 2: Coaching licence landscape <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-          <div class="proof-stat"><span class="stat-label">Impressions</span><span class="stat-value proof-value" data-target="31671">0</span></div>
-          <div class="proof-stat"><span class="stat-label">Reactions</span><span class="stat-value proof-value" data-target="495">0</span></div>
-          <div class="proof-stat"><span class="stat-label">Comments</span><span class="stat-value proof-value" data-target="41">0</span></div>
+          <div class="proof-label"><a href="https://www.linkedin.com/posts/thefootballghostwriter_coachingequality-footballdiversity-classbarriers-share-7388887468873359360--oQh" target="_blank" rel="noopener">Post 2: The cost of a coaching licence <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
+          <div class="proof-stat"><span class="stat-label">Impressions</span><span class="stat-value proof-value" data-target="32051">32,051</span></div>
+          <div class="proof-stat"><span class="stat-label">Reactions</span><span class="stat-value proof-value" data-target="495">495</span></div>
+          <div class="proof-stat"><span class="stat-label">Comments</span><span class="stat-value proof-value" data-target="39">39</span></div>
         </div>
       </div>
-      <p class="proof-note" style="margin-top:3rem;">Only two posts. Combined reach: 68,913 impressions and almost 1,000 reactions from a standing start.</p>
+      <p class="proof-note" style="margin-top:3rem;">My two best-performing posts. Combined reach: 69,496 impressions and almost 1,000 reactions, from an account that started with no audience.</p>
       <p class="proof-note">No ad spend. No engagement pods. Just sector-specific writing that landed with the right audience.</p>
     </div>
   </section>
@@ -1131,7 +1153,7 @@
         <div class="step stagger stagger-delay-2">
           <div class="step-number">2</div>
           <h3>I learn how you think</h3>
-          <p>A proper conversation. I ask the questions your audience would ask if they had the chance. We find the positions and arguments that are worth publishing.</p>
+          <p>A proper conversation, once a month. I ask the questions your audience would ask if they had the chance. We find the positions and arguments worth publishing.</p>
         </div>
         <div class="step stagger stagger-delay-3">
           <div class="step-number">3</div>
@@ -1146,12 +1168,12 @@
   <section id="free-course" class="section-alt has-texture">
     <div class="container fade-in">
       <div class="section-eyebrow">A free starting point</div>
-      <h2>Want to see <span class="accent-italic">my thinking</span> behind this first?</h2>
+      <h2>Start here with <span class="accent-italic">my thinking</span> on this.</h2>
       <div class="course-bridge">
         <div class="course-bridge-text">
           <h3>Building a Public Voice in Football Development</h3>
-          <p>A free 5-day email course that walks through <br class="mob-br">the framework I use to help football development leaders <br class="mob-br">get known for their thinking. <br class="mob-br">One email per day. Five-minute reads.</p>
-          <p>No sales pitch until the end and even then it's a question, not a close.</p>
+          <p>A free 5-day email course that walks through <br class="mob-br">the framework behind this work. <br class="mob-br">One email per day. Five-minute reads.</p>
+          <p>No sales pitch until the end and even then it's a question.</p>
           <p>If you're weighing up whether this kind of work makes sense for your situation, this course is a good place to start.</p>
         </div>
         <div class="course-bridge-cta">
@@ -1178,7 +1200,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">I'm not active on LinkedIn at all. Is that a problem?</button>
-          <div class="faq-answer"><p>Not at all. Most of the people I work with come to me with an empty profile or no posting history. We build the whole thing from the ground up. You don't need an existing audience for this to work.</p></div>
+          <div class="faq-answer"><p>Not at all. An empty profile or no posting history is a normal starting point. We build the whole thing from the ground up. You don't need an existing audience for this to work.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">Do you use AI to write the content?</button>
@@ -1186,7 +1208,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How long before I see results?</button>
-          <div class="faq-answer"><p>Most people start seeing meaningful engagement within 8 to 12 weeks of consistent publishing. That means profile views, connection requests from the right people, and conversations starting in your DMs. The longer you publish consistently, the stronger it gets.</p></div>
+          <div class="faq-answer"><p>I won't put a timeline on it, because anyone who does is guessing. What I can show you is my own account, where two posts <strong>alone</strong> brought almost 70,000 impressions. That led industry leaders, in football and elsewhere, to reach out and ask how I could help them.</p><p>Expect the early signals to be profile views and connection requests from the right people, well before anything that looks like a pipeline. How quickly it compounds depends on how consistently you publish.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">I work at a Category 3 academy. Is this relevant for me?</button>
@@ -1202,7 +1224,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">What does it cost?</button>
-          <div class="faq-answer"><p>It depends on what you need. Some clients work with me on a monthly retainer, others on a one-off project like an educational email course. No long-term contracts. The best way to find out is to book a call and we'll talk through what makes sense for your situation.</p></div>
+          <div class="faq-answer"><p>It depends on what you need. The work runs either as a monthly retainer or as a one-off project like an educational email course. No long-term contracts. The best way to find out is to book a call and we'll talk through what makes sense for your situation.</p></div>
         </div>
       </div>
     </div>
@@ -1214,7 +1236,7 @@
       <h2>Let's see if <span class="accent-italic">we fit</span><span style="color:var(--gold);">.</span></h2>
       <p>30-minute call. I'll tell you what I think would actually work for your situation, whether that involves working together or not.</p>
       <a class="btn-primary" href="/book-a-call">Book a Call</a>
-      <a class="cta-secondary" href="/resources" style="color:var(--gold);">Not ready for a call? Browse the free resources &rarr;</a>
+      <a class="cta-secondary" href="/resources" style="color:var(--gold);">If a call feels too early, browse the free resources &rarr;</a>
 
       <div class="cta-message">
         <div class="cta-divider" aria-hidden="true"></div>
