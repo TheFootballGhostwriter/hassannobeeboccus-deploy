@@ -485,6 +485,15 @@
       filter: grayscale(100%) contrast(1.08) brightness(1.02);
       display: block;
     }
+    /* Gold trim. Drawn as a stroked path rather than a scaled copy of the crest, because
+       scaling the shape thickens the bottom curve and thins the top. Stroke width is in
+       viewBox units, so it scales with the photo like the crest does. */
+    .hero-photo .crest-rim {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      z-index: 2; pointer-events: none;
+    }
+    .hero-photo .crest-rim path { fill: none; stroke: var(--gold); stroke-width: 5; }
     .hero-gap { display: block; height: 0.5em; }
     .desk-br { display: inline; }
     .mob-br { display: none; }
@@ -980,6 +989,7 @@
         <div class="hero-photo">
           <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><clipPath id="crest" clipPathUnits="objectBoundingBox"><path d="M0.05,0 H0.95 A0.05,0.042 0 0 1 1,0.042 V0.62 C1,0.82 0.78,0.94 0.5,1 C0.22,0.94 0,0.82 0,0.62 V0.042 A0.05,0.042 0 0 1 0.05,0 Z"/></clipPath></defs></svg>
           <picture><source srcset="/headshot.webp" type="image/webp" /><img src="/headshot.jpg" alt="Hassan Nobeeboccus" width="400" height="474" loading="eager" fetchpriority="high" /></picture>
+          <svg class="crest-rim" viewBox="0 0 400 474" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M20,0 H380 A20,19.9 0 0 1 400,19.9 V293.9 C400,388.7 312,445.6 200,474 C88,445.6 0,388.7 0,293.9 V19.9 A20,19.9 0 0 1 20,0 Z"/></svg>
         </div>
       </div>
     </div>
