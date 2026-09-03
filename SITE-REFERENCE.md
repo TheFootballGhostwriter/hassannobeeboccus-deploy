@@ -138,6 +138,26 @@ Defined in `shared.css` `:root` and duplicated in each page's inline `<style>` b
 
 Dark mode is selector-based: `body.dark` applies overrides. No `prefers-color-scheme` auto-switch — the initial class is set from `localStorage.getItem('theme')` on load, falling back to `document.body.classList.add('dark')` unless the user explicitly prefers light via media query.
 
+### Which accent does which job
+
+Added 03/09/2026. The site has two accents, and that is deliberate — but they hold **separate jobs**, and the moment one does the other's job the page starts reading as generated rather than designed. The split was already there implicitly, in the usage: terracotta is 81% `color:` declarations, gold is majority `background:` and `border-color:`. It is written down here so it survives.
+
+| | Job | Allowed properties | Never |
+|---|---|---|---|
+| **Gold** `--gold` | **Surfaces and chrome.** Buttons, dividers, borders, hover states, rules, the back-to-top control, footer underlines. | `background`, `border-color`, `stroke`, `box-shadow` | **Never a text colour inside a heading.** That is terracotta's job. |
+| **Terracotta** `--terracotta` | **Emphasis on words.** Inline `.accent-italic` inside a heading, and nothing else. | `color` | Never a large fill or a page-level surface. |
+
+**One accented phrase per heading.** Two accented phrases in one heading cancel each other out — if everything is emphasised, nothing is. The hero at `index.html:982` carried four accented elements until 03/09/2026 (two terracotta italic phrases plus two gold full stops); the gold full stops were removed there and at `index.html:1261`, `alternative-models-framework.html:1438` and `the-coaching-pathway-guide-in-england.html:416`, because a coloured full stop is gold doing text emphasis and it always appeared alongside a terracotta phrase already doing that job. Two standalone gold full stops remain at `alternative-models-framework.html:2132` and `the-coaching-pathway-guide-in-england.html:1001`, where gold is the only accent in the heading and collides with nothing. They are a brand flourish, not a fault, but they are the exception rather than the pattern.
+
+**Terracotta has three values across the site and this is drift, not design.** `--terracotta` `#C0392B` (35 uses) is the light-mode token. `#E05A4C` (15) is the dark-mode value, correct on near-black and the value the infographic spec builds on. `#C4574A` (24) is a third red used only by `.cover .ai` on the two document-style pages, and `#D66B5E` (1) a fourth on the dark nav wordmark. `#C0392B` and `#E05A4C` are a legitimate light/dark pair. **`#C4574A` and `#D66B5E` are not accounted for and should collapse into `#E05A4C` when those two pages are next touched.** Do not introduce a fifth.
+
+**Never do, on colour:**
+1. Never put gold on text inside a heading.
+2. Never put two accented phrases in one heading.
+3. Never add a red that is not `#C0392B` (light) or `#E05A4C` (dark).
+4. Never use an accent as a fill or pill behind a word — accent goes on the glyphs.
+5. Never introduce a gradient that runs between two hues. The only gradients on the site are single-hue gold washes and one gold hairline divider, and it stays that way.
+
 ### Typography
 
 - **Sans**: `Inter` — weights `400, 500, 600, 700`
