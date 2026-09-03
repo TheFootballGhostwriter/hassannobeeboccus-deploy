@@ -156,7 +156,18 @@ Added 03/09/2026. The site has two accents, and that is deliberate — but they 
 2. Never put two accented phrases in one heading.
 3. Never add a red that is not `#C0392B` (light) or `#E05A4C` (dark).
 4. Never use an accent as a fill or pill behind a word — accent goes on the glyphs.
-5. Never introduce a gradient that runs between two hues. The only gradients on the site are single-hue gold washes and one gold hairline divider, and it stays that way.
+5. Never introduce a gradient that runs between two hues. The only gradients on the site are single-hue gold washes, and it stays that way.
+6. Never pin a coloured bar to the top edge of a block to signal that the block is special. See below.
+
+### Edge strips
+
+Added 03/09/2026. A decorative bar pinned to a container's top edge is one of the strongest tells that a layout was generated rather than designed. The bar is trying to say *this block is different*, but when every special block wears the same hat the hat distinguishes nothing — it is decoration doing hierarchy's job, badly. Blocks are separated by **space and type**, not by accent bars.
+
+Eleven were removed on 03/09/2026: five fading hairlines (`.inner-page`, `.model-page`, `.entry-page` — `linear-gradient(to right, transparent, gold 20%, gold 80%, transparent)`) and six solid accent bars (`.section-divider-page`, `.dark-divider-page`, `.cta-page` at 3px). The fading hairline was the worst of them: a rule that dissolves at both ends is something print cannot do and never wanted to, which is exactly why generated layouts reach for it. Nothing replaced them — those blocks already sit apart on whitespace, and the `::after` grain textures on the same elements were left untouched.
+
+**What survives, and why.** `.cover::before` (4px, one per guide) stays: a guide cover is a genuine front-door moment, and a bar appearing once per document is a signature rather than a pattern. Also legitimate and not to be confused with edge strips — nav-link hover underlines (1px gold, a functional affordance), the `body > nav` bottom border (a structural boundary), left rules on pull-quotes (`.stat-callout`, `.principle-block`), and custom list bullets (`.cred-list li`, `.service-includes li`). Thirty-eight such pseudo-element rules remain site-wide and all of them do work.
+
+Before adding a new one, the test is: **delete it and see whether anything is lost.** If the block still reads as distinct, the strip was decoration.
 
 ### Typography
 

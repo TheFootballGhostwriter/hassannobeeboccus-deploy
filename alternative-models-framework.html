@@ -602,14 +602,6 @@ body {
   page-break-after: always;
 }
 
-.inner-page::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,168,76,0.25) 20%, rgba(201,168,76,0.25) 80%, transparent);
-}
-
 /* ── PAGE HEADER ── */
 .page-header {
   display: flex;
@@ -769,14 +761,6 @@ body {
   page-break-after: always;
 }
 
-.section-divider-page::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--terracotta);
-}
-
 .divider-label {
   font-size: 9px;
   font-weight: 700;
@@ -812,14 +796,6 @@ body {
   position: relative;
   overflow: hidden;
   page-break-after: always;
-}
-
-.model-page::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,168,76,0.25) 20%, rgba(201,168,76,0.25) 80%, transparent);
 }
 
 .model-header {
@@ -980,14 +956,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-}
-
-.cta-page::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--terracotta);
 }
 
 .cta-section-label {
@@ -1256,7 +1224,6 @@ body {
   color: #e05a4c;
   border-bottom-color: #e05a4c;
 }
-
 
 /* ── TYPOGRAPHIC REFINEMENT ── */
 /* Orphans / widows: prevent single words stranded at line ends in body copy */

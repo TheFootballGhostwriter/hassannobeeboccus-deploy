@@ -214,10 +214,6 @@ body {
   width: 794px; min-height: 1123px; padding: 48px 80px 72px; background: var(--cream);
   display: flex; flex-direction: column; position: relative; overflow: hidden; page-break-after: always;
 }
-.inner-page::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,168,76,0.25) 20%, rgba(201,168,76,0.25) 80%, transparent);
-}
 .inner-page::after {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.045;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
@@ -269,7 +265,6 @@ body {
   width: 794px; min-height: 400px; padding: 80px 80px 60px; background: #1a1614;
   display: flex; flex-direction: column; justify-content: flex-end; position: relative; page-break-after: always;
 }
-.dark-divider-page::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #e05a4c; }
 .dark-divider-page::after {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.08;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
@@ -292,7 +287,6 @@ body {
   width: 794px; min-height: 700px; padding: 80px 80px 60px; background: #1B3A2D;
   display: flex; flex-direction: column; justify-content: space-between; position: relative;
 }
-.cta-page::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #e05a4c; }
 .cta-page::after {
   content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.08;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
@@ -480,7 +474,6 @@ body {
     <div class="section-subhead">Stuck in the system</div>
     <p>Each qualification has its own page on England Football Learning. Each page gives you the fee for that course. None of them gives you the running total. None of them tells you about the travel to St George's Park across six residential modules. None of them mentions childcare. None of them attempts to cost the unpaid hours of qualifying coaching experience the pathway requires you to log before you're even eligible to apply.</p>
     <p>For a London-based coach with one child, the all-in cost of the UEFA A alone (tuition, travel, pre-arrival accommodation not covered by the course fee, childcare across 12 residential days, lost earnings from secondary employment) sits between &pound;6,465 and &pound;8,680. The course page shows &pound;4,150.</p>
-
 
     <p>The experience requirements are specific. Most coaches find out what they mean after they've committed to a role that doesn't satisfy them. The UEFA B requires you to be actively coaching a team in a season-long competition at a qualifying level before you can enrol. The UEFA A requires one year of post-B head or assistant coaching experience in eleven-a-side football at the highest level you can access. Grassroots football doesn't satisfy it. A letter of support from a club is required. If you don't have a current club affiliation, you can't apply.</p>
     <p>The Advanced Youth Award requires existing employment inside an EPPP academy. Community coaching and foundation-phase roles at affiliated clubs don't satisfy it. A coach with 20 years of experience outside the EPPP can't enrol. The qualification designed to advance careers in professional youth football requires you already to be in one.</p>
@@ -778,7 +771,6 @@ body {
   <text x="18" y="370" font-size="9.5" fill="#A8997A" font-family="Georgia,serif">Minimum 8 to 12 years C to Pro from scratch. The A-to-Pro gap is indefinite for most coaches outside the professional game.</text>
 </svg>
     </figure>
-
 
   </div>
   <div class="page-footer"><div class="page-footer-brand"><span style="font-weight:700;">Hassan Nobeeboccus</span><span style="color:var(--gold);margin:0 0.4em;font-weight:300;">|</span><em style="color:var(--terracotta);font-style:italic;">The Football Ghostwriter</em></div><span class="page-footer-url">hassannobeeboccus.com</span></div>
