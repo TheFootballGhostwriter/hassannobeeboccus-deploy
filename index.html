@@ -709,7 +709,9 @@
     .proof-stat { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
     .proof-stat:last-child { border-bottom: none; }
     .proof-stat .stat-label { color: var(--text-muted); }
-    .proof-stat .stat-value { font-weight: 600; color: var(--green); }
+    /* tabular-nums fixes the count-up animation: proportional digits made these
+       values swing ~17px in width mid-count, shaking the number as it climbed. */
+    .proof-stat .stat-value { font-weight: 600; color: var(--green); font-variant-numeric: tabular-nums; }
     body.dark .proof-stat .stat-value { color: var(--gold); }
     .proof-note { font-size: 0.93rem; color: var(--text-muted); font-style: italic; }
 
