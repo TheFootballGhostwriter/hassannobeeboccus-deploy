@@ -945,7 +945,19 @@
       transition: width 0.1s linear;
       pointer-events: none;
     }
-  </style>
+  
+/* Line-break quality: balanced heading lines, no single-word orphans in body copy.
+   Silently ignored by browsers without support — no fallback required. */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  -webkit-text-wrap: balance;
+}
+p, li, blockquote {
+  text-wrap: pretty;
+  -webkit-text-wrap: pretty;
+}
+
+</style>
   <noscript><style>.fade-in,.stagger{opacity:1;transform:none;}</style></noscript>
 </head>
 <body>

@@ -1328,6 +1328,18 @@ body {
   .site-nav, .doc-label-bar, .site-footer { display: none; }
 }
 
+
+/* Line-break quality: balanced heading lines, no single-word orphans in body copy.
+   Silently ignored by browsers without support — no fallback required. */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  -webkit-text-wrap: balance;
+}
+p, li, blockquote {
+  text-wrap: pretty;
+  -webkit-text-wrap: pretty;
+}
+
 </style>
 <script>
   /* Publish actual nav height as a CSS variable so the negative margin-top on
