@@ -303,7 +303,7 @@ body {
 .cta-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 460px; margin-bottom: 48px; }
 .cta-contact-item { font-size: 13px; color: rgba(250,247,242,0.6); }
 .cta-contact-item span { display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,247,242,0.35); margin-bottom: 4px; }
-.cta-contact-item a { color: rgba(250,247,242,0.6); text-decoration: none; }
+.cta-contact-item a { color: rgba(250,247,242,0.6); text-decoration: none; overflow-wrap: anywhere; }
 .section-body a, .cta-body a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(196,160,90,0.35); }
 .section-body a:hover, .cta-body a:hover { border-bottom-color: var(--gold); }
 .cta-footer { border-top: 1px solid #2a4a38; padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
@@ -360,6 +360,22 @@ body {
   border: 1px solid rgba(201,168,76,0.15);
 }
 
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background: var(--gold);
+  color: #141414;
+  padding: 0.5rem 1rem;
+  z-index: 200;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
 .cookie-float {
   position: fixed; bottom: 5rem; right: 2rem; z-index: 90;
   display: flex; align-items: center; gap: 0.5rem;
@@ -397,9 +413,23 @@ body {
   .cookie-opt { height: 44px; padding: 0 0.9rem; font-size: 0.75rem; }
 }
 
+@media (max-width: 640px) {
+  /* Nav wraps on narrow screens so no link escapes the header background */
+  .site-nav { padding: 0.75rem 1rem; }
+  .site-nav-inner { flex-wrap: wrap; gap: 0.4rem 0.75rem; justify-content: center; }
+  .site-nav-right { flex-wrap: wrap; gap: 0.5rem 1rem; justify-content: center; }
+  .site-nav-wordmark { font-size: 0.85rem; }
+  .site-nav-link { font-size: 0.8rem; }
+  .site-nav-cta { padding: 0.4rem 0.85rem; font-size: 0.78rem; }
+
+  /* Contact details stack so the email address stays on one line */
+  .cta-contact-grid { grid-template-columns: 1fr; gap: 14px; }
+}
+
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <div class="reading-progress" id="progress"></div>
 
@@ -436,7 +466,7 @@ body {
   </div>
 </div>
 
-<div class="page">
+<div class="page" id="main-content">
 
 <!-- COVER -->
 <div class="cover" id="top">
@@ -1035,7 +1065,7 @@ body {
     <div class="cta-divider"></div>
     <div class="cta-contact-label">Get in touch</div>
     <div class="cta-contact-grid">
-      <div class="cta-contact-item"><span>Email</span><a href="mailto:thefootballghostwriter@outlook.com">thefootballghostwriter@outlook.com</a></div>
+      <div class="cta-contact-item"><span>Email</span><a href="mailto:thefootballghostwriter@outlook.com">thefootballghostwriter<wbr>@outlook.com</a></div>
       <div class="cta-contact-item"><span>Website</span><a href="https://hassannobeeboccus.com">hassannobeeboccus.com</a></div>
       <div class="cta-contact-item"><span>Book a call</span><a href="https://hassannobeeboccus.com/book-a-call">Schedule 30 minutes</a></div>
       <div class="cta-contact-item"><span>Free email course</span><a href="https://hassannobeeboccus.com/build-your-public-voice">Build Your Public Voice</a></div>

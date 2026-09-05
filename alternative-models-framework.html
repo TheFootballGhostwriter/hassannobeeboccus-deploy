@@ -1217,6 +1217,7 @@ body {
 .cta-contact-item a {
   color: #a09080;
   text-decoration: none;
+  overflow-wrap: anywhere;
   border-bottom: 1px solid rgba(160,144,128,0.3);
   transition: border-color 0.15s, color 0.15s;
 }
@@ -1317,6 +1318,12 @@ body {
   .site-nav-link::after { transition: none; }
   .back-to-top, .cookie-float, .cookie-options, .skip-link,
   .site-nav, .doc-label-bar, .reading-progress { transition: none; }
+}
+
+/* Contact details stack on phones so the email address stays on one line.
+   Placed after the base .cta-contact-grid rule so it wins on equal specificity. */
+@media (max-width: 640px) {
+  .cta-contact-grid { grid-template-columns: 1fr; gap: 14px; }
 }
 
 /* ── PRINT ── */
@@ -2113,7 +2120,7 @@ body {
     <div class="cta-contact-grid">
       <div class="cta-contact-item">
         <span>Email</span>
-        <a href="mailto:thefootballghostwriter@outlook.com" style="white-space:nowrap;">thefootballghostwriter@outlook.com</a>
+        <a href="mailto:thefootballghostwriter@outlook.com">thefootballghostwriter<wbr>@outlook.com</a>
       </div>
       <div class="cta-contact-item">
         <span>Website</span>
