@@ -360,6 +360,43 @@ body {
   border: 1px solid rgba(201,168,76,0.15);
 }
 
+.cookie-float {
+  position: fixed; bottom: 5rem; right: 2rem; z-index: 90;
+  display: flex; align-items: center; gap: 0.5rem;
+  flex-direction: row-reverse;
+}
+.cookie-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--gold); color: #141414;
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.4; transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  font-size: 0.85rem;
+}
+.cookie-btn:hover { opacity: 0.7; }
+.cookie-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cookie-options {
+  display: flex; gap: 0.4rem; opacity: 0; pointer-events: none;
+  transform: translateX(10px); transition: opacity 0.3s, transform 0.3s;
+}
+.cookie-float.open .cookie-options { opacity: 1; pointer-events: auto; transform: translateX(0); }
+.cookie-opt {
+  height: 36px; border-radius: 50px; padding: 0 0.75rem;
+  background: var(--gold); color: #141414;
+  border: none; cursor: pointer; font-family: 'Inter', sans-serif;
+  font-size: 0.7rem; font-weight: 500; white-space: nowrap;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: opacity 0.2s;
+}
+.cookie-opt:hover { opacity: 0.8; }
+.cookie-float.hidden { display: none; }
+
+@media (max-width: 840px) {
+  .back-to-top, .cookie-btn { width: 44px; height: 44px; }
+  .cookie-opt { height: 44px; padding: 0 0.9rem; font-size: 0.75rem; }
+}
+
 </style>
 </head>
 <body>
@@ -1038,6 +1075,14 @@ body {
 
 <button class="back-to-top" id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 
+<div class="cookie-float" id="cookieConsent" aria-live="polite">
+  <button class="cookie-btn" id="cookieToggle" aria-label="Cookie preferences"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8" cy="10" r="1.5" fill="currentColor" stroke="none"/><circle cx="15" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="10" cy="15" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="14" r="0.8" fill="currentColor" stroke="none"/></svg></button>
+  <div class="cookie-options">
+    <button class="cookie-opt" data-consent="all">Accept</button>
+    <button class="cookie-opt" data-consent="none">Decline</button>
+  </div>
+</div>
+
 <script>
 const prog = document.getElementById('progress');
 const btt = document.getElementById('btt');
@@ -1050,6 +1095,42 @@ window.addEventListener('scroll', function() {
   nav.classList.toggle('nav-hidden', window.scrollY > lastY && window.scrollY > 120);
   lastY = window.scrollY;
 }, {passive: true});
+
+function loadAnalytics() {
+  if (window._analyticsLoaded) return;
+  window._analyticsLoaded = true;
+  var va = document.createElement('script');
+  va.defer = true;
+  va.src = '/_vercel/insights/script.js';
+  document.head.appendChild(va);
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-8ER6D68M04';
+  document.head.appendChild(ga);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-8ER6D68M04', { anonymize_ip: true });
+}
+var cc = document.getElementById('cookieConsent');
+var ct = document.getElementById('cookieToggle');
+var consent = localStorage.getItem('cookieConsent');
+if (consent) {
+  cc.classList.add('hidden');
+  if (consent === 'all') loadAnalytics();
+} else {
+  cc.classList.add('open');
+}
+ct.addEventListener('click', function() { cc.classList.toggle('open'); });
+document.querySelectorAll('.cookie-opt').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var choice = this.dataset.consent;
+    localStorage.setItem('cookieConsent', choice);
+    cc.classList.add('hidden');
+    if (choice === 'all') loadAnalytics();
+  });
+});
 </script>
 </body>
 </html>
