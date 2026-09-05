@@ -182,6 +182,8 @@ Before adding a new one, the test is: **delete it and see whether anything is lo
   - `h2`: `clamp(1.2rem, 2vw, 1.5rem)`, weight 700
   - `h3`: `1.05rem`, weight 700 (cards) or `1.1rem` (article body)
 - **Accent italic** (for inline terracotta emphasis): `.accent-italic { font-family: 'Merriweather', serif; font-style: italic; color: var(--terracotta); }`
+- **Line breaking** — **lives in `shared.css`, not in page `<style>` blocks.** Headings `h1–h6` get `text-wrap: balance` so line lengths even out instead of stranding a word on the last line. Body `p, li, blockquote` get `text-wrap: pretty` to avoid single-word orphans. Both carry the `-webkit-text-wrap` prefix. Browsers without support ignore them — no fallback needed. A page needing a different break on specific display text overrides with a class selector, which wins on specificity (see `.cover-subtitle` in `conversation-to-content-map.html`). Verified across 106 headings: 44% rebalance, and page height is byte-identical with the rule on and off, so it is safe on the paginated document assets. Added 05/09/2026. Lives in `shared.css` for the 18 site pages, and inline in the three document assets, which do not load `shared.css` — see §27. Keep the two copies in sync.
+- **Numerals**: any number that animates or updates in place needs `font-variant-numeric: tabular-nums`. Proportional digits are different widths (`1` is narrow, `8` is wide), so a count-up stat physically grows and shrinks as it climbs. Measured on the homepage before the fix: a 17px width swing between values of identical digit length. Applies to `.proof-stat .stat-value`. Static numbers inside sentences do **not** need this and should keep proportional digits.
 
 ### Spacing + radius + shadow
 
@@ -1062,7 +1064,7 @@ git revert HEAD && git push  # undo the code change in the repo
 
 ## 27. Known invariants (don't break these)
 
-- **`shared.css` is loaded on every page.** Any base style change there ripples everywhere — check every page type.
+- **`shared.css` is loaded on the 18 site pages, but NOT on the three document assets.** `the-coaching-pathway-guide-in-england.html`, `alternative-models-framework.html` and `conversation-to-content-map.html` are deliberately self-contained so they stay portable and printable; each carries an inline copy of the rules it needs, flagged by a `does not load it` comment. Any base style change in `shared.css` ripples across 18 pages and **silently skips those three** — always apply it inline there too, then verify on one of them. Corrected 05/09/2026; this entry previously read "loaded on every page", which is what caused the `text-wrap` rules to be shipped to `shared.css` alone and miss all three assets.
 - **Cookie consent script must exist on every page**. No exceptions.
 - **`loadAnalytics()` fires only after explicit `Accept`.** Never call it on page load.
 - **Every indexable page has a canonical URL.** Even redirects should ultimately land on a canonical.
@@ -1070,6 +1072,9 @@ git revert HEAD && git push  # undo the code change in the repo
 - **No framework, no build step.** If a change requires one, that's a red flag — revisit the requirement.
 - **No secrets in the repo.** API keys go in Vercel env vars.
 - **British English + no em dashes + no exclamation marks.** Not negotiable.
+- **A site-wide rule goes in `shared.css` plus an inline copy in the three document assets — 18 + 3, never 21 duplicates and never `shared.css` alone.** On 05/09/2026 the `text-wrap` rules were first shipped duplicated across all 21 pages, then collapsed into `shared.css` alone, which silently dropped them from the three assets that do not load it. Both ends of that mistake are easy to make. If a change touches every page identically, it belongs in `shared.css` **and** inline in the three assets.
+- **Never `white-space: nowrap` on the contact email.** It is 34 characters inside a two-column CTA grid that narrows to ~75px per column on a phone. A single inline `nowrap` made all three digital assets sidescroll (+56/+112/+112px at 390px) until 05/09/2026. The address wraps at a `<wbr>` placed before the `@`, and `.cta-contact-grid` collapses to one column at ≤640px. On the two framework pages that media query must sit **after** the base `.cta-contact-grid` rule in source order — equal specificity means later wins.
+- **No page may exceed the viewport width at 360px.** Test at 430/390/375/360 before shipping a layout change. The two framework pages still overflow by 5px at 320px via the letter-spaced footer wordmark; that is known, accepted, and not to be "fixed" by tightening brand letter-spacing.
 
 ---
 

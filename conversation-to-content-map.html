@@ -1329,8 +1329,9 @@ body {
 }
 
 
-/* Line-break quality: balanced heading lines, no single-word orphans in body copy.
-   Silently ignored by browsers without support — no fallback required. */
+/* Line-break quality. Inlined rather than pulled from shared.css because these
+   three document assets do not load it — see the note on .site-nav-cta::before.
+   Must stay in sync with the h1-h6 / p,li,blockquote rules in shared.css. */
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   -webkit-text-wrap: balance;

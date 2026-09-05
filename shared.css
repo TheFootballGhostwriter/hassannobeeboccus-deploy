@@ -5,3 +5,11 @@
 .btn-primary,.nav-cta,.nav-cta-mobile,.site-nav-cta,.ft-cta-book{position:relative}
 .btn-primary::before,.nav-cta::before,.nav-cta-mobile::before,.site-nav-cta::before,.ft-cta-book::before{content:'';position:absolute;inset:-6px;border-radius:50px;background:rgba(201,168,76,.55);filter:blur(16px);opacity:.5;animation:cta-breathe 4s ease-in-out infinite;z-index:-1;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.btn-primary::before,.nav-cta::before,.nav-cta-mobile::before,.site-nav-cta::before,.ft-cta-book::before{animation:none;opacity:.7}}
+
+/* Line-break quality. Headings balance their line lengths rather than stranding a
+   word on the last line; body copy avoids single-word orphans. Pages that need a
+   different break on specific display text override with a class selector, which
+   wins on specificity — see .cover-subtitle in conversation-to-content-map.html.
+   Browsers without support ignore both properties, so no fallback is required. */
+h1,h2,h3,h4,h5,h6{text-wrap:balance;-webkit-text-wrap:balance}
+p,li,blockquote{text-wrap:pretty;-webkit-text-wrap:pretty}
