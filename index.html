@@ -63,7 +63,7 @@
           {"@type":"Question","name":"How much of my time does this take each month?","acceptedAnswer":{"@type":"Answer","text":"One conversation, typically 45 minutes to an hour. You talk about what's on your mind in the sector, what you've been working on, what you think people are getting wrong. I handle everything from there: research, drafting, editing, revisions. You review and approve before anything goes out."}},
           {"@type":"Question","name":"I'm not active on LinkedIn at all. Is that a problem?","acceptedAnswer":{"@type":"Answer","text":"Not at all. An empty profile or no posting history is a normal starting point. We build the whole thing from the ground up. You don't need an existing audience for this to work."}},
           {"@type":"Question","name":"Do you use AI to write the content?","acceptedAnswer":{"@type":"Answer","text":"AI is a research and editing tool, not a ghostwriter. Every piece of content is written by me, grounded in your specific expertise and the conversations we have. The quality difference between AI-generated content and writing that comes from someone who understands your sector is obvious to any reader in football development."}},
-          {"@type":"Question","name":"How long before I see results?","acceptedAnswer":{"@type":"Answer","text":"I won't put a timeline on it, because anyone who does is guessing. What I can show you is my own account, where two posts alone brought almost 70,000 impressions. That led industry leaders, in football and elsewhere, to reach out and ask how I could help them. Expect the early signals to be profile views and connection requests from the right people, well before anything that looks like a pipeline. How quickly it compounds depends on how consistently you publish."}},
+          {"@type":"Question","name":"How long before I see results?","acceptedAnswer":{"@type":"Answer","text":"I won't put a timeline on it, because anyone who does is guessing. What I can show you is my own account, where a single post brought over 75,000 impressions, more than my previous two best posts combined. That led industry leaders, in football and elsewhere, to reach out and ask how I could help them. Expect the early signals to be profile views and connection requests from the right people, well before anything that looks like a pipeline. How quickly it compounds depends on how consistently you publish."}},
           {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"It depends on what you need. The best way to find out is to book a call and we'll talk through what makes sense for your situation. No pricing is listed on the site because every engagement is scoped to the individual."}}
         ]
       }
@@ -699,16 +699,19 @@
 
     /* ── SOCIAL PROOF ── */
     .proof-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
-    @media (min-width: 640px) { .proof-grid { grid-template-columns: 1fr 1fr; } }
-    .proof-card { background: var(--card-bg); border: 1px solid var(--border); border-top: 3px solid var(--terracotta); padding: 2rem 1.75rem; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.08), 0 0 0 1px rgba(201,168,76,0.04); transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease); }
+    @media (min-width: 640px) { .proof-grid { grid-template-columns: repeat(3, 1fr); } }
+    .proof-card { background: var(--card-bg); border: 1px solid var(--border); border-top: 3px solid var(--terracotta); padding: 2rem 1.75rem; border-radius: 12px; text-align: center; display: flex; flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.08), 0 0 0 1px rgba(201,168,76,0.04); transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease); }
     .proof-card:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.2), 0 0 0 2px rgba(201,168,76,0.2); transform: translateY(-2px); }
     .proof-card .proof-label { font-family: 'Merriweather', serif; font-style: italic; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1rem; }
     .proof-card .proof-label a { color: var(--terracotta); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: opacity 0.2s; }
     .proof-card .proof-label a:hover { opacity: 0.7; }
     .proof-card .proof-label .li-icon { width: 14px; height: 14px; fill: var(--terracotta); }
-    .proof-stat { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
-    .proof-stat:last-child { border-bottom: none; }
-    .proof-stat .stat-label { color: var(--text-muted); }
+    .proof-stat { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; margin-top: auto; padding: 0.75rem 0 0.25rem; font-size: 0.95rem; }
+    .proof-engagement { margin-top: 0.8rem; font-size: 0.78rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+    .proof-stat .stat-label { color: var(--text-muted); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    /* Wraps number + "+" into one flex item. As bare children they'd be
+       blockified by the column flex and stack vertically. */
+    .proof-stat .stat-figure { font-size: clamp(1.75rem, 3.2vw, 2.4rem); line-height: 1; }
     /* tabular-nums fixes the count-up animation: proportional digits made these
        values swing ~17px in width mid-count, shaking the number as it climbed. */
     .proof-stat .stat-value { font-weight: 600; color: var(--green); font-variant-numeric: tabular-nums; }
@@ -1149,20 +1152,24 @@
       <p>These are results from my own content, published on LinkedIn using the same framework and process I use for the people I work with.</p>
       <div class="proof-grid stagger-parent">
         <div class="proof-card stagger stagger-delay-1">
-          <div class="proof-label"><a href="https://www.linkedin.com/posts/thefootballghostwriter_brentford-football-club-academy-cost-2-million-activity-7430190178612375552-FuzE" target="_blank" rel="noopener">Post 1: EPPP and academy economics <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-          <div class="proof-stat"><span class="stat-label">Impressions</span><span class="stat-value proof-value" data-target="37445">37,445</span></div>
-          <div class="proof-stat"><span class="stat-label">Reactions</span><span class="stat-value proof-value" data-target="485">485</span></div>
-          <div class="proof-stat"><span class="stat-label">Comments</span><span class="stat-value proof-value" data-target="99">99</span></div>
+          <div class="proof-label"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7501694379066245120/" target="_blank" rel="noopener">Post 1: Alternative development models <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
+          <div class="proof-stat"><span class="stat-figure"><span class="stat-value proof-value" data-target="75000">75,000</span><span class="stat-value">+</span></span><span class="stat-label">Impressions</span></div>
+          <div class="proof-engagement">180+ social engagements</div>
         </div>
         <div class="proof-card stagger stagger-delay-2">
-          <div class="proof-label"><a href="https://www.linkedin.com/posts/thefootballghostwriter_coachingequality-footballdiversity-classbarriers-share-7388887468873359360--oQh" target="_blank" rel="noopener">Post 2: The cost of a coaching licence <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
-          <div class="proof-stat"><span class="stat-label">Impressions</span><span class="stat-value proof-value" data-target="32051">32,051</span></div>
-          <div class="proof-stat"><span class="stat-label">Reactions</span><span class="stat-value proof-value" data-target="495">495</span></div>
-          <div class="proof-stat"><span class="stat-label">Comments</span><span class="stat-value proof-value" data-target="39">39</span></div>
+          <div class="proof-label"><a href="https://www.linkedin.com/posts/thefootballghostwriter_brentford-football-club-academy-cost-2-million-activity-7430190178612375552-FuzE" target="_blank" rel="noopener">Post 2: EPPP and academy economics <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
+          <div class="proof-stat"><span class="stat-figure"><span class="stat-value proof-value" data-target="37000">37,000</span><span class="stat-value">+</span></span><span class="stat-label">Impressions</span></div>
+          <div class="proof-engagement">675+ social engagements</div>
+        </div>
+        <div class="proof-card stagger stagger-delay-3">
+          <div class="proof-label"><a href="https://www.linkedin.com/posts/thefootballghostwriter_coachingequality-footballdiversity-classbarriers-share-7388887468873359360--oQh" target="_blank" rel="noopener">Post 3: The cost of a coaching licence <svg class="li-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
+          <div class="proof-stat"><span class="stat-figure"><span class="stat-value proof-value" data-target="32000">32,000</span><span class="stat-value">+</span></span><span class="stat-label">Impressions</span></div>
+          <div class="proof-engagement">655+ social engagements</div>
         </div>
       </div>
-      <p class="proof-note" style="margin-top:3rem;">My two best-performing posts. Combined reach: 69,496 impressions and almost 1,000 reactions, from an account that started with no audience.</p>
-      <p class="proof-note">No ad spend. No engagement pods. Just sector-specific writing that landed with the right audience.</p>
+      <p class="proof-note" style="margin-top:3rem;">Just three of my posts generated over 140,000 impressions and more than 1,500 social engagements, from an account that started without an audience.</p>
+      <p class="proof-note">The first of those reached more people on its own than the other two put together.</p>
+      <p class="proof-note">No ad spend. No engagement pods. Just sector-specific writing which landed with the right audience.</p>
     </div>
   </section>
 
@@ -1235,7 +1242,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How long before I see results?</button>
-          <div class="faq-answer"><div class="faq-answer-body"><p>I won't put a timeline on it, because anyone who does is guessing. What I can show you is my own account, where two posts <strong>alone</strong> brought almost 70,000 impressions. That led industry leaders, in football and elsewhere, to reach out and ask how I could help them.</p><p>Expect the early signals to be profile views and connection requests from the right people, well before anything that looks like a pipeline. How quickly it compounds depends on how consistently you publish.</p></div></div>
+          <div class="faq-answer"><div class="faq-answer-body"><p>I won't put a timeline on it, because anyone who does is guessing. What I can show you is my own account, where a <strong>single post</strong> brought over 75,000 impressions, more than my previous two best posts combined. That led industry leaders, in football and elsewhere, to reach out and ask how I could help them.</p><p>Expect the early signals to be profile views and connection requests from the right people, well before anything that looks like a pipeline. How quickly it compounds depends on how consistently you publish.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">I work at a Category 3 academy. Is this relevant for me?</button>
