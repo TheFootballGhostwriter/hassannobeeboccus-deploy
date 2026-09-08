@@ -1,0 +1,11 @@
+.vercel
+.claude
+.DS_Store
+
+# Unoptimised master images. Kept locally as the source for the
+# .jpg/.webp derivatives, never referenced by any page, so they
+# should not be uploaded or served.
+*-original.jpg
+
+# Internal working notes, not for the public site.
+SITE-REFERENCE.md

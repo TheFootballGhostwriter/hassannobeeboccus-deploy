@@ -8,7 +8,26 @@
     { "source": "/courses", "destination": "/resources", "permanent": true },
     { "source": "/free-courses", "destination": "/resources", "permanent": true },
     { "source": "/freecourses", "destination": "/resources", "permanent": true },
-    { "source": "/freecourses.html", "destination": "/resources", "permanent": true }
+    { "source": "/freecourses.html", "destination": "/resources", "permanent": true },
+
+    { "source": "/does-coaching-licence-develop-you.html", "destination": "/football-thoughts/does-coaching-licence-develop-you", "permanent": true },
+    { "source": "/female-coaches-football-decline-uk.html", "destination": "/football-thoughts/female-coaches-football-decline-uk", "permanent": true },
+    { "source": "/female-referees-england-statistics.html", "destination": "/football-thoughts/female-referees-england-statistics", "permanent": true },
+    { "source": "/football-development-practitioners-invisible-online.html", "destination": "/football-thoughts/football-development-practitioners-invisible-online", "permanent": true },
+    { "source": "/real-cost-coaching-licence-england.html", "destination": "/football-thoughts/real-cost-coaching-licence-england", "permanent": true },
+    { "source": "/relative-age-effect-football-academy-selection.html", "destination": "/football-thoughts/relative-age-effect-football-academy-selection", "permanent": true },
+    { "source": "/uefa-b-fitness-diploma-requirements.html", "destination": "/football-thoughts/uefa-b-fitness-diploma-requirements", "permanent": true },
+
+    { "source": "/football-thoughts.html", "destination": "/football-thoughts", "permanent": true },
+    { "source": "/resources.html", "destination": "/resources", "permanent": true },
+    { "source": "/book-a-call.html", "destination": "/book-a-call", "permanent": true },
+    { "source": "/directors-debrief.html", "destination": "/directors-debrief", "permanent": true },
+    { "source": "/privacy.html", "destination": "/privacy", "permanent": true },
+    { "source": "/5-development-models.html", "destination": "/5-development-models", "permanent": true },
+    { "source": "/alternative-models-framework.html", "destination": "/alternative-models-framework", "permanent": true },
+    { "source": "/conversation-to-content-map.html", "destination": "/conversation-to-content-map", "permanent": true },
+    { "source": "/the-coaching-pathway-guide-in-england.html", "destination": "/the-coaching-pathway-guide-in-england", "permanent": true },
+    { "source": "/buildyourpublicvoice.html", "destination": "/build-your-public-voice", "permanent": true }
   ],
   "rewrites": [
     { "source": "/build-your-public-voice", "destination": "/buildyourpublicvoice.html" },
@@ -26,5 +45,20 @@
     { "source": "/conversation-to-content-map", "destination": "/conversation-to-content-map.html" },
     { "source": "/conversation-to-content-map.pdf", "destination": "/conversation-to-content-map.html" },
     { "source": "/the-coaching-pathway-guide-in-england", "destination": "/the-coaching-pathway-guide-in-england.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://app.cal.eu https://cal.eu; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://app.cal.eu; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://app.cal.eu https://cal.eu; frame-src https://app.cal.eu https://cal.eu; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests"
+        }
+      ]
+    }
   ]
 }
