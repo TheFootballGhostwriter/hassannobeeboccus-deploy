@@ -44,8 +44,19 @@ hassannobeeboccus-deploy/
 ├── conversation-to-content-map.html    In-browser PDF-style viewer (EEC1 asset)
 ├── blog-post-template.html             Template — duplicate for new editions / articles
 ├── note-template.html                  Template — duplicate for new notes (site-exclusive)
+│                                       Both templates are noindex,nofollow. They deploy as
+│                                       real 200 pages carrying placeholder copy, so leaving
+│                                       them indexable puts "Post description goes here." in
+│                                       search results. Clear the robots meta on the copy,
+│                                       never on the template.
 ├── shared.css                          Tiny base stylesheet (loaded on every page)
-├── vercel.json                         Routing (redirects + rewrites)
+├── vercel.json                         Routing (redirects + rewrites) + security headers
+├── .vercelignore                       Keeps files out of the deploy. Anything in the repo
+│                                       is publicly fetchable otherwise, .gitignore has no
+│                                       bearing on it, and robots.txt Disallow is not access
+│                                       control. Currently excludes *-original.jpg and
+│                                       SITE-REFERENCE.md, both of which were served at 200
+│                                       until 2026-09-08.
 ├── sitemap.xml                         Sitemap (manually maintained)
 ├── robots.txt                          Sitemap pointer
 ├── api/
@@ -56,8 +67,19 @@ hassannobeeboccus-deploy/
 ├── og-models.png                       OG image for 5-development-models
 ├── headshot.{webp,jpg}                 Hero portrait
 ├── goal-bg.{webp,jpg}                  Page-header background texture
+├── *-original.jpg                      Unoptimised masters for the two images above.
+│                                       Gitignored, so they exist only on this machine and
+│                                       are NOT recoverable from git history. Do not delete.
 └── SITE-REFERENCE.md                   This file
 ```
+
+### Security headers
+
+Set in the `headers` block of `vercel.json` on `/(.*)`: `Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`. HSTS comes from Vercel.
+
+The CSP allowlists only the origins actually in use: `googletagmanager.com` and `google-analytics.com` for GA, `app.cal.eu` / `cal.eu` for the booking embed, `formspree.io` in `form-action`. It carries `'unsafe-inline'` for both script and style because every page inlines its own `<script>` and `<style>`; removing that would mean hashing or noncing every block.
+
+**Adding any new third-party embed means widening the CSP in the same change, then verifying in a real browser.** The consent gate means a plain page load proves nothing, since analytics and Cal only load once `localStorage.cookieConsent === 'all'`. Set that, reload, and confirm zero CSP violations in the console. A silently blocked booking widget looks identical to a working one until someone tries to book.
 
 ---
 
@@ -95,6 +117,8 @@ All routing lives in `vercel.json`. Two sections: `redirects` (308 permanent) an
 | `/writing` | `/football-thoughts` |
 | `/football-thoughts/blog` | `/football-thoughts?filter=edition` |
 | `/football-thoughts/notes` | `/football-thoughts?filter=note` |
+| `/courses`, `/free-courses`, `/freecourses`, `/freecourses.html` | `/resources` |
+| every `/<file>.html` | its pretty URL |
 
 ### Rules for adding routes
 
@@ -102,6 +126,7 @@ All routing lives in `vercel.json`. Two sections: `redirects` (308 permanent) an
 - **No trailing slashes** in sources.
 - **Always add the file before the rewrite.** Otherwise the URL 404s after deploy.
 - **Update `sitemap.xml`** for any new indexable URL.
+- **Every new page needs a redirect from its `.html` form to its pretty URL.** A rewrite alone leaves the page reachable at both addresses, which is a crawlable duplicate. The rewrite resolves against the filesystem rather than re-entering the redirect table, so the pair does not loop. Audited 2026-09-08, when all seven articles plus nine other pages were live at two URLs each.
 
 ---
 
