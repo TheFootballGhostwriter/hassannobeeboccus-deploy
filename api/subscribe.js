@@ -48,9 +48,22 @@ export default async function handler(req, res) {
       if (json) return res.status(200).json({ ok: true });
       return res.redirect(302, `${course.redirect}?subscribed=1`);
     }
+
+    // Log what MailerLite actually said. Without this the failure is undiagnosable:
+    // every upstream problem — expired token, bad group id, rate limit — collapses
+    // into the same opaque 502, and the logs only show that a 502 happened.
+    // The response body carries no subscriber data, only MailerLite's error detail.
+    let detail = '';
+    try { detail = (await response.text()).slice(0, 300); } catch (_) {}
+    console.error(
+      `[subscribe] MailerLite rejected course=${courseKey} group=${course.group} ` +
+      `status=${response.status} body=${detail}`
+    );
+
     if (json) return res.status(502).json({ ok: false, error: 'subscribe_failed' });
     return res.redirect(302, `${course.redirect}?error=1`);
   } catch (e) {
+    console.error(`[subscribe] request threw for course=${courseKey}: ${e && e.message}`);
     if (json) return res.status(500).json({ ok: false, error: 'server_error' });
     return res.redirect(302, `${course.redirect}?error=1`);
   }

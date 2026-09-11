@@ -837,7 +837,9 @@
             } else {
               note.hidden = false;
               note.classList.add('is-error');
-              note.textContent = (res.data && res.data.error) || 'Something went wrong. Try again or email thefootballghostwriter@outlook.com.';
+              // Always the written message. res.data.error carries machine codes
+              // like "subscribe_failed", which were being printed to visitors.
+              note.textContent = 'Something went wrong. Try again or email thefootballghostwriter@outlook.com.';
               submitBtn.disabled = false;
               submitBtn.textContent = originalLabel;
               trackEvent('resource_submit', { resource: resource, status: 'error' });
