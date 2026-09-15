@@ -256,6 +256,7 @@
         <a class="nav-linkedin" href="/football-thoughts" aria-label="Football Thoughts" style="position:relative;top:0.5px;"><svg style="width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.91;stroke-miterlimit:10;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10.5"/><polygon points="14.2 8.18 9.8 8.18 7.59 12 9.8 15.82 14.2 15.82 16.41 12 14.2 8.18"/><line x1="19.64" y1="12" x2="16.41" y2="12" stroke-linecap="square"/><line x1="7.59" y1="12" x2="4.36" y2="12" stroke-linecap="square"/><line x1="15.82" y1="5.39" x2="14.2" y2="8.18" stroke-linecap="square"/><line x1="9.8" y1="15.82" x2="8.18" y2="18.62" stroke-linecap="square"/><line x1="9.8" y1="8.18" x2="8.18" y2="5.39" stroke-linecap="square"/><line x1="15.82" y1="18.62" x2="14.2" y2="15.82" stroke-linecap="square"/></svg></a>
       </div>
       <form action="/api/subscribe" method="post" style="display:flex;align-items:center;gap:0.4rem;">
+        <input type="hidden" name="source" value="models/nav" />
         <input type="email" name="email" placeholder="Your email" required class="nav-form-input" />
         <a class="nav-cta" href="#" onclick="this.parentElement.submit(); return false;">Send Me Day 1</a>
       </form>
@@ -277,6 +278,7 @@
       <h1>5 development models English academies should be studying.</h1>
       <p class="even-if">A free 5-day email course breaking down what they did differently and what you can apply at your level.</p>
       <form action="/api/subscribe" method="post" style="display:flex;flex-direction:column;gap:0.5rem;max-width:360px;margin:0 auto;align-items:center;">
+        <input type="hidden" name="source" value="models/hero" />
         <input type="email" name="email" placeholder="Your email address" required style="width:100%;padding:0.75rem 1rem;border:1px solid rgba(250,247,242,0.2);border-radius:50px;font-family:'Inter',sans-serif;font-size:0.93rem;text-align:center;background:rgba(250,247,242,0.1);color:#FAF7F2;" />
         <button type="submit" style="width:100%;background:var(--gold);color:var(--green);font-family:'Inter',sans-serif;font-weight:600;font-size:0.93rem;padding:0.75rem 1.75rem;border:none;border-radius:50px;cursor:pointer;white-space:nowrap;">Send Me Day 1</button>
       </form>
@@ -309,6 +311,7 @@
   <div class="inline-form">
     <div class="container">
       <form action="/api/subscribe" method="post">
+        <input type="hidden" name="source" value="models/mid" />
         <input type="email" name="email" placeholder="Your email address" required />
         <button type="submit">Send Me Day 1</button>
       </form>
@@ -360,6 +363,7 @@
   <div class="inline-form has-texture">
     <div class="container">
       <form action="/api/subscribe" method="post">
+        <input type="hidden" name="source" value="models/end" />
         <input type="email" name="email" placeholder="Your email address" required />
         <button type="submit">Send Me Day 1</button>
       </form>

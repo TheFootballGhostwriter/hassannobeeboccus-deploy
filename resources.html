@@ -832,13 +832,17 @@
           fetch('/api/subscribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({ email: email, course: resource })
+            body: JSON.stringify({ email: email, course: resource, source: window.location.pathname })
           }).then(function(r){
             return r.json().then(function(data){ return { ok: r.ok, data: data }; }).catch(function(){ return { ok: r.ok, data: {} }; });
           }).then(function(res){
             if (res.ok && res.data && res.data.ok) {
               form.innerHTML = '<p class="resource-form-note is-success">Got it — the link is on its way. Check your inbox in the next minute or two (and peek at your spam folder just in case).</p>';
               trackEvent('resource_submit', { resource: resource, status: 'ok' });
+              // These three convert without navigating, so the URL is moved to the
+              // magnet's /thanks path instead. Vercel Web Analytics counts history
+              // changes, which makes the conversion visible without a consent click.
+              if (res.data.thanks) window.history.pushState({}, '', res.data.thanks);
             } else {
               note.hidden = false;
               note.classList.add('is-error');

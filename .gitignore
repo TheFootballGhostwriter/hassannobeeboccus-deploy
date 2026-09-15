@@ -2,3 +2,6 @@
 .claude
 *-original.jpg
 .DS_Store
+
+# Pulled secrets. Never committed, never deployed.
+.env*

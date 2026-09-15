@@ -1,10 +1,14 @@
 // Course / framework registry. Add new groups here.
+// `thanks` is a distinct path per magnet so each conversion shows up as its own
+// pageview in Vercel Web Analytics. Custom events need a Pro plan, and GA4 only
+// runs after a consent click, so a URL is the only conversion signal that covers
+// every visitor. vercel.json rewrites these back to the page they came from.
 const COURSES = {
-  models: { group: '183924441027184080', redirect: '/5-development-models' },
-  voice:  { group: '184737667850700274', redirect: '/build-your-public-voice' },
-  amf:    { group: '185546911183275136', redirect: '/resources' },
-  ccm:    { group: '185546914392966331', redirect: '/resources' },
-  cpg:    { group: '185800853427324705', redirect: '/resources' }
+  models: { group: '183924441027184080', redirect: '/5-development-models',  thanks: '/thanks/5-development-models' },
+  voice:  { group: '184737667850700274', redirect: '/build-your-public-voice', thanks: '/thanks/build-your-public-voice' },
+  amf:    { group: '185546911183275136', redirect: '/resources',             thanks: '/thanks/alternative-models-framework' },
+  ccm:    { group: '185546914392966331', redirect: '/resources',             thanks: '/thanks/conversation-to-content-map' },
+  cpg:    { group: '185800853427324705', redirect: '/resources',             thanks: '/thanks/coaching-pathway-guide' }
 };
 
 const DEFAULT_COURSE = 'models';
@@ -12,6 +16,13 @@ const DEFAULT_COURSE = 'models';
 function wantsJSON(req) {
   const accept = (req.headers && (req.headers.accept || req.headers.Accept)) || '';
   return accept.indexOf('application/json') !== -1;
+}
+
+// Which CTA the visitor converted from. Client-supplied, so it is clamped to a
+// short slug before it is stored against the subscriber in MailerLite.
+function cleanSource(value) {
+  if (typeof value !== 'string') return '';
+  return value.toLowerCase().replace(/[^a-z0-9/_-]/g, '').slice(0, 64);
 }
 
 export default async function handler(req, res) {
@@ -31,6 +42,10 @@ export default async function handler(req, res) {
     return res.redirect(302, `${course.redirect}?error=1`);
   }
 
+  const source = cleanSource(body.source);
+  const subscriber = { email: email, groups: [course.group] };
+  if (source) subscriber.fields = { signup_source: source };
+
   try {
     const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
       method: 'POST',
@@ -38,15 +53,12 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.MAILERLITE_API_KEY}`
       },
-      body: JSON.stringify({
-        email: email,
-        groups: [course.group]
-      })
+      body: JSON.stringify(subscriber)
     });
 
     if (response.ok || response.status === 200 || response.status === 201) {
-      if (json) return res.status(200).json({ ok: true });
-      return res.redirect(302, `${course.redirect}?subscribed=1`);
+      if (json) return res.status(200).json({ ok: true, thanks: course.thanks });
+      return res.redirect(302, `${course.thanks}?subscribed=1`);
     }
 
     // Log what MailerLite actually said. Without this the failure is undiagnosable:

@@ -9,3 +9,7 @@
 
 # Internal working notes, not for the public site.
 SITE-REFERENCE.md
+
+# Local reporting tooling and pulled secrets, not part of the site.
+scripts
+.env*

@@ -461,6 +461,17 @@
       });
       document.getElementById('cal-placeholder').style.display = 'none';
       document.getElementById('cal-embed').style.display = 'block';
+      markCalendarLoaded();
+    }
+
+    // Reaching the calendar is a separate step from reaching the page, so it gets
+    // its own path. Vercel Web Analytics counts history changes, so the gap between
+    // /book-a-call and /book-a-call/calendar-loaded is the consent-gate drop-off.
+    // Deferred to load because the insights script patches history when it executes.
+    function markCalendarLoaded() {
+      var push = function() { window.history.pushState({}, '', '/book-a-call/calendar-loaded'); };
+      if (document.readyState === 'complete') push();
+      else window.addEventListener('load', push);
     }
 
     function loadAnalytics() {

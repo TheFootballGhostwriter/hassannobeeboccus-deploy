@@ -44,9 +44,22 @@
     { "source": "/alternative-models-framework.pdf", "destination": "/alternative-models-framework.html" },
     { "source": "/conversation-to-content-map", "destination": "/conversation-to-content-map.html" },
     { "source": "/conversation-to-content-map.pdf", "destination": "/conversation-to-content-map.html" },
-    { "source": "/the-coaching-pathway-guide-in-england", "destination": "/the-coaching-pathway-guide-in-england.html" }
+    { "source": "/the-coaching-pathway-guide-in-england", "destination": "/the-coaching-pathway-guide-in-england.html" },
+
+    { "source": "/thanks/5-development-models", "destination": "/5-development-models.html" },
+    { "source": "/thanks/build-your-public-voice", "destination": "/buildyourpublicvoice.html" },
+    { "source": "/thanks/alternative-models-framework", "destination": "/resources.html" },
+    { "source": "/thanks/conversation-to-content-map", "destination": "/resources.html" },
+    { "source": "/thanks/coaching-pathway-guide", "destination": "/resources.html" },
+    { "source": "/book-a-call/calendar-loaded", "destination": "/book-a-call.html" }
   ],
   "headers": [
+    {
+      "source": "/(thanks|book-a-call/calendar-loaded)(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex" }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [

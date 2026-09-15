@@ -389,6 +389,7 @@
       </div>
       <form action="/api/subscribe" method="post" style="display:flex;align-items:center;gap:0.4rem;">
         <input type="hidden" name="course" value="voice" />
+        <input type="hidden" name="source" value="voice/nav" />
         <input type="email" name="email" placeholder="Your email" required class="nav-form-input" />
         <a class="nav-cta" href="#" onclick="this.parentElement.submit(); return false;">Send Me Day 1</a>
       </form>
@@ -411,6 +412,7 @@
       <p class="even-if">(Even if you've never written a single post and have no idea where to start.)</p>
       <form action="/api/subscribe" method="post" style="display:flex;flex-direction:column;gap:0.5rem;max-width:360px;margin:0 auto;align-items:center;">
         <input type="hidden" name="course" value="voice" />
+        <input type="hidden" name="source" value="voice/hero" />
         <input type="email" name="email" placeholder="Your email address" required style="width:100%;padding:0.75rem 1rem;border:1px solid rgba(250,247,242,0.2);border-radius:50px;font-family:'Inter',sans-serif;font-size:0.93rem;text-align:center;background:rgba(250,247,242,0.1);color:#FAF7F2;" />
         <button type="submit" style="width:100%;background:var(--gold);color:var(--green);font-family:'Inter',sans-serif;font-weight:600;font-size:0.93rem;padding:0.75rem 1.75rem;border:none;border-radius:50px;cursor:pointer;white-space:nowrap;">Send Me Day 1</button>
       </form>
@@ -445,6 +447,7 @@
     <div class="container">
       <form action="/api/subscribe" method="post">
         <input type="hidden" name="course" value="voice" />
+        <input type="hidden" name="source" value="voice/mid" />
         <input type="email" name="email" placeholder="Your email address" required />
         <button type="submit">Send Me Day 1</button>
       </form>
@@ -497,6 +500,7 @@
     <div class="container">
       <form action="/api/subscribe" method="post">
         <input type="hidden" name="course" value="voice" />
+        <input type="hidden" name="source" value="voice/end" />
         <input type="email" name="email" placeholder="Your email address" required />
         <button type="submit">Send Me Day 1</button>
       </form>
