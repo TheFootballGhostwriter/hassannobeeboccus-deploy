@@ -15,7 +15,8 @@ Read this before making any change. It describes how the site is built, what the
 - **Source**: `github.com/TheFootballGhostwriter/hassannobeeboccus-deploy`
 - **DNS**: Namecheap
 - **Email + EECs**: MailerLite (via `/api/subscribe.js`)
-- **Analytics**: GA4 `G-8ER6D68M04` + Vercel Web Analytics, both consent-gated
+- **Analytics**: Vercel Web Analytics + Speed Insights (unconditional, cookieless); GA4 `G-8ER6D68M04` (consent-gated)
+- **Search**: Google Search Console property `https://hassannobeeboccus.com` (URL-prefix), verified via the Namecheap `google-site-verification` TXT record
 - **Booking**: cal.eu — two events, both embedded inline on dedicated pages:
   - Free 30-min intro call (`30min` slug) → `/book-a-call`
   - Paid Director's Debrief (`the-director-s-debrief` slug) → `/directors-debrief`
@@ -674,14 +675,21 @@ else if (!s && !(window.matchMedia && window.matchMedia('(prefers-color-scheme: 
 
 ### Script
 
+Vercel Web Analytics and Speed Insights load unconditionally from `<head>` on every page.
+They are cookieless, write nothing to the device, and identify visitors by a server-side
+daily-rotating request hash, so UK PECR Reg 6 is not engaged. GA4 stays consent-gated.
+
+```html
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+```
+
 ```js
 function loadAnalytics() {
   if (window._analyticsLoaded) return;
   window._analyticsLoaded = true;
-  var va = document.createElement('script');
-  va.defer = true;
-  va.src = '/_vercel/insights/script.js';
-  document.head.appendChild(va);
   var ga = document.createElement('script');
   ga.async = true;
   ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-8ER6D68M04';
@@ -717,7 +725,7 @@ document.querySelectorAll('.cookie-opt').forEach(function(btn) {
 
 - **Tag**: `G-8ER6D68M04`
 - **Flag**: `anonymize_ip: true`
-- **Vercel Web Analytics**: loaded alongside GA4 via `/_vercel/insights/script.js`. Same gate.
+- **Vercel Web Analytics / Speed Insights**: loaded unconditionally from `<head>`, outside the consent gate.
 
 ### Cookie rules summary
 
@@ -725,7 +733,7 @@ document.querySelectorAll('.cookie-opt').forEach(function(btn) {
 |---|---|
 | `localStorage.theme` | `dark` \| `light` — persistent, set on toggle |
 | `localStorage.cookieConsent` | `all` \| `none` — persistent, set on Accept/Decline |
-| Pre-consent tracking | None. No IP logging, no beacons, no third-party scripts. |
+| Pre-consent tracking | Vercel Web Analytics + Speed Insights only — cookieless, first-party, nothing stored on device. No third-party scripts. |
 | User can revoke | Yes — click the cookie icon, re-choose (currently stores new value) |
 
 ---
@@ -1083,8 +1091,9 @@ git revert HEAD && git push  # undo the code change in the repo
 ## 26. DNS + external services
 
 - **Namecheap**: DNS only. A records point to Vercel, SPF TXT record for MailerLite.
-- **Search Console**: property owned as `hassannobeeboccus.com` (domain-wide). Verified via DNS TXT.
+- **Search Console**: URL-prefix property `https://hassannobeeboccus.com`, created 2026-09-15 and auto-verified against the existing `google-site-verification` TXT record at Namecheap. The TXT record predates the property: it sat in DNS for months while no property existed, which is why there was never any search data. Do not remove that TXT record.
 - **GA4**: property ID `G-8ER6D68M04`.
+- **Vercel Web Analytics**: enabled 2026-04-08, collecting. **Speed Insights**: provisioned but had no data until the script was actually loaded on 2026-09-15.
 - **MailerLite**: account linked. Groups listed in §22. API key in Vercel env only.
 - **Cal.eu**: two public events — `thefootballghostwriter/30min` (free intro) and `thefootballghostwriter/the-director-s-debrief` (paid). Both are embedded inline on-site — the external URLs are no longer used as CTAs anywhere. Brand colour set via embed `cssVarsPerTheme` to `#C9A84C` (gold) for both light and dark, since the cal dashboard brand setting doesn't apply. Theme is synced to the site's dark mode toggle.
 

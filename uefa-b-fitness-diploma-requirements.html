@@ -360,6 +360,11 @@
     }
   </style>
   <noscript><style>.fade-in{opacity:1;transform:none;}</style></noscript>
+  <!-- Vercel Web Analytics + Speed Insights: cookieless, no device storage, loaded unconditionally -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
@@ -514,10 +519,6 @@
     function loadAnalytics() {
       if (window._analyticsLoaded) return;
       window._analyticsLoaded = true;
-      var va = document.createElement('script');
-      va.defer = true;
-      va.src = '/_vercel/insights/script.js';
-      document.head.appendChild(va);
       var ga = document.createElement('script');
       ga.async = true;
       ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-8ER6D68M04';
